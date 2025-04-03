@@ -33,5 +33,3 @@ library(plotROC)
 ```{r, include=FALSE}
 crashes <- read.csv("data/Logistic_Regression_Data.csv")
 ```
-
-
