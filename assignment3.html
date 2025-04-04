@@ -11,7 +11,7 @@
 
 <meta name="author" content="Zhanchao Yang, Haoyu Zhu, Kavana Raju" />
 
-<meta name="date" content="2025-04-03" />
+<meta name="date" content="2025-04-04" />
 
 <title>The Application of Logistic Regression to Examine the Predictors of Car Crashes Caused by Alcohol</title>
 
@@ -1579,14 +1579,84 @@ border-radius: 0px;
 <h1 class="title toc-ignore">The Application of Logistic Regression to
 Examine the Predictors of Car Crashes Caused by Alcohol</h1>
 <h4 class="author">Zhanchao Yang, Haoyu Zhu, Kavana Raju</h4>
-<h4 class="date">2025-04-03</h4>
+<h4 class="date">2025-04-04</h4>
 
 </div>
 
 
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+</div>
+<div id="method" class="section level1">
+<h1>Method</h1>
+<div id="issues-with-ols-regression" class="section level2">
+<h2>Issues with OLS Regression</h2>
+<p>The OLS regression model can be expressed as following formula:</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k + \epsilon
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(y\)</span> is the dependent
+variable</li>
+<li><span class="math inline">\(x_1, x_2, ..., x_k\)</span> are the
+independent variables</li>
+<li><span class="math inline">\(\beta_0, \beta_1, \beta_2, ...,
+\beta_k\)</span> are the coefficients</li>
+<li><span class="math inline">\(\epsilon\)</span> is the error term</li>
+</ul>
+<p>Using OLS regression to model binary outcomes can lead to several
+issues:</p>
+<ul>
+<li>First, In the OLS regression, <span class="math inline">\(\beta_1\)</span> is interpreted as the amount of
+the dependent variable <span class="math inline">\(y\)</span> changes
+when <span class="math inline">\(x_1\)</span> increases by one unit,
+holding all other variables constant. However, when the dependent
+variable is binary, a one unit increase in <span class="math inline">\(x_1\)</span> results in <span class="math inline">\(\beta_1\)</span> increase in <span class="math inline">\(y\)</span> no longer makes sense, as <span class="math inline">\(y\)</span> can change only from 0 to 1 or from 1
+to 0. This leads to some interpretation issues.</li>
+<li>Second, OLS regression assumes a linear relationship between the
+predictors and the dependent variable. With a binary dependent variable,
+this assumption no longer holds, as binary outcomes are inherently no
+linear.</li>
+<li>Third, OLS also assumes normally distributed residuals. However,
+with binary outcome, the residuals are not normally distributed.
+Instead, they follow a binomial distribution.</li>
+<li>Finally, OLS regression has another assumption of
+heteroscedasticity, which means that the variance of the residuals is
+constant across all levels of the independent variables. However, with
+binary outcomes, this assumption is violated, as the variance of the
+residuals is not constant. It varies with the predicted probability,
+leading to heteroscedasticity.</li>
+</ul>
+<p>All those violations of the OLS regression assumptions affect the
+validity of the model and the interpretation of the coefficients. In
+this way, we need to use a different approach to model binary
+outcomes.</p>
+</div>
+<div id="logistic-regression-concepts" class="section level2">
+<h2>Logistic Regression Concepts</h2>
+</div>
+<div id="logistic-regression-hypothesis" class="section level2">
+<h2>Logistic Regression Hypothesis</h2>
+</div>
+<div id="logistic-regression-model-assessment" class="section level2">
+<h2>Logistic Regression Model Assessment</h2>
+</div>
+<div id="logistic-regression-assumptions" class="section level2">
+<h2>Logistic Regression Assumptions</h2>
+</div>
+<div id="exploratory-analysis" class="section level2">
+<h2>Exploratory Analysis</h2>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+</div>
+<div id="discussion" class="section level1">
+<h1>Discussion</h1>
+</div>
 
-
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiVGhlIEFwcGxpY2F0aW9uIG9mIExvZ2lzdGljIFJlZ3Jlc3Npb24gdG8gRXhhbWluZSB0aGUgUHJlZGljdG9ycyBvZiBDYXIgQ3Jhc2hlcyBDYXVzZWQgYnkgQWxjb2hvbCIKYXV0aG9yOiAiWmhhbmNoYW8gWWFuZywgSGFveXUgWmh1LCBLYXZhbmEgUmFqdSIKZGF0ZTogImByIFN5cy5EYXRlKClgIgpvdXRwdXQ6CiAgaHRtbF9kb2N1bWVudDoKICAgIHRoZW1lOiBmbGF0bHkKICAgIGhpZ2hsaWdodDogdGFuZ28KICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGNvZGVfZG93bmxvYWQ6IHllcwogICAgbWF0aGpheDogZGVmYXVsdAotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCgpvcHRpb25zKHNjaXBlbj05OTkpCm9wdGlvbnMoZGlnaXRzID0gMykKCmxpYnJhcnkodGlkeXZlcnNlKQpsaWJyYXJ5KHNmKQpsaWJyYXJ5KGhlcmUpCmxpYnJhcnkoa2FibGVFeHRyYSkKbGlicmFyeShwYXRjaHdvcmspCmxpYnJhcnkoZ21vZGVscykKbGlicmFyeShnZ2NvcnJwbG90KQpsaWJyYXJ5KFJPQ1IpCmxpYnJhcnkocGxvdFJPQykKYGBgCgpgYGB7ciwgaW5jbHVkZT1GQUxTRX0KY3Jhc2hlcyA8LSByZWFkLmNzdigiZGF0YS9Mb2dpc3RpY19SZWdyZXNzaW9uX0RhdGEuY3N2IikKYGBgCgoK</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRoZSBBcHBsaWNhdGlvbiBvZiBMb2dpc3RpYyBSZWdyZXNzaW9uIHRvIEV4YW1pbmUgdGhlIFByZWRpY3RvcnMgb2YgQ2FyIENyYXNoZXMgQ2F1c2VkIGJ5IEFsY29ob2wiDQphdXRob3I6ICJaaGFuY2hhbyBZYW5nLCBIYW95dSBaaHUsIEthdmFuYSBSYWp1Ig0KZGF0ZTogImByIFN5cy5EYXRlKClgIg0Kb3V0cHV0Og0KICBodG1sX2RvY3VtZW50Og0KICAgIHRoZW1lOiBmbGF0bHkNCiAgICBoaWdobGlnaHQ6IHRhbmdvDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2Zsb2F0OiB0cnVlDQogICAgY29kZV9mb2xkaW5nOiBoaWRlDQogICAgY29kZV9kb3dubG9hZDogeWVzDQogICAgbWF0aGpheDogZGVmYXVsdA0KLS0tDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQ0KDQpvcHRpb25zKHNjaXBlbj05OTkpDQpvcHRpb25zKGRpZ2l0cyA9IDMpDQoNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShzZikNCmxpYnJhcnkoaGVyZSkNCmxpYnJhcnkoa2FibGVFeHRyYSkNCmxpYnJhcnkocGF0Y2h3b3JrKQ0KbGlicmFyeShnbW9kZWxzKQ0KbGlicmFyeShnZ2NvcnJwbG90KQ0KbGlicmFyeShST0NSKQ0KbGlicmFyeShwbG90Uk9DKQ0KYGBgDQoNCmBgYHtyLCBpbmNsdWRlPUZBTFNFfQ0KY3Jhc2hlcyA8LSByZWFkLmNzdigiZGF0YS9Mb2dpc3RpY19SZWdyZXNzaW9uX0RhdGEuY3N2IikNCmBgYA0KDQojIEludHJvZHVjdGlvbg0KDQojIE1ldGhvZA0KDQojIyBJc3N1ZXMgd2l0aCBPTFMgUmVncmVzc2lvbg0KDQpUaGUgT0xTIHJlZ3Jlc3Npb24gbW9kZWwgY2FuIGJlIGV4cHJlc3NlZCBhcyBmb2xsb3dpbmcgZm9ybXVsYToNCg0KJCQNCnkgPSBcYmV0YV8wICsgXGJldGFfMXhfMSArIFxiZXRhXzJ4XzIgKyAuLi4gKyBcYmV0YV9reF9rICsgXGVwc2lsb24NCiQkDQoNCndoZXJlOg0KDQotIFwoeVwpIGlzIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUNCi0gXCh4XzEsIHhfMiwgLi4uLCB4X2tcKSBhcmUgdGhlIGluZGVwZW5kZW50IHZhcmlhYmxlcw0KLSBcKFxiZXRhXzAsIFxiZXRhXzEsIFxiZXRhXzIsIC4uLiwgXGJldGFfa1wpIGFyZSB0aGUgY29lZmZpY2llbnRzDQotIFwoXGVwc2lsb25cKSBpcyB0aGUgZXJyb3IgdGVybQ0KDQpVc2luZyBPTFMgcmVncmVzc2lvbiB0byBtb2RlbCBiaW5hcnkgb3V0Y29tZXMgY2FuIGxlYWQgdG8gc2V2ZXJhbCBpc3N1ZXM6DQoNCi0gRmlyc3QsIEluIHRoZSBPTFMgcmVncmVzc2lvbiwgXChcYmV0YV8xXCkgaXMgaW50ZXJwcmV0ZWQgYXMgdGhlIGFtb3VudCBvZiB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIFwoeVwpIGNoYW5nZXMgd2hlbiBcKHhfMVwpIGluY3JlYXNlcyBieSBvbmUgdW5pdCwgaG9sZGluZyBhbGwgb3RoZXIgdmFyaWFibGVzIGNvbnN0YW50LiBIb3dldmVyLCB3aGVuIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUgaXMgYmluYXJ5LCBhIG9uZSB1bml0IGluY3JlYXNlIGluIFwoeF8xXCkgcmVzdWx0cyBpbiBcKFxiZXRhXzFcKSBpbmNyZWFzZSBpbiBcKHlcKSBubyBsb25nZXIgbWFrZXMgc2Vuc2UsIGFzIFwoeVwpIGNhbiBjaGFuZ2Ugb25seSBmcm9tIDAgdG8gMSBvciBmcm9tIDEgdG8gMC4gVGhpcyBsZWFkcyB0byBzb21lIGludGVycHJldGF0aW9uIGlzc3Vlcy4NCi0gU2Vjb25kLCBPTFMgcmVncmVzc2lvbiBhc3N1bWVzIGEgbGluZWFyIHJlbGF0aW9uc2hpcCBiZXR3ZWVuIHRoZSBwcmVkaWN0b3JzIGFuZCB0aGUgZGVwZW5kZW50IHZhcmlhYmxlLiBXaXRoIGEgYmluYXJ5IGRlcGVuZGVudCB2YXJpYWJsZSwgdGhpcyBhc3N1bXB0aW9uIG5vIGxvbmdlciBob2xkcywgYXMgYmluYXJ5IG91dGNvbWVzIGFyZSBpbmhlcmVudGx5IG5vIGxpbmVhci4NCi0gVGhpcmQsIE9MUyBhbHNvIGFzc3VtZXMgbm9ybWFsbHkgZGlzdHJpYnV0ZWQgcmVzaWR1YWxzLiBIb3dldmVyLCB3aXRoIGJpbmFyeSBvdXRjb21lLCB0aGUgcmVzaWR1YWxzIGFyZSBub3Qgbm9ybWFsbHkgZGlzdHJpYnV0ZWQuIEluc3RlYWQsIHRoZXkgZm9sbG93IGEgYmlub21pYWwgZGlzdHJpYnV0aW9uLiANCi0gRmluYWxseSwgT0xTIHJlZ3Jlc3Npb24gaGFzIGFub3RoZXIgYXNzdW1wdGlvbiBvZiBoZXRlcm9zY2VkYXN0aWNpdHksIHdoaWNoIG1lYW5zIHRoYXQgdGhlIHZhcmlhbmNlIG9mIHRoZSByZXNpZHVhbHMgaXMgY29uc3RhbnQgYWNyb3NzIGFsbCBsZXZlbHMgb2YgdGhlIGluZGVwZW5kZW50IHZhcmlhYmxlcy4gSG93ZXZlciwgd2l0aCBiaW5hcnkgb3V0Y29tZXMsIHRoaXMgYXNzdW1wdGlvbiBpcyB2aW9sYXRlZCwgYXMgdGhlIHZhcmlhbmNlIG9mIHRoZSByZXNpZHVhbHMgaXMgbm90IGNvbnN0YW50LiBJdCB2YXJpZXMgd2l0aCB0aGUgcHJlZGljdGVkIHByb2JhYmlsaXR5LCBsZWFkaW5nIHRvIGhldGVyb3NjZWRhc3RpY2l0eS4NCg0KQWxsIHRob3NlIHZpb2xhdGlvbnMgb2YgdGhlIE9MUyByZWdyZXNzaW9uIGFzc3VtcHRpb25zIGFmZmVjdCB0aGUgdmFsaWRpdHkgb2YgdGhlIG1vZGVsIGFuZCB0aGUgaW50ZXJwcmV0YXRpb24gb2YgdGhlIGNvZWZmaWNpZW50cy4gSW4gdGhpcyB3YXksIHdlIG5lZWQgdG8gdXNlIGEgZGlmZmVyZW50IGFwcHJvYWNoIHRvIG1vZGVsIGJpbmFyeSBvdXRjb21lcy4NCg0KIyMgTG9naXN0aWMgUmVncmVzc2lvbiBDb25jZXB0cw0KDQojIyBMb2dpc3RpYyBSZWdyZXNzaW9uIEh5cG90aGVzaXMNCg0KIyMgTG9naXN0aWMgUmVncmVzc2lvbiBNb2RlbCBBc3Nlc3NtZW50DQoNCiMjIExvZ2lzdGljIFJlZ3Jlc3Npb24gQXNzdW1wdGlvbnMNCg0KIyMgRXhwbG9yYXRvcnkgQW5hbHlzaXMNCg0KDQojIFJlc3VsdHMgDQoNCiMgRGlzY3Vzc2lvbg0KDQoNCg==</div>
 
 
 </div>
