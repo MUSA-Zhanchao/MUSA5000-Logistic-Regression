@@ -33,3 +33,46 @@ library(plotROC)
 ```{r, include=FALSE}
 crashes <- read.csv("data/Logistic_Regression_Data.csv")
 ```
+
+# Introduction
+
+# Method
+
+## Issues with OLS Regression
+
+The OLS regression model can be expressed as following formula:
+
+$$
+y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k + \epsilon
+$$
+
+where:
+
+- \(y\) is the dependent variable
+- \(x_1, x_2, ..., x_k\) are the independent variables
+- \(\beta_0, \beta_1, \beta_2, ..., \beta_k\) are the coefficients
+- \(\epsilon\) is the error term
+
+Using OLS regression to model binary outcomes can lead to several issues:
+
+- First, In the OLS regression, \(\beta_1\) is interpreted as the amount of the dependent variable \(y\) changes when \(x_1\) increases by one unit, holding all other variables constant. However, when the dependent variable is binary, a one unit increase in \(x_1\) results in \(\beta_1\) increase in \(y\) no longer makes sense, as \(y\) can change only from 0 to 1 or from 1 to 0. This leads to some interpretation issues.
+- Second, OLS regression assumes a linear relationship between the predictors and the dependent variable. With a binary dependent variable, this assumption no longer holds, as binary outcomes are inherently no linear.
+- Third, OLS also assumes normally distributed residuals. However, with binary outcome, the residuals are not normally distributed. Instead, they follow a binomial distribution.
+- Finally, OLS regression has another assumption of heteroscedasticity, which means that the variance of the residuals is constant across all levels of the independent variables. However, with binary outcomes, this assumption is violated, as the variance of the residuals is not constant. It varies with the predicted probability, leading to heteroscedasticity.
+
+All those violations of the OLS regression assumptions affect the validity of the model and the interpretation of the coefficients. In this way, we need to use a different approach to model binary outcomes.
+
+## Logistic Regression Concepts
+
+## Logistic Regression Hypothesis
+
+## Logistic Regression Model Assessment
+
+## Logistic Regression Assumptions
+
+## Exploratory Analysis
+
+
+# Results
+
+# Discussion
