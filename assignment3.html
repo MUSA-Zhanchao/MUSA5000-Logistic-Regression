@@ -11,7 +11,7 @@
 
 <meta name="author" content="Zhanchao Yang, Haoyu Zhu, Kavana Raju" />
 
-<meta name="date" content="2025-04-04" />
+<meta name="date" content="2025-04-11" />
 
 <title>The Application of Logistic Regression to Examine the Predictors of Car Crashes Caused by Alcohol</title>
 
@@ -1385,6 +1385,230 @@ window.initializeSourceEmbed = function(filename) {
   });
 };
 </script>
+<script>$(document).ready(function(){
+    if (typeof $('[data-toggle="tooltip"]').tooltip === 'function') {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+    if ($('[data-toggle="popover"]').popover === 'function') {
+        $('[data-toggle="popover"]').popover();
+    }
+});
+</script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+border-bottom: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic tfoot tr td {
+border: 0;
+}
+.lightable-classic tfoot tr:first-child td {
+border-top: 0.14em solid #111111;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+border-bottom: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 tfoot tr td {
+border: 0;
+}
+.lightable-classic-2 tfoot tr:first-child td {
+border-top: 3px double #111111;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material tfoot tr td {
+border: 0;
+}
+.lightable-material tfoot tr:first-child td {
+border-top: 1px solid #EEE;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark tfoot tr td {
+border: 0;
+}
+.lightable-material-dark tfoot tr:first-child td {
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper tfoot tr td {
+border: 0;
+}
+.lightable-paper tfoot tr:first-child td {
+border-top: 1px solid #00000020;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 
 <style type="text/css">
 code{white-space: pre-wrap;}
@@ -1397,6 +1621,115 @@ ul.task-list{list-style: none;}
 
 
 
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } 
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.at { color: #204a87; } 
+code span.bn { color: #0000cf; } 
+code span.cf { color: #204a87; font-weight: bold; } 
+code span.ch { color: #4e9a06; } 
+code span.cn { color: #8f5902; } 
+code span.co { color: #8f5902; font-style: italic; } 
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.dt { color: #204a87; } 
+code span.dv { color: #0000cf; } 
+code span.er { color: #a40000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #0000cf; } 
+code span.fu { color: #204a87; font-weight: bold; } 
+code span.im { } 
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.kw { color: #204a87; font-weight: bold; } 
+code span.op { color: #ce5c00; font-weight: bold; } 
+code span.ot { color: #8f5902; } 
+code span.pp { color: #8f5902; font-style: italic; } 
+code span.sc { color: #ce5c00; font-weight: bold; } 
+code span.ss { color: #4e9a06; } 
+code span.st { color: #4e9a06; } 
+code span.va { color: #000000; } 
+code span.vs { color: #4e9a06; } 
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
+.sourceCode .row {
+width: 100%;
+}
+.sourceCode {
+overflow-x: auto;
+}
+.code-folding-btn {
+margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 <style type="text/css">
@@ -1579,7 +1912,7 @@ border-radius: 0px;
 <h1 class="title toc-ignore">The Application of Logistic Regression to
 Examine the Predictors of Car Crashes Caused by Alcohol</h1>
 <h4 class="author">Zhanchao Yang, Haoyu Zhu, Kavana Raju</h4>
-<h4 class="date">2025-04-04</h4>
+<h4 class="date">2025-04-11</h4>
 
 </div>
 
@@ -1647,16 +1980,867 @@ outcomes.</p>
 </div>
 <div id="exploratory-analysis" class="section level2">
 <h2>Exploratory Analysis</h2>
+<p>Before running logistic regression, we need to conduct exploratory
+analyses to better understand the relationship between the dependent
+variable (which is the drinking driver indicator <code>DRINKING_D</code>
+in the report) and potential predictors. These analyses help identify
+statistically significant associations and guide the selection of
+appropriate variables for the regression model.</p>
+<p>For binary predictors, we examine the distribution across groups
+using <strong>cross-tabulations</strong> and assess significance using
+the <strong>Chi-Square test</strong>. For continuous predictors, we
+compare group <strong>means and standard deviations</strong> and use the
+<strong>independent samples t-test</strong> to determine whether the
+differences are statistically meaningful.</p>
+<div id="binary-predictors" class="section level3">
+<h3>Binary Predictors</h3>
+<p>We first examine the relationship between the dependent variable and
+binary predictors through cross-tabulations. <strong>Cross-tabulations
+allow us to explore the distribution of observations across the
+different dependent variables.</strong></p>
+<p>To formally test whether a statistically significant association
+exists between the dependent variable and each binary predictor, we use
+the <strong>Chi-Square test</strong>. The Chi-Square statistic is
+derived from the sum of squared differences between observed and
+expected frequencies, normalized by the expected frequencies. The
+degrees of freedom (df) for the test can be calculated as <span class="math inline">\((R-1)(C-1)\)</span>, where <span class="math inline">\(R\)</span> is the number of rows and <span class="math inline">\(C\)</span> is the number of columns in the
+cross-tabulation table, representing the number of categories in each of
+the two variables being analyzed. The hypotheses are as follows:</p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of
+different category of predictos are the same for drinking and
+non-drinking drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+different category of predictos differ between drinking and non-drinking
+drivers.</p></li>
+</ul>
+<p>If the p-value is below 0.05, we reject the null hypothesis and
+conclude that there is a statistically significant association between
+the two categorical variables.</p>
+</div>
+<div id="continuous-predictors" class="section level3">
+<h3>Continuous Predictors</h3>
+<p>For continuous predictors, we first examine the continuous predictors
+by comparing their <strong>means and standard deviations</strong> for
+the two groups of the dependent variable (in this report, those with and
+without drinking drivers in crashes). This allows us to compare the
+distributions of the predictor across groups.</p>
+<p>Then, we use the <strong>independent samples t-test</strong> to
+assess whether the observed differences in means are statistically
+significant. The hypotheses for the t-test are:</p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The average values of the
+continuous predictor are the same for crashes that involve drinking
+drivers and those that do not.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The average values
+of the continuous predictor are different for crashes that involve
+drinking drivers and those that do not.</p></li>
+</ul>
+<p>If the p-value of t-test is below 0.05, we reject the null hypothesis
+in favor of the alternative, indicating that the mean of the continuous
+predictor significantly differs between the two groups.</p>
+<p>By performing these exploratory analyses, we can identify which
+predictors exhibit significant associations with the dependent variable
+and should be considered in the logistic regression model.</p>
+</div>
 </div>
 </div>
 <div id="results" class="section level1">
 <h1>Results</h1>
+<div id="exploratory-analyses" class="section level2">
+<h2>Exploratory Analyses</h2>
+<div id="dependent-variable" class="section level3">
+<h3>Dependent Variable</h3>
+<p>In the report, the dependent variable is <code>DRINKING_D</code>,
+indicating whether a crash involved a drinking driver. Of the 53,260
+recorded crashes in Philadelphia from 2008 to 2012, we excluded 9,896
+crashes that occurred in non-residential block groups, where median
+household income and vacancy rates are 0. This leaves 43,364 crashes
+that took place in Philadelphia’s residential block groups.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>DRINKING_D.tab <span class="ot">&lt;-</span> <span class="fu">table</span>(crashes<span class="sc">$</span>DRINKING_D)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">prop.table</span>(DRINKING_D.tab)</span></code></pre></div>
+<pre><code>## 
+##      0      1 
+## 0.9427 0.0573</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>DRINKING_D.tab</span></code></pre></div>
+<pre><code>## 
+##     0     1 
+## 40879  2485</code></pre>
+<p>We see that there are 2,485 (5.73%) crashes that involved a drunk
+driver, and 40,879 (94.27%) crashes that did not involve a drunk driver.
+That is, the probability of a crash involving drinking drivers can be
+calculated using the formula:</p>
+<p><span class="math display">\[
+\text{Probability(Drinking Drivers)} = \frac{\text{Number of Crashes
+Involving Drinking Driver}}{\text{Total Number of Crashes}} =
+\frac{2485}{43364} \approx 0.0573
+\]</span></p>
+<p>The odds of a crash involving drinking drivers can be calculated
+using the formula:</p>
+<p><span class="math display">\[
+\text{Odds(Drinking Drivers)} = \frac{\text{Number of Crashes Involving
+Drinking Driver}}{\text{Number of Crashes Not Involving Drinking
+Drivers}} = \frac{2485}{40879} \approx 0.0608
+\]</span></p>
+<p>This suggests that while the overall probability of a crash being
+alcohol-related is relatively low, the odds still warrant attention,
+especially given the serious consequences often associated with such
+incidents.</p>
+</div>
+<div id="independent-variables---binary" class="section level3">
+<h3>Independent Variables - Binary</h3>
+<p>Then, let’s take a look at binary independent variables
+<code>FATAL_OR_M</code>,<code>OVERTURNED</code>,
+<code>CELL_PHONE</code>, <code>SPEEDING</code>, <code>AGGRESSIVE</code>,
+<code>DRIVER1617</code>, and <code>DRIVER65PLUS</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Load required library</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co"># Ensure binary variables are factors</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>crashes<span class="sc">$</span>DRINKING_D <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(crashes<span class="sc">$</span>DRINKING_D)</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>binary_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;FATAL_OR_M&quot;</span>, <span class="st">&quot;OVERTURNED&quot;</span>, <span class="st">&quot;CELL_PHONE&quot;</span>, <span class="st">&quot;SPEEDING&quot;</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>                 <span class="st">&quot;AGGRESSIVE&quot;</span>, <span class="st">&quot;DRIVER1617&quot;</span>, <span class="st">&quot;DRIVER65PLUS&quot;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>crashes[binary_vars] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(crashes[binary_vars], as.factor)</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co"># Define function to extract Chi-Square test results and percentages</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a>extract_chi2_results <span class="ot">&lt;-</span> <span class="cf">function</span>(dep_var, pred_var) {</span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a>  crosstab <span class="ot">&lt;-</span> <span class="fu">table</span>(dep_var, pred_var)</span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a>  </span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a>  <span class="co"># Total counts per group</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a>  total_no_alcohol <span class="ot">&lt;-</span> <span class="fu">sum</span>(crosstab[<span class="dv">1</span>, ])</span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>  total_alcohol <span class="ot">&lt;-</span> <span class="fu">sum</span>(crosstab[<span class="dv">2</span>, ])</span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a>  <span class="co"># Count of &quot;1&quot;s</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>  no_alcohol_1_count <span class="ot">&lt;-</span> crosstab[<span class="dv">1</span>, <span class="st">&quot;1&quot;</span>]</span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>  alcohol_1_count <span class="ot">&lt;-</span> crosstab[<span class="dv">2</span>, <span class="st">&quot;1&quot;</span>]</span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>  </span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>  <span class="co"># Percentages</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a>  percent_no_alcohol <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> crosstab[<span class="dv">1</span>, <span class="st">&quot;1&quot;</span>] <span class="sc">/</span> total_no_alcohol</span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a>  percent_alcohol <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">*</span> crosstab[<span class="dv">2</span>, <span class="st">&quot;1&quot;</span>] <span class="sc">/</span> total_alcohol</span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a>  </span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a>  <span class="co"># Chi-square test without Yates correction</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a>  chi2_test <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(<span class="fu">chisq.test</span>(crosstab, <span class="at">correct =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a>  <span class="co"># Output list</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(</span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a>    <span class="at">crosstab =</span> crosstab,</span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a>    <span class="at">no_alcohol_1_count =</span> no_alcohol_1_count,</span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a>    <span class="at">alcohol_1_count =</span> alcohol_1_count,</span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a>    <span class="at">percent_no_alcohol =</span> percent_no_alcohol,</span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a>    <span class="at">percent_alcohol =</span> percent_alcohol,</span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a>    <span class="at">total_n =</span> <span class="fu">sum</span>(crosstab[, <span class="st">&quot;1&quot;</span>]),</span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a>    <span class="at">chi2_stat =</span> chi2_test<span class="sc">$</span>statistic,</span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a>    <span class="at">df =</span> chi2_test<span class="sc">$</span>parameter,</span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a>    <span class="at">p_value =</span> chi2_test<span class="sc">$</span>p.value</span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a>  ))</span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a>}</span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co"># Initialize results table</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a>all_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a>  <span class="at">Variable =</span> binary_vars,</span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a>  <span class="at">Description =</span> <span class="fu">c</span>(</span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a>    <span class="st">&quot;Crash resulted in fatality or major injury&quot;</span>,</span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a>    <span class="st">&quot;Crash involved an overturned vehicle&quot;</span>,</span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a>    <span class="st">&quot;Driver was using cell phone&quot;</span>,</span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a>    <span class="st">&quot;Crash involved speeding car&quot;</span>,</span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a>    <span class="st">&quot;Crash involved aggressive driving&quot;</span>,</span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a>    <span class="st">&quot;Crash involved at least one driver aged 16–17&quot;</span>,</span>
+<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a>    <span class="st">&quot;Crash involved at least one driver aged 65+&quot;</span></span>
+<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a>  ),</span>
+<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a>  <span class="at">No_Alcohol_N =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a>  <span class="at">No_Alcohol_Percent =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a>  <span class="at">Alcohol_N =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a>  <span class="at">Alcohol_Percent =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-59"><a href="#cb5-59" tabindex="-1"></a>  <span class="at">Total_N =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-60"><a href="#cb5-60" tabindex="-1"></a>  <span class="at">Chi2_Stat =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-61"><a href="#cb5-61" tabindex="-1"></a>  <span class="at">DF =</span> <span class="cn">NA</span>,</span>
+<span id="cb5-62"><a href="#cb5-62" tabindex="-1"></a>  <span class="at">P_Value =</span> <span class="cn">NA</span></span>
+<span id="cb5-63"><a href="#cb5-63" tabindex="-1"></a>)</span>
+<span id="cb5-64"><a href="#cb5-64" tabindex="-1"></a></span>
+<span id="cb5-65"><a href="#cb5-65" tabindex="-1"></a><span class="co"># Loop through variables and populate result table</span></span>
+<span id="cb5-66"><a href="#cb5-66" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(binary_vars)) {</span>
+<span id="cb5-67"><a href="#cb5-67" tabindex="-1"></a>  var <span class="ot">&lt;-</span> binary_vars[i]</span>
+<span id="cb5-68"><a href="#cb5-68" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">extract_chi2_results</span>(crashes<span class="sc">$</span>DRINKING_D, crashes[[var]])</span>
+<span id="cb5-69"><a href="#cb5-69" tabindex="-1"></a>  </span>
+<span id="cb5-70"><a href="#cb5-70" tabindex="-1"></a>  all_results<span class="sc">$</span>No_Alcohol_N[i] <span class="ot">&lt;-</span> result<span class="sc">$</span>no_alcohol_1_count</span>
+<span id="cb5-71"><a href="#cb5-71" tabindex="-1"></a>  all_results<span class="sc">$</span>No_Alcohol_Percent[i] <span class="ot">&lt;-</span> <span class="fu">round</span>(result<span class="sc">$</span>percent_no_alcohol, <span class="dv">1</span>)</span>
+<span id="cb5-72"><a href="#cb5-72" tabindex="-1"></a>  all_results<span class="sc">$</span>Alcohol_N[i] <span class="ot">&lt;-</span> result<span class="sc">$</span>alcohol_1_count</span>
+<span id="cb5-73"><a href="#cb5-73" tabindex="-1"></a>  all_results<span class="sc">$</span>Alcohol_Percent[i] <span class="ot">&lt;-</span> <span class="fu">round</span>(result<span class="sc">$</span>percent_alcohol, <span class="dv">1</span>)</span>
+<span id="cb5-74"><a href="#cb5-74" tabindex="-1"></a>  all_results<span class="sc">$</span>Total_N[i] <span class="ot">&lt;-</span> result<span class="sc">$</span>total_n</span>
+<span id="cb5-75"><a href="#cb5-75" tabindex="-1"></a>  all_results<span class="sc">$</span>Chi2_Stat[i] <span class="ot">&lt;-</span> <span class="fu">round</span>(result<span class="sc">$</span>chi2_stat, <span class="dv">2</span>)</span>
+<span id="cb5-76"><a href="#cb5-76" tabindex="-1"></a>  all_results<span class="sc">$</span>DF[i] <span class="ot">&lt;-</span> result<span class="sc">$</span>df</span>
+<span id="cb5-77"><a href="#cb5-77" tabindex="-1"></a>  all_results<span class="sc">$</span>P_Value[i] <span class="ot">&lt;-</span> <span class="fu">format.pval</span>(result<span class="sc">$</span>p_value, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">eps =</span> <span class="fl">0.05</span>)</span>
+<span id="cb5-78"><a href="#cb5-78" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## print</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">library</span>(knitr)</span></code></pre></div>
+<pre><code>## Warning: package &#39;knitr&#39; was built under R version 4.4.2</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">kable</span>(all_results[, <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Description&quot;</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>                      <span class="st">&quot;No_Alcohol_N&quot;</span>, <span class="st">&quot;No_Alcohol_Percent&quot;</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>                      <span class="st">&quot;Alcohol_N&quot;</span>, <span class="st">&quot;Alcohol_Percent&quot;</span>, </span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>                      <span class="st">&quot;Total_N&quot;</span>, <span class="st">&quot;Chi2_Stat&quot;</span>, <span class="st">&quot;DF&quot;</span>, <span class="st">&quot;P_Value&quot;</span>)], </span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Description&quot;</span>, </span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a>                    <span class="st">&quot;N&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;N&quot;</span>, <span class="st">&quot;%&quot;</span>, <span class="st">&quot;N&quot;</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a>                    <span class="st">&quot;Chi2 Stat&quot;</span>, <span class="st">&quot;DF&quot;</span>, <span class="st">&quot;χ² p-value&quot;</span>),</span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">&quot;Cross-Tabulation and Chi-Square Test Results&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), </span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a>                <span class="at">full_width =</span> F, </span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;center&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">width =</span> <span class="st">&quot;10em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">2</span>, <span class="at">bold =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="st">&quot;40em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">7</span>, <span class="at">width =</span> <span class="st">&quot;7em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">8</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">width =</span> <span class="st">&quot;8em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">2</span>, </span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a>                     <span class="st">&quot;No Alcohol Involved (DRINKING_D = 0)&quot;</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a>                     <span class="st">&quot;Alcohol Involved (DRINKING_D = 1)&quot;</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a>                     <span class="st">&quot;Total&quot;</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a>                     <span class="st">&quot;Chi-Square Test Results&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)) </span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Cross-Tabulation and Chi-Square Test Results
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+No Alcohol Involved (DRINKING_D = 0)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Alcohol Involved (DRINKING_D = 1)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Total
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Chi-Square Test Results
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+%
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+%
+</th>
+<th style="text-align:right;">
+N
+</th>
+<th style="text-align:right;">
+Chi2 Stat
+</th>
+<th style="text-align:right;">
+DF
+</th>
+<th style="text-align:left;">
+χ² p-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+FATAL_OR_M
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash resulted in fatality or major injury
+</td>
+<td style="text-align:right;width: 7em; ">
+1181
+</td>
+<td style="text-align:right;width: 7em; ">
+2.9
+</td>
+<td style="text-align:right;width: 7em; ">
+188
+</td>
+<td style="text-align:right;width: 7em; ">
+7.6
+</td>
+<td style="text-align:right;width: 7em; ">
+1369
+</td>
+<td style="text-align:right;width: 8em; ">
+167.56
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+OVERTURNED
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash involved an overturned vehicle
+</td>
+<td style="text-align:right;width: 7em; ">
+612
+</td>
+<td style="text-align:right;width: 7em; ">
+1.5
+</td>
+<td style="text-align:right;width: 7em; ">
+110
+</td>
+<td style="text-align:right;width: 7em; ">
+4.4
+</td>
+<td style="text-align:right;width: 7em; ">
+722
+</td>
+<td style="text-align:right;width: 8em; ">
+122.79
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+CELL_PHONE
+</td>
+<td style="text-align:left;width: 40em; ">
+Driver was using cell phone
+</td>
+<td style="text-align:right;width: 7em; ">
+426
+</td>
+<td style="text-align:right;width: 7em; ">
+1.0
+</td>
+<td style="text-align:right;width: 7em; ">
+28
+</td>
+<td style="text-align:right;width: 7em; ">
+1.1
+</td>
+<td style="text-align:right;width: 7em; ">
+454
+</td>
+<td style="text-align:right;width: 8em; ">
+0.16
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+0.687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+SPEEDING
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash involved speeding car
+</td>
+<td style="text-align:right;width: 7em; ">
+1261
+</td>
+<td style="text-align:right;width: 7em; ">
+3.1
+</td>
+<td style="text-align:right;width: 7em; ">
+260
+</td>
+<td style="text-align:right;width: 7em; ">
+10.5
+</td>
+<td style="text-align:right;width: 7em; ">
+1521
+</td>
+<td style="text-align:right;width: 8em; ">
+376.78
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+AGGRESSIVE
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash involved aggressive driving
+</td>
+<td style="text-align:right;width: 7em; ">
+18522
+</td>
+<td style="text-align:right;width: 7em; ">
+45.3
+</td>
+<td style="text-align:right;width: 7em; ">
+916
+</td>
+<td style="text-align:right;width: 7em; ">
+36.9
+</td>
+<td style="text-align:right;width: 7em; ">
+19438
+</td>
+<td style="text-align:right;width: 8em; ">
+67.60
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+DRIVER1617
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash involved at least one driver aged 16–17
+</td>
+<td style="text-align:right;width: 7em; ">
+674
+</td>
+<td style="text-align:right;width: 7em; ">
+1.6
+</td>
+<td style="text-align:right;width: 7em; ">
+12
+</td>
+<td style="text-align:right;width: 7em; ">
+0.5
+</td>
+<td style="text-align:right;width: 7em; ">
+686
+</td>
+<td style="text-align:right;width: 8em; ">
+20.45
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+DRIVER65PLUS
+</td>
+<td style="text-align:left;width: 40em; ">
+Crash involved at least one driver aged 65+
+</td>
+<td style="text-align:right;width: 7em; ">
+4237
+</td>
+<td style="text-align:right;width: 7em; ">
+10.4
+</td>
+<td style="text-align:right;width: 7em; ">
+119
+</td>
+<td style="text-align:right;width: 7em; ">
+4.8
+</td>
+<td style="text-align:right;width: 7em; ">
+4356
+</td>
+<td style="text-align:right;width: 8em; ">
+80.60
+</td>
+<td style="text-align:right;width: 8em; ">
+1
+</td>
+<td style="text-align:left;width: 8em; ">
+&lt;0.05
+</td>
+</tr>
+</tbody>
+</table>
+<p>We use the <strong>Chi-Square test</strong>, which is a statistical
+method used to evaluate whether there is a significant association
+between two categorical variables. This test compares the observed
+frequencies in each category with the expected frequencies under the
+assumption that the variables are independent. As usual, a high value of
+the <span class="math inline">\(\chi^2\)</span> statistic, and a p-value
+lower than 0.05, suggest that there is evidence to reject the null
+hypothesis in favor of the alternative, indicating an association
+between drunk driving and crash outcomes.</p>
+<p>Here, we apply the Chi-Square test to explore the association between
+drinking driver indicators in crashes <code>DRINKING_D</code> and
+various binary crash-related characteristics. The hypotheses and results
+are summarized below:</p>
+<p><strong>Crash resulted in fatality or major injury</strong>
+<code>FATAL_OR_M</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+resulting in fatality or major injury are the same for drinking and
+non-drinking drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes resulting in fatality or major injury differ between drinking
+and non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 7.6% resulted in fatality
+or major injury, compared to only 2.9% of crashes involving non-drinking
+drivers. The P-value of Chi-Square statistic is less than 0.05,
+indicating a significant association between drinking drivers and crash
+severity. Therefore, we reject the null hypothesis in favor of the
+alternative hypothesis.</p>
+<p><strong>Crash involved an overturned vehicle</strong>
+<code>OVERTURNED</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving overturned vehicles are the same for drinking and non-drinking
+drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving overturned vehicles differ between drinking and
+non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 4.4% involved an overturned
+vehicle, compared to only 1.5% of crashes involving non-drinking
+drivers. The P-value of Chi-Square statistic is less than 0.05,,
+indicating a significant association between drinking drivers and
+overturned crashes. Therefore, we reject the null hypothesis in favor of
+the alternative hypothesis.</p>
+<p><strong>Driver was using cell phone</strong>
+<code>CELL_PHONE</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving cell phone use are the same for drinking and non-drinking
+drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving cell phone use differ between drinking and
+non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 1.0% involved cell phone
+use, compared to 1.1% of crashes involving non-drinking drivers. The
+P-value of Chi-Square statistic is more than 0.05,, suggesting no
+significant association with drinking driver indicators. Therefore, we
+fail to reject the null hypothesis.</p>
+<p><strong>Crash involved speeding car</strong>
+<code>SPEEDING</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving speeding cars are the same for drinking and non-drinking
+drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving speeding cars differ between drinking and non-drinking
+drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 10.5% involved speeding,
+compared to only 3.1% of crashes involving non-drinking drivers. The
+P-value of Chi-Square statistic is less than 0.05,, indicating a strong
+link between drinking drivers and speeding. Therefore, we reject the
+null hypothesis in favor of the alternative hypothesis.</p>
+<p><strong>Crash involved aggressive driving</strong>
+<code>AGGRESSIVE</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving aggressive driving are the same for drinking and non-drinking
+drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving aggressive driving differ between drinking and
+non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 63.1% involved aggressive
+driving, compared to 54.7% of crashes involving non-drinking drivers.
+The P-value of Chi-Square statistic is less than 0.05,indicating he
+association is statistically significant. Therefore, we reject the null
+hypothesis in favor of the alternative hypothesis.</p>
+<p><strong>Crash involved at least one driver aged 16–17</strong>
+<code>DRIVER1617</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving at least one driver aged 16-17 are the same for drinking and
+non-drinking drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving at least one driver aged 16-17 differ between drinking
+and non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 0.5% involved at least one
+teenage driver (16–17 years old), compared to 1.6% of crashes involving
+non-drinking drivers. The Chi-Square statistic is <strong>19.71</strong>
+(p &lt; 0.001), indicating a significant association. Therefore, we
+reject the null hypothesis in favor of the alternative hypothesis.</p>
+<p><strong>Crash involved at least one driver aged 65 or older</strong>
+<code>DRIVER65PLUS</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The proportions of crashes
+involving at least one driver aged 65 or older are the same for drinking
+and non-drinking drivers.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The proportions of
+crashes involving at least one driver aged 65 or older differ between
+drinking and non-drinking drivers.</p></li>
+</ul>
+<p>Among crashes involving drinking drivers, 5.2% involved at least one
+driver aged 65 or older, compared to 10.4% of crashes involving
+non-drinking drivers. The Chi-Square statistic is <strong>79.99</strong>
+(p &lt; 0.001), indicating a statistically significant relationship
+between alcohol involvement and older drivers.. Therefore, we reject the
+null hypothesis in favor of the alternative hypothesis.</p>
+<p>The Chi-Square test results indicate <strong>significant
+associations</strong> between drinking driver indicators and most
+crash-related variables, with the exception of cell phone use, where no
+significant relationship was found. For all other variables, we reject
+the null hypothesis in favor of the alternative hypothesis, confirming
+the presence of significant associations.</p>
+</div>
+<div id="independent-variables---continuous" class="section level3">
+<h3>Independent Variables - Continuous</h3>
+<p>Then, we examine the relationship between our binary dependent
+variable <code>DRINKING_D</code> and continuous predictors
+<code>PCTBACHMOR</code> and <code>MEDHHINC</code>.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>continuous_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;PCTBACHMOR&quot;</span>, <span class="st">&quot;MEDHHINC&quot;</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>results_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> continuous_vars) {</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  means <span class="ot">&lt;-</span> <span class="fu">tapply</span>(crashes[[var]], crashes<span class="sc">$</span>DRINKING_D, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  sds   <span class="ot">&lt;-</span> <span class="fu">tapply</span>(crashes[[var]], crashes<span class="sc">$</span>DRINKING_D, sd, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(crashes[[var]] <span class="sc">~</span> crashes<span class="sc">$</span>DRINKING_D)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a>  description <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(var <span class="sc">==</span> <span class="st">&quot;PCTBACHMOR&quot;</span>, <span class="st">&quot;Percentage of population with bachelor&#39;s degree or more&quot;</span>, </span>
+<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a>                        <span class="fu">ifelse</span>(var <span class="sc">==</span> <span class="st">&quot;MEDHHINC&quot;</span>, <span class="st">&quot;Median household income&quot;</span>, <span class="cn">NA</span>))</span>
+<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a>  </span>
+<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a>  results_list[[var]] <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a>    <span class="at">Variable         =</span> var,</span>
+<span id="cb9-15"><a href="#cb9-15" tabindex="-1"></a>    <span class="at">Description      =</span> description,</span>
+<span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>    <span class="at">Mean_No_Alcohol  =</span> means[<span class="st">&quot;0&quot;</span>],</span>
+<span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>    <span class="at">SD_No_Alcohol    =</span> sds[<span class="st">&quot;0&quot;</span>],</span>
+<span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>    <span class="at">Mean_Alcohol     =</span> means[<span class="st">&quot;1&quot;</span>],</span>
+<span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a>    <span class="at">SD_Alcohol       =</span> sds[<span class="st">&quot;1&quot;</span>],</span>
+<span id="cb9-20"><a href="#cb9-20" tabindex="-1"></a>    <span class="at">T_Statistic      =</span> t_test_result<span class="sc">$</span>statistic,</span>
+<span id="cb9-21"><a href="#cb9-21" tabindex="-1"></a>    <span class="at">DF               =</span> t_test_result<span class="sc">$</span>parameter,</span>
+<span id="cb9-22"><a href="#cb9-22" tabindex="-1"></a>    <span class="at">P_Value          =</span> t_test_result<span class="sc">$</span>p.value</span>
+<span id="cb9-23"><a href="#cb9-23" tabindex="-1"></a>  )</span>
+<span id="cb9-24"><a href="#cb9-24" tabindex="-1"></a>}</span>
+<span id="cb9-25"><a href="#cb9-25" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" tabindex="-1"></a>continuous_summary <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, results_list)</span>
+<span id="cb9-27"><a href="#cb9-27" tabindex="-1"></a><span class="fu">row.names</span>(continuous_summary) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb9-28"><a href="#cb9-28" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" tabindex="-1"></a><span class="co"># print</span></span>
+<span id="cb9-30"><a href="#cb9-30" tabindex="-1"></a><span class="fu">kable</span>(continuous_summary[, <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Description&quot;</span>, <span class="st">&quot;Mean_No_Alcohol&quot;</span>, <span class="st">&quot;SD_No_Alcohol&quot;</span>, </span>
+<span id="cb9-31"><a href="#cb9-31" tabindex="-1"></a>                             <span class="st">&quot;Mean_Alcohol&quot;</span>, <span class="st">&quot;SD_Alcohol&quot;</span>, </span>
+<span id="cb9-32"><a href="#cb9-32" tabindex="-1"></a>                             <span class="st">&quot;T_Statistic&quot;</span>, <span class="st">&quot;DF&quot;</span>, <span class="st">&quot;P_Value&quot;</span>)], </span>
+<span id="cb9-33"><a href="#cb9-33" tabindex="-1"></a>      <span class="at">format =</span> <span class="st">&quot;html&quot;</span>, </span>
+<span id="cb9-34"><a href="#cb9-34" tabindex="-1"></a>      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Variable&quot;</span>, <span class="st">&quot;Description&quot;</span>, </span>
+<span id="cb9-35"><a href="#cb9-35" tabindex="-1"></a>                    <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, </span>
+<span id="cb9-36"><a href="#cb9-36" tabindex="-1"></a>                    <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;SD&quot;</span>, </span>
+<span id="cb9-37"><a href="#cb9-37" tabindex="-1"></a>                    <span class="st">&quot;t Stat&quot;</span>, <span class="st">&quot;DF&quot;</span>, <span class="st">&quot;p-value&quot;</span>),</span>
+<span id="cb9-38"><a href="#cb9-38" tabindex="-1"></a>      <span class="at">caption =</span> <span class="st">&quot;Summary of Continuous Variables&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-39"><a href="#cb9-39" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">bootstrap_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;hover&quot;</span>, <span class="st">&quot;condensed&quot;</span>), </span>
+<span id="cb9-40"><a href="#cb9-40" tabindex="-1"></a>                <span class="at">full_width =</span> F, </span>
+<span id="cb9-41"><a href="#cb9-41" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;center&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-42"><a href="#cb9-42" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">width =</span> <span class="st">&quot;10em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-43"><a href="#cb9-43" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">2</span>, <span class="at">bold =</span> <span class="cn">FALSE</span>, <span class="at">width =</span> <span class="st">&quot;40em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-44"><a href="#cb9-44" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">width =</span> <span class="st">&quot;7em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-45"><a href="#cb9-45" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">width =</span> <span class="st">&quot;7em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-46"><a href="#cb9-46" tabindex="-1"></a>  <span class="fu">column_spec</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">width =</span> <span class="st">&quot;8em&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-47"><a href="#cb9-47" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">2</span>, </span>
+<span id="cb9-48"><a href="#cb9-48" tabindex="-1"></a>                     <span class="st">&quot;No Alcohol Involved (DRINKING_D = 0)&quot;</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<span id="cb9-49"><a href="#cb9-49" tabindex="-1"></a>                     <span class="st">&quot;Alcohol Involved (DRINKING_D = 1)&quot;</span> <span class="ot">=</span> <span class="dv">2</span>,</span>
+<span id="cb9-50"><a href="#cb9-50" tabindex="-1"></a>                     <span class="st">&quot;T-Test Results&quot;</span> <span class="ot">=</span> <span class="dv">3</span>))</span></code></pre></div>
+<table class="table table-striped table-hover table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>
+Summary of Continuous Variables
+</caption>
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="2">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+No Alcohol Involved (DRINKING_D = 0)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+Alcohol Involved (DRINKING_D = 1)
+</div>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="3">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+T-Test Results
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+Variable
+</th>
+<th style="text-align:left;">
+Description
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+t Stat
+</th>
+<th style="text-align:right;">
+DF
+</th>
+<th style="text-align:right;">
+p-value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+PCTBACHMOR
+</td>
+<td style="text-align:left;width: 40em; ">
+Percentage of population with bachelor’s degree or more
+</td>
+<td style="text-align:right;width: 7em; ">
+16.6
+</td>
+<td style="text-align:right;width: 7em; ">
+18.2
+</td>
+<td style="text-align:right;width: 7em; ">
+16.6
+</td>
+<td style="text-align:right;width: 7em; ">
+18.7
+</td>
+<td style="text-align:right;width: 8em; ">
+-0.108
+</td>
+<td style="text-align:right;width: 8em; ">
+2778
+</td>
+<td style="text-align:right;width: 8em; ">
+0.914
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 10em; font-weight: bold;">
+MEDHHINC
+</td>
+<td style="text-align:left;width: 40em; ">
+Median household income
+</td>
+<td style="text-align:right;width: 7em; ">
+31483.1
+</td>
+<td style="text-align:right;width: 7em; ">
+16930.1
+</td>
+<td style="text-align:right;width: 7em; ">
+31998.8
+</td>
+<td style="text-align:right;width: 7em; ">
+17810.5
+</td>
+<td style="text-align:right;width: 8em; ">
+-1.405
+</td>
+<td style="text-align:right;width: 8em; ">
+2764
+</td>
+<td style="text-align:right;width: 8em; ">
+0.160
+</td>
+</tr>
+</tbody>
+</table>
+<p>We first look at the <strong>means</strong> and <strong>standard
+deviations (SD) </strong> of these variables for crashes that involve
+alcohol and those that do not. Then, we use the independent samples
+t-test to assess whether there is a significant association between the
+dependent variable and each of the continuous predictors. The t-test
+results include the t-statistic, degrees of freedom, and p-value.</p>
+<p><strong>Percentage of Population with Bachelor’s Degree or
+More</strong> <code>PCTBACHMOR</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The average values of the
+variable PCTBACHMOR are the same for crashes that involve drunk drivers
+and crashes that don’t.</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The average values
+of the variable PCTBACHMOR are different for crashes that involve drunk
+drivers and crashes that don’t.</p></li>
+</ul>
+<p>Since the p-value is <strong>much greater than the 0.05</strong>
+significance threshold (p = 0.914), we fail to reject the null
+hypothesis. This suggests there is no significant difference in the mean
+percentage of the population with a bachelor’s degree or more between
+crashes involving drinking and non-drinking drivers.</p>
+<p><strong>Median Household Income</strong> <code>MEDHHINC</code></p>
+<ul>
+<li><p><strong>Null Hypothesis (H0):</strong> The average values of the
+variable MEDHHINC are the same for crashes that involve drunk drivers
+and crashes that don’t..</p></li>
+<li><p><strong>Alternative Hypothesis (Ha):</strong> The average values
+of the variable MEDHHINC are different for crashes that involve drunk
+drivers and crashes that don’t.</p></li>
+</ul>
+<p>Since the p-value is greater than 0.05 (p = 0.160), we fail to reject
+the null hypothesis. There is no significant difference in median
+household income between crashes involving drinking and non-drinking
+drivers.</p>
+<p>For both continuous predictors, <code>PCTBACHMOR</code> and
+<code>MEDHHINC</code>, the p-values from the t-tests are above the 0.05
+significance threshold, indicating that there is no statistically
+significant difference between the two groups (drinking and non-drinking
+drivers) for these continuous variables. Therefore, we fail to reject
+the null hypothesis in both cases, meaning there is no significant
+association between alcohol involvement in crashes and these continuous
+predictors.</p>
+</div>
+</div>
+<div id="logistic-regression-assumptions-1" class="section level2">
+<h2>logistic regression assumptions</h2>
+</div>
+<div id="logistic-regression-results" class="section level2">
+<h2>logistic regression results</h2>
+</div>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRoZSBBcHBsaWNhdGlvbiBvZiBMb2dpc3RpYyBSZWdyZXNzaW9uIHRvIEV4YW1pbmUgdGhlIFByZWRpY3RvcnMgb2YgQ2FyIENyYXNoZXMgQ2F1c2VkIGJ5IEFsY29ob2wiDQphdXRob3I6ICJaaGFuY2hhbyBZYW5nLCBIYW95dSBaaHUsIEthdmFuYSBSYWp1Ig0KZGF0ZTogImByIFN5cy5EYXRlKClgIg0Kb3V0cHV0Og0KICBodG1sX2RvY3VtZW50Og0KICAgIHRoZW1lOiBmbGF0bHkNCiAgICBoaWdobGlnaHQ6IHRhbmdvDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2Zsb2F0OiB0cnVlDQogICAgY29kZV9mb2xkaW5nOiBoaWRlDQogICAgY29kZV9kb3dubG9hZDogeWVzDQogICAgbWF0aGpheDogZGVmYXVsdA0KLS0tDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQ0KDQpvcHRpb25zKHNjaXBlbj05OTkpDQpvcHRpb25zKGRpZ2l0cyA9IDMpDQoNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShzZikNCmxpYnJhcnkoaGVyZSkNCmxpYnJhcnkoa2FibGVFeHRyYSkNCmxpYnJhcnkocGF0Y2h3b3JrKQ0KbGlicmFyeShnbW9kZWxzKQ0KbGlicmFyeShnZ2NvcnJwbG90KQ0KbGlicmFyeShST0NSKQ0KbGlicmFyeShwbG90Uk9DKQ0KYGBgDQoNCmBgYHtyLCBpbmNsdWRlPUZBTFNFfQ0KY3Jhc2hlcyA8LSByZWFkLmNzdigiZGF0YS9Mb2dpc3RpY19SZWdyZXNzaW9uX0RhdGEuY3N2IikNCmBgYA0KDQojIEludHJvZHVjdGlvbg0KDQojIE1ldGhvZA0KDQojIyBJc3N1ZXMgd2l0aCBPTFMgUmVncmVzc2lvbg0KDQpUaGUgT0xTIHJlZ3Jlc3Npb24gbW9kZWwgY2FuIGJlIGV4cHJlc3NlZCBhcyBmb2xsb3dpbmcgZm9ybXVsYToNCg0KJCQNCnkgPSBcYmV0YV8wICsgXGJldGFfMXhfMSArIFxiZXRhXzJ4XzIgKyAuLi4gKyBcYmV0YV9reF9rICsgXGVwc2lsb24NCiQkDQoNCndoZXJlOg0KDQotIFwoeVwpIGlzIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUNCi0gXCh4XzEsIHhfMiwgLi4uLCB4X2tcKSBhcmUgdGhlIGluZGVwZW5kZW50IHZhcmlhYmxlcw0KLSBcKFxiZXRhXzAsIFxiZXRhXzEsIFxiZXRhXzIsIC4uLiwgXGJldGFfa1wpIGFyZSB0aGUgY29lZmZpY2llbnRzDQotIFwoXGVwc2lsb25cKSBpcyB0aGUgZXJyb3IgdGVybQ0KDQpVc2luZyBPTFMgcmVncmVzc2lvbiB0byBtb2RlbCBiaW5hcnkgb3V0Y29tZXMgY2FuIGxlYWQgdG8gc2V2ZXJhbCBpc3N1ZXM6DQoNCi0gRmlyc3QsIEluIHRoZSBPTFMgcmVncmVzc2lvbiwgXChcYmV0YV8xXCkgaXMgaW50ZXJwcmV0ZWQgYXMgdGhlIGFtb3VudCBvZiB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIFwoeVwpIGNoYW5nZXMgd2hlbiBcKHhfMVwpIGluY3JlYXNlcyBieSBvbmUgdW5pdCwgaG9sZGluZyBhbGwgb3RoZXIgdmFyaWFibGVzIGNvbnN0YW50LiBIb3dldmVyLCB3aGVuIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUgaXMgYmluYXJ5LCBhIG9uZSB1bml0IGluY3JlYXNlIGluIFwoeF8xXCkgcmVzdWx0cyBpbiBcKFxiZXRhXzFcKSBpbmNyZWFzZSBpbiBcKHlcKSBubyBsb25nZXIgbWFrZXMgc2Vuc2UsIGFzIFwoeVwpIGNhbiBjaGFuZ2Ugb25seSBmcm9tIDAgdG8gMSBvciBmcm9tIDEgdG8gMC4gVGhpcyBsZWFkcyB0byBzb21lIGludGVycHJldGF0aW9uIGlzc3Vlcy4NCi0gU2Vjb25kLCBPTFMgcmVncmVzc2lvbiBhc3N1bWVzIGEgbGluZWFyIHJlbGF0aW9uc2hpcCBiZXR3ZWVuIHRoZSBwcmVkaWN0b3JzIGFuZCB0aGUgZGVwZW5kZW50IHZhcmlhYmxlLiBXaXRoIGEgYmluYXJ5IGRlcGVuZGVudCB2YXJpYWJsZSwgdGhpcyBhc3N1bXB0aW9uIG5vIGxvbmdlciBob2xkcywgYXMgYmluYXJ5IG91dGNvbWVzIGFyZSBpbmhlcmVudGx5IG5vIGxpbmVhci4NCi0gVGhpcmQsIE9MUyBhbHNvIGFzc3VtZXMgbm9ybWFsbHkgZGlzdHJpYnV0ZWQgcmVzaWR1YWxzLiBIb3dldmVyLCB3aXRoIGJpbmFyeSBvdXRjb21lLCB0aGUgcmVzaWR1YWxzIGFyZSBub3Qgbm9ybWFsbHkgZGlzdHJpYnV0ZWQuIEluc3RlYWQsIHRoZXkgZm9sbG93IGEgYmlub21pYWwgZGlzdHJpYnV0aW9uLiANCi0gRmluYWxseSwgT0xTIHJlZ3Jlc3Npb24gaGFzIGFub3RoZXIgYXNzdW1wdGlvbiBvZiBoZXRlcm9zY2VkYXN0aWNpdHksIHdoaWNoIG1lYW5zIHRoYXQgdGhlIHZhcmlhbmNlIG9mIHRoZSByZXNpZHVhbHMgaXMgY29uc3RhbnQgYWNyb3NzIGFsbCBsZXZlbHMgb2YgdGhlIGluZGVwZW5kZW50IHZhcmlhYmxlcy4gSG93ZXZlciwgd2l0aCBiaW5hcnkgb3V0Y29tZXMsIHRoaXMgYXNzdW1wdGlvbiBpcyB2aW9sYXRlZCwgYXMgdGhlIHZhcmlhbmNlIG9mIHRoZSByZXNpZHVhbHMgaXMgbm90IGNvbnN0YW50LiBJdCB2YXJpZXMgd2l0aCB0aGUgcHJlZGljdGVkIHByb2JhYmlsaXR5LCBsZWFkaW5nIHRvIGhldGVyb3NjZWRhc3RpY2l0eS4NCg0KQWxsIHRob3NlIHZpb2xhdGlvbnMgb2YgdGhlIE9MUyByZWdyZXNzaW9uIGFzc3VtcHRpb25zIGFmZmVjdCB0aGUgdmFsaWRpdHkgb2YgdGhlIG1vZGVsIGFuZCB0aGUgaW50ZXJwcmV0YXRpb24gb2YgdGhlIGNvZWZmaWNpZW50cy4gSW4gdGhpcyB3YXksIHdlIG5lZWQgdG8gdXNlIGEgZGlmZmVyZW50IGFwcHJvYWNoIHRvIG1vZGVsIGJpbmFyeSBvdXRjb21lcy4NCg0KIyMgTG9naXN0aWMgUmVncmVzc2lvbiBDb25jZXB0cw0KDQojIyBMb2dpc3RpYyBSZWdyZXNzaW9uIEh5cG90aGVzaXMNCg0KIyMgTG9naXN0aWMgUmVncmVzc2lvbiBNb2RlbCBBc3Nlc3NtZW50DQoNCiMjIExvZ2lzdGljIFJlZ3Jlc3Npb24gQXNzdW1wdGlvbnMNCg0KIyMgRXhwbG9yYXRvcnkgQW5hbHlzaXMNCg0KDQojIFJlc3VsdHMgDQoNCiMgRGlzY3Vzc2lvbg0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlRoZSBBcHBsaWNhdGlvbiBvZiBMb2dpc3RpYyBSZWdyZXNzaW9uIHRvIEV4YW1pbmUgdGhlIFByZWRpY3RvcnMgb2YgQ2FyIENyYXNoZXMgQ2F1c2VkIGJ5IEFsY29ob2wiDQphdXRob3I6ICJaaGFuY2hhbyBZYW5nLCBIYW95dSBaaHUsIEthdmFuYSBSYWp1Ig0KZGF0ZTogImByIFN5cy5EYXRlKClgIg0Kb3V0cHV0Og0KICBodG1sX2RvY3VtZW50Og0KICAgIHRoZW1lOiBmbGF0bHkNCiAgICBoaWdobGlnaHQ6IHRhbmdvDQogICAgdG9jOiB0cnVlDQogICAgdG9jX2Zsb2F0OiB0cnVlDQogICAgY29kZV9mb2xkaW5nOiBoaWRlDQogICAgY29kZV9kb3dubG9hZDogeWVzDQogICAgbWF0aGpheDogZGVmYXVsdA0KLS0tDQoNCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQ0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFKQ0KDQpvcHRpb25zKHNjaXBlbj05OTkpDQpvcHRpb25zKGRpZ2l0cyA9IDMpDQoNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShzZikNCmxpYnJhcnkoaGVyZSkNCmxpYnJhcnkoa2FibGVFeHRyYSkNCmxpYnJhcnkocGF0Y2h3b3JrKQ0KbGlicmFyeShnbW9kZWxzKQ0KbGlicmFyeShnZ2NvcnJwbG90KQ0KbGlicmFyeShST0NSKQ0KbGlicmFyeShwbG90Uk9DKQ0KDQpsaWJyYXJ5KGFvZCkNCmxpYnJhcnkoZ2dwbG90MikNCmxpYnJhcnkocm1zKQ0KbGlicmFyeShnbW9kZWxzKQ0KbGlicmFyeShubmV0KQ0KbGlicmFyeShEQUFHKQ0KbGlicmFyeShST0NSKQ0KbGlicmFyeSh4dGFibGUpDQpgYGANCg0KYGBge3IsIGluY2x1ZGU9RkFMU0V9DQpjcmFzaGVzIDwtIHJlYWQuY3N2KCJkYXRhL0xvZ2lzdGljX1JlZ3Jlc3Npb25fRGF0YS5jc3YiKQ0KYGBgDQoNCiMgSW50cm9kdWN0aW9uDQoNCiMgTWV0aG9kDQoNCiMjIElzc3VlcyB3aXRoIE9MUyBSZWdyZXNzaW9uDQoNClRoZSBPTFMgcmVncmVzc2lvbiBtb2RlbCBjYW4gYmUgZXhwcmVzc2VkIGFzIGZvbGxvd2luZyBmb3JtdWxhOg0KDQokJA0KeSA9IFxiZXRhXzAgKyBcYmV0YV8xeF8xICsgXGJldGFfMnhfMiArIC4uLiArIFxiZXRhX2t4X2sgKyBcZXBzaWxvbg0KJCQNCg0Kd2hlcmU6DQoNCi0gXCh5XCkgaXMgdGhlIGRlcGVuZGVudCB2YXJpYWJsZQ0KLSBcKHhfMSwgeF8yLCAuLi4sIHhfa1wpIGFyZSB0aGUgaW5kZXBlbmRlbnQgdmFyaWFibGVzDQotIFwoXGJldGFfMCwgXGJldGFfMSwgXGJldGFfMiwgLi4uLCBcYmV0YV9rXCkgYXJlIHRoZSBjb2VmZmljaWVudHMNCi0gXChcZXBzaWxvblwpIGlzIHRoZSBlcnJvciB0ZXJtDQoNClVzaW5nIE9MUyByZWdyZXNzaW9uIHRvIG1vZGVsIGJpbmFyeSBvdXRjb21lcyBjYW4gbGVhZCB0byBzZXZlcmFsIGlzc3VlczoNCg0KLSBGaXJzdCwgSW4gdGhlIE9MUyByZWdyZXNzaW9uLCBcKFxiZXRhXzFcKSBpcyBpbnRlcnByZXRlZCBhcyB0aGUgYW1vdW50IG9mIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUgXCh5XCkgY2hhbmdlcyB3aGVuIFwoeF8xXCkgaW5jcmVhc2VzIGJ5IG9uZSB1bml0LCBob2xkaW5nIGFsbCBvdGhlciB2YXJpYWJsZXMgY29uc3RhbnQuIEhvd2V2ZXIsIHdoZW4gdGhlIGRlcGVuZGVudCB2YXJpYWJsZSBpcyBiaW5hcnksIGEgb25lIHVuaXQgaW5jcmVhc2UgaW4gXCh4XzFcKSByZXN1bHRzIGluIFwoXGJldGFfMVwpIGluY3JlYXNlIGluIFwoeVwpIG5vIGxvbmdlciBtYWtlcyBzZW5zZSwgYXMgXCh5XCkgY2FuIGNoYW5nZSBvbmx5IGZyb20gMCB0byAxIG9yIGZyb20gMSB0byAwLiBUaGlzIGxlYWRzIHRvIHNvbWUgaW50ZXJwcmV0YXRpb24gaXNzdWVzLg0KLSBTZWNvbmQsIE9MUyByZWdyZXNzaW9uIGFzc3VtZXMgYSBsaW5lYXIgcmVsYXRpb25zaGlwIGJldHdlZW4gdGhlIHByZWRpY3RvcnMgYW5kIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUuIFdpdGggYSBiaW5hcnkgZGVwZW5kZW50IHZhcmlhYmxlLCB0aGlzIGFzc3VtcHRpb24gbm8gbG9uZ2VyIGhvbGRzLCBhcyBiaW5hcnkgb3V0Y29tZXMgYXJlIGluaGVyZW50bHkgbm8gbGluZWFyLg0KLSBUaGlyZCwgT0xTIGFsc28gYXNzdW1lcyBub3JtYWxseSBkaXN0cmlidXRlZCByZXNpZHVhbHMuIEhvd2V2ZXIsIHdpdGggYmluYXJ5IG91dGNvbWUsIHRoZSByZXNpZHVhbHMgYXJlIG5vdCBub3JtYWxseSBkaXN0cmlidXRlZC4gSW5zdGVhZCwgdGhleSBmb2xsb3cgYSBiaW5vbWlhbCBkaXN0cmlidXRpb24uDQotIEZpbmFsbHksIE9MUyByZWdyZXNzaW9uIGhhcyBhbm90aGVyIGFzc3VtcHRpb24gb2YgaGV0ZXJvc2NlZGFzdGljaXR5LCB3aGljaCBtZWFucyB0aGF0IHRoZSB2YXJpYW5jZSBvZiB0aGUgcmVzaWR1YWxzIGlzIGNvbnN0YW50IGFjcm9zcyBhbGwgbGV2ZWxzIG9mIHRoZSBpbmRlcGVuZGVudCB2YXJpYWJsZXMuIEhvd2V2ZXIsIHdpdGggYmluYXJ5IG91dGNvbWVzLCB0aGlzIGFzc3VtcHRpb24gaXMgdmlvbGF0ZWQsIGFzIHRoZSB2YXJpYW5jZSBvZiB0aGUgcmVzaWR1YWxzIGlzIG5vdCBjb25zdGFudC4gSXQgdmFyaWVzIHdpdGggdGhlIHByZWRpY3RlZCBwcm9iYWJpbGl0eSwgbGVhZGluZyB0byBoZXRlcm9zY2VkYXN0aWNpdHkuDQoNCkFsbCB0aG9zZSB2aW9sYXRpb25zIG9mIHRoZSBPTFMgcmVncmVzc2lvbiBhc3N1bXB0aW9ucyBhZmZlY3QgdGhlIHZhbGlkaXR5IG9mIHRoZSBtb2RlbCBhbmQgdGhlIGludGVycHJldGF0aW9uIG9mIHRoZSBjb2VmZmljaWVudHMuIEluIHRoaXMgd2F5LCB3ZSBuZWVkIHRvIHVzZSBhIGRpZmZlcmVudCBhcHByb2FjaCB0byBtb2RlbCBiaW5hcnkgb3V0Y29tZXMuDQoNCiMjIExvZ2lzdGljIFJlZ3Jlc3Npb24gQ29uY2VwdHMNCg0KIyMgTG9naXN0aWMgUmVncmVzc2lvbiBIeXBvdGhlc2lzDQoNCiMjIExvZ2lzdGljIFJlZ3Jlc3Npb24gTW9kZWwgQXNzZXNzbWVudA0KDQojIyBMb2dpc3RpYyBSZWdyZXNzaW9uIEFzc3VtcHRpb25zDQoNCiMjIEV4cGxvcmF0b3J5IEFuYWx5c2lzDQoNCkJlZm9yZSBydW5uaW5nIGxvZ2lzdGljIHJlZ3Jlc3Npb24sIHdlIG5lZWQgdG8gY29uZHVjdCBleHBsb3JhdG9yeSBhbmFseXNlcyB0byBiZXR0ZXIgdW5kZXJzdGFuZCB0aGUgcmVsYXRpb25zaGlwIGJldHdlZW4gdGhlIGRlcGVuZGVudCB2YXJpYWJsZSAod2hpY2ggaXMgdGhlIGRyaW5raW5nIGRyaXZlciBpbmRpY2F0b3IgYERSSU5LSU5HX0RgIGluIHRoZSByZXBvcnQpIGFuZCBwb3RlbnRpYWwgcHJlZGljdG9ycy4gVGhlc2UgYW5hbHlzZXMgaGVscCBpZGVudGlmeSBzdGF0aXN0aWNhbGx5IHNpZ25pZmljYW50IGFzc29jaWF0aW9ucyBhbmQgZ3VpZGUgdGhlIHNlbGVjdGlvbiBvZiBhcHByb3ByaWF0ZSB2YXJpYWJsZXMgZm9yIHRoZSByZWdyZXNzaW9uIG1vZGVsLiANCg0KRm9yIGJpbmFyeSBwcmVkaWN0b3JzLCB3ZSBleGFtaW5lIHRoZSBkaXN0cmlidXRpb24gYWNyb3NzIGdyb3VwcyB1c2luZyAqKmNyb3NzLXRhYnVsYXRpb25zKiogYW5kIGFzc2VzcyBzaWduaWZpY2FuY2UgdXNpbmcgdGhlICoqQ2hpLVNxdWFyZSB0ZXN0KiouIEZvciBjb250aW51b3VzIHByZWRpY3RvcnMsIHdlIGNvbXBhcmUgZ3JvdXAgKiptZWFucyBhbmQgc3RhbmRhcmQgZGV2aWF0aW9ucyoqIGFuZCB1c2UgdGhlICoqaW5kZXBlbmRlbnQgc2FtcGxlcyB0LXRlc3QqKiB0byBkZXRlcm1pbmUgd2hldGhlciB0aGUgZGlmZmVyZW5jZXMgYXJlIHN0YXRpc3RpY2FsbHkgbWVhbmluZ2Z1bC4gDQoNCiMjIyBCaW5hcnkgUHJlZGljdG9ycw0KDQpXZSBmaXJzdCBleGFtaW5lIHRoZSByZWxhdGlvbnNoaXAgYmV0d2VlbiB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIGFuZCBiaW5hcnkgcHJlZGljdG9ycyB0aHJvdWdoIGNyb3NzLXRhYnVsYXRpb25zLiAqKkNyb3NzLXRhYnVsYXRpb25zIGFsbG93IHVzIHRvIGV4cGxvcmUgdGhlIGRpc3RyaWJ1dGlvbiBvZiBvYnNlcnZhdGlvbnMgYWNyb3NzIHRoZSBkaWZmZXJlbnQgZGVwZW5kZW50IHZhcmlhYmxlcy4qKiANCg0KVG8gZm9ybWFsbHkgdGVzdCB3aGV0aGVyIGEgc3RhdGlzdGljYWxseSBzaWduaWZpY2FudCBhc3NvY2lhdGlvbiBleGlzdHMgYmV0d2VlbiB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIGFuZCBlYWNoIGJpbmFyeSBwcmVkaWN0b3IsIHdlIHVzZSB0aGUgKipDaGktU3F1YXJlIHRlc3QqKi4gVGhlIENoaS1TcXVhcmUgc3RhdGlzdGljIGlzIGRlcml2ZWQgZnJvbSB0aGUgc3VtIG9mIHNxdWFyZWQgZGlmZmVyZW5jZXMgYmV0d2VlbiBvYnNlcnZlZCBhbmQgZXhwZWN0ZWQgZnJlcXVlbmNpZXMsIG5vcm1hbGl6ZWQgYnkgdGhlIGV4cGVjdGVkIGZyZXF1ZW5jaWVzLiBUaGUgZGVncmVlcyBvZiBmcmVlZG9tIChkZikgZm9yIHRoZSB0ZXN0IGNhbiBiZSBjYWxjdWxhdGVkIGFzIFwoKFItMSkoQy0xKVwpLCB3aGVyZSBcKFJcKSBpcyB0aGUgbnVtYmVyIG9mIHJvd3MgYW5kIFwoQ1wpIGlzIHRoZSBudW1iZXIgb2YgY29sdW1ucyBpbiB0aGUgY3Jvc3MtdGFidWxhdGlvbiB0YWJsZSwgcmVwcmVzZW50aW5nIHRoZSBudW1iZXIgb2YgY2F0ZWdvcmllcyBpbiBlYWNoIG9mIHRoZSB0d28gdmFyaWFibGVzIGJlaW5nIGFuYWx5emVkLiBUaGUgaHlwb3RoZXNlcyBhcmUgYXMgZm9sbG93czogDQoNCi0gKipOdWxsIEh5cG90aGVzaXMgKEgwKToqKiAgVGhlIHByb3BvcnRpb25zIG9mIGRpZmZlcmVudCBjYXRlZ29yeSBvZiBwcmVkaWN0b3MgYXJlIHRoZSBzYW1lIGZvciBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCi0gKipBbHRlcm5hdGl2ZSBIeXBvdGhlc2lzIChIYSk6KiogVGhlIHByb3BvcnRpb25zIG9mIGRpZmZlcmVudCBjYXRlZ29yeSBvZiBwcmVkaWN0b3MgZGlmZmVyIGJldHdlZW4gZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQpJZiB0aGUgcC12YWx1ZSBpcyBiZWxvdyAwLjA1LCB3ZSByZWplY3QgdGhlIG51bGwgaHlwb3RoZXNpcyBhbmQgY29uY2x1ZGUgdGhhdCB0aGVyZSBpcyBhIHN0YXRpc3RpY2FsbHkgc2lnbmlmaWNhbnQgYXNzb2NpYXRpb24gYmV0d2VlbiB0aGUgdHdvIGNhdGVnb3JpY2FsIHZhcmlhYmxlcy4NCg0KIyMjIENvbnRpbnVvdXMgUHJlZGljdG9ycw0KDQpGb3IgY29udGludW91cyBwcmVkaWN0b3JzLCB3ZSBmaXJzdCBleGFtaW5lIHRoZSBjb250aW51b3VzIHByZWRpY3RvcnMgYnkgY29tcGFyaW5nIHRoZWlyICoqbWVhbnMgYW5kIHN0YW5kYXJkIGRldmlhdGlvbnMqKiBmb3IgdGhlIHR3byBncm91cHMgb2YgdGhlIGRlcGVuZGVudCB2YXJpYWJsZSAgKGluIHRoaXMgcmVwb3J0LCB0aG9zZSB3aXRoIGFuZCB3aXRob3V0IGRyaW5raW5nIGRyaXZlcnMgaW4gY3Jhc2hlcykuIFRoaXMgYWxsb3dzIHVzIHRvIGNvbXBhcmUgdGhlIGRpc3RyaWJ1dGlvbnMgb2YgdGhlIHByZWRpY3RvciBhY3Jvc3MgZ3JvdXBzLg0KDQpUaGVuLCB3ZSB1c2UgdGhlICoqaW5kZXBlbmRlbnQgc2FtcGxlcyB0LXRlc3QqKiB0byBhc3Nlc3Mgd2hldGhlciB0aGUgb2JzZXJ2ZWQgZGlmZmVyZW5jZXMgaW4gbWVhbnMgYXJlIHN0YXRpc3RpY2FsbHkgc2lnbmlmaWNhbnQuIFRoZSBoeXBvdGhlc2VzIGZvciB0aGUgdC10ZXN0IGFyZToNCg0KLSAqKk51bGwgSHlwb3RoZXNpcyAoSDApOioqIFRoZSBhdmVyYWdlIHZhbHVlcyBvZiB0aGUgY29udGludW91cyBwcmVkaWN0b3IgYXJlIHRoZSBzYW1lIGZvciBjcmFzaGVzIHRoYXQgaW52b2x2ZSBkcmlua2luZyBkcml2ZXJzIGFuZCB0aG9zZSB0aGF0IGRvIG5vdC4NCg0KLSAqKkFsdGVybmF0aXZlIEh5cG90aGVzaXMgKEhhKToqKiBUaGUgYXZlcmFnZSB2YWx1ZXMgb2YgdGhlIGNvbnRpbnVvdXMgcHJlZGljdG9yIGFyZSBkaWZmZXJlbnQgZm9yIGNyYXNoZXMgdGhhdCBpbnZvbHZlIGRyaW5raW5nIGRyaXZlcnMgYW5kIHRob3NlIHRoYXQgZG8gbm90Lg0KDQpJZiB0aGUgcC12YWx1ZSBvZiB0LXRlc3QgaXMgYmVsb3cgMC4wNSwgd2UgcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMgaW4gZmF2b3Igb2YgdGhlIGFsdGVybmF0aXZlLCBpbmRpY2F0aW5nIHRoYXQgdGhlIG1lYW4gb2YgdGhlIGNvbnRpbnVvdXMgcHJlZGljdG9yIHNpZ25pZmljYW50bHkgZGlmZmVycyBiZXR3ZWVuIHRoZSB0d28gZ3JvdXBzLg0KDQpCeSBwZXJmb3JtaW5nIHRoZXNlIGV4cGxvcmF0b3J5IGFuYWx5c2VzLCB3ZSBjYW4gaWRlbnRpZnkgd2hpY2ggcHJlZGljdG9ycyBleGhpYml0IHNpZ25pZmljYW50IGFzc29jaWF0aW9ucyB3aXRoIHRoZSBkZXBlbmRlbnQgdmFyaWFibGUgYW5kIHNob3VsZCBiZSBjb25zaWRlcmVkIGluIHRoZSBsb2dpc3RpYyByZWdyZXNzaW9uIG1vZGVsLg0KDQojIFJlc3VsdHMNCg0KIyMgRXhwbG9yYXRvcnkgQW5hbHlzZXMNCg0KIyMjIERlcGVuZGVudCBWYXJpYWJsZQ0KDQpJbiB0aGUgcmVwb3J0LCB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIGlzIGBEUklOS0lOR19EYCwgaW5kaWNhdGluZyB3aGV0aGVyIGEgY3Jhc2ggaW52b2x2ZWQgYSBkcmlua2luZyBkcml2ZXIuIE9mIHRoZSA1MywyNjAgcmVjb3JkZWQgY3Jhc2hlcyBpbiBQaGlsYWRlbHBoaWEgZnJvbSAyMDA4IHRvIDIwMTIsIHdlIGV4Y2x1ZGVkIDksODk2IGNyYXNoZXMgdGhhdCBvY2N1cnJlZCBpbiBub24tcmVzaWRlbnRpYWwgYmxvY2sgZ3JvdXBzLCB3aGVyZSBtZWRpYW4gaG91c2Vob2xkIGluY29tZSBhbmQgdmFjYW5jeSByYXRlcyBhcmUgMC4gVGhpcyBsZWF2ZXMgNDMsMzY0IGNyYXNoZXMgdGhhdCB0b29rIHBsYWNlIGluIFBoaWxhZGVscGhpYeKAmXMgcmVzaWRlbnRpYWwgYmxvY2sgZ3JvdXBzLg0KDQpgYGB7cn0NCkRSSU5LSU5HX0QudGFiIDwtIHRhYmxlKGNyYXNoZXMkRFJJTktJTkdfRCkNCnByb3AudGFibGUoRFJJTktJTkdfRC50YWIpDQpEUklOS0lOR19ELnRhYg0KYGBgDQoNCldlIHNlZSB0aGF0IHRoZXJlIGFyZSAyLDQ4NSAoNS43MyUpIGNyYXNoZXMgdGhhdCBpbnZvbHZlZCBhIGRydW5rIGRyaXZlciwgYW5kIDQwLDg3OSAoOTQuMjclKSBjcmFzaGVzIHRoYXQgZGlkIG5vdCBpbnZvbHZlIGEgZHJ1bmsgZHJpdmVyLiBUaGF0IGlzLCB0aGUgcHJvYmFiaWxpdHkgb2YgYSBjcmFzaCBpbnZvbHZpbmcgZHJpbmtpbmcgZHJpdmVycyBjYW4gYmUgY2FsY3VsYXRlZCB1c2luZyB0aGUgZm9ybXVsYToNCg0KJCQNClx0ZXh0e1Byb2JhYmlsaXR5KERyaW5raW5nIERyaXZlcnMpfSA9IFxmcmFje1x0ZXh0e051bWJlciBvZiBDcmFzaGVzIEludm9sdmluZyBEcmlua2luZyBEcml2ZXJ9fXtcdGV4dHtUb3RhbCBOdW1iZXIgb2YgQ3Jhc2hlc319ID0gXGZyYWN7MjQ4NX17NDMzNjR9IFxhcHByb3ggMC4wNTczDQokJA0KDQpUaGUgb2RkcyBvZiBhIGNyYXNoIGludm9sdmluZyBkcmlua2luZyBkcml2ZXJzIGNhbiBiZSBjYWxjdWxhdGVkIHVzaW5nIHRoZSBmb3JtdWxhOg0KDQokJA0KXHRleHR7T2RkcyhEcmlua2luZyBEcml2ZXJzKX0gPSBcZnJhY3tcdGV4dHtOdW1iZXIgb2YgQ3Jhc2hlcyBJbnZvbHZpbmcgRHJpbmtpbmcgRHJpdmVyfX17XHRleHR7TnVtYmVyIG9mIENyYXNoZXMgTm90IEludm9sdmluZyBEcmlua2luZyBEcml2ZXJzfX0gPSBcZnJhY3syNDg1fXs0MDg3OX0gXGFwcHJveCAwLjA2MDgNCiQkDQoNClRoaXMgc3VnZ2VzdHMgdGhhdCB3aGlsZSB0aGUgb3ZlcmFsbCBwcm9iYWJpbGl0eSBvZiBhIGNyYXNoIGJlaW5nIGFsY29ob2wtcmVsYXRlZCBpcyByZWxhdGl2ZWx5IGxvdywgdGhlIG9kZHMgc3RpbGwgd2FycmFudCBhdHRlbnRpb24sIGVzcGVjaWFsbHkgZ2l2ZW4gdGhlIHNlcmlvdXMgY29uc2VxdWVuY2VzIG9mdGVuIGFzc29jaWF0ZWQgd2l0aCBzdWNoIGluY2lkZW50cy4NCg0KDQojIyMgSW5kZXBlbmRlbnQgVmFyaWFibGVzIC0gQmluYXJ5DQoNClRoZW4sIGxldCdzIHRha2UgYSBsb29rIGF0IGJpbmFyeSBpbmRlcGVuZGVudCB2YXJpYWJsZXMgYEZBVEFMX09SX01gLGAgT1ZFUlRVUk5FRGAsIGBDRUxMX1BIT05FYCwgYFNQRUVESU5HYCwgYEFHR1JFU1NJVkVgLCBgRFJJVkVSMTYxN2AsIGFuZCBgRFJJVkVSNjVQTFVTYC4NCg0KYGBge3J9DQojIExvYWQgcmVxdWlyZWQgbGlicmFyeQ0KbGlicmFyeShnbW9kZWxzKQ0KDQojIEVuc3VyZSBiaW5hcnkgdmFyaWFibGVzIGFyZSBmYWN0b3JzDQpjcmFzaGVzJERSSU5LSU5HX0QgPC0gYXMuZmFjdG9yKGNyYXNoZXMkRFJJTktJTkdfRCkNCmJpbmFyeV92YXJzIDwtIGMoIkZBVEFMX09SX00iLCAiT1ZFUlRVUk5FRCIsICJDRUxMX1BIT05FIiwgIlNQRUVESU5HIiwgDQogICAgICAgICAgICAgICAgICJBR0dSRVNTSVZFIiwgIkRSSVZFUjE2MTciLCAiRFJJVkVSNjVQTFVTIikNCmNyYXNoZXNbYmluYXJ5X3ZhcnNdIDwtIGxhcHBseShjcmFzaGVzW2JpbmFyeV92YXJzXSwgYXMuZmFjdG9yKQ0KDQojIERlZmluZSBmdW5jdGlvbiB0byBleHRyYWN0IENoaS1TcXVhcmUgdGVzdCByZXN1bHRzIGFuZCBwZXJjZW50YWdlcw0KZXh0cmFjdF9jaGkyX3Jlc3VsdHMgPC0gZnVuY3Rpb24oZGVwX3ZhciwgcHJlZF92YXIpIHsNCiAgY3Jvc3N0YWIgPC0gdGFibGUoZGVwX3ZhciwgcHJlZF92YXIpDQogIA0KICAjIFRvdGFsIGNvdW50cyBwZXIgZ3JvdXANCiAgdG90YWxfbm9fYWxjb2hvbCA8LSBzdW0oY3Jvc3N0YWJbMSwgXSkNCiAgdG90YWxfYWxjb2hvbCA8LSBzdW0oY3Jvc3N0YWJbMiwgXSkNCiAgDQogICMgQ291bnQgb2YgIjEicw0KICBub19hbGNvaG9sXzFfY291bnQgPC0gY3Jvc3N0YWJbMSwgIjEiXQ0KICBhbGNvaG9sXzFfY291bnQgPC0gY3Jvc3N0YWJbMiwgIjEiXQ0KICANCiAgIyBQZXJjZW50YWdlcw0KICBwZXJjZW50X25vX2FsY29ob2wgPC0gMTAwICogY3Jvc3N0YWJbMSwgIjEiXSAvIHRvdGFsX25vX2FsY29ob2wNCiAgcGVyY2VudF9hbGNvaG9sIDwtIDEwMCAqIGNyb3NzdGFiWzIsICIxIl0gLyB0b3RhbF9hbGNvaG9sDQogIA0KICAjIENoaS1zcXVhcmUgdGVzdCB3aXRob3V0IFlhdGVzIGNvcnJlY3Rpb24NCiAgY2hpMl90ZXN0IDwtIHN1cHByZXNzV2FybmluZ3MoY2hpc3EudGVzdChjcm9zc3RhYiwgY29ycmVjdCA9IEZBTFNFKSkNCiAgDQogICMgT3V0cHV0IGxpc3QNCiAgcmV0dXJuKGxpc3QoDQogICAgY3Jvc3N0YWIgPSBjcm9zc3RhYiwNCiAgICBub19hbGNvaG9sXzFfY291bnQgPSBub19hbGNvaG9sXzFfY291bnQsDQogICAgYWxjb2hvbF8xX2NvdW50ID0gYWxjb2hvbF8xX2NvdW50LA0KICAgIHBlcmNlbnRfbm9fYWxjb2hvbCA9IHBlcmNlbnRfbm9fYWxjb2hvbCwNCiAgICBwZXJjZW50X2FsY29ob2wgPSBwZXJjZW50X2FsY29ob2wsDQogICAgdG90YWxfbiA9IHN1bShjcm9zc3RhYlssICIxIl0pLA0KICAgIGNoaTJfc3RhdCA9IGNoaTJfdGVzdCRzdGF0aXN0aWMsDQogICAgZGYgPSBjaGkyX3Rlc3QkcGFyYW1ldGVyLA0KICAgIHBfdmFsdWUgPSBjaGkyX3Rlc3QkcC52YWx1ZQ0KICApKQ0KfQ0KDQojIEluaXRpYWxpemUgcmVzdWx0cyB0YWJsZQ0KYWxsX3Jlc3VsdHMgPC0gZGF0YS5mcmFtZSgNCiAgVmFyaWFibGUgPSBiaW5hcnlfdmFycywNCiAgRGVzY3JpcHRpb24gPSBjKA0KICAgICJDcmFzaCByZXN1bHRlZCBpbiBmYXRhbGl0eSBvciBtYWpvciBpbmp1cnkiLA0KICAgICJDcmFzaCBpbnZvbHZlZCBhbiBvdmVydHVybmVkIHZlaGljbGUiLA0KICAgICJEcml2ZXIgd2FzIHVzaW5nIGNlbGwgcGhvbmUiLA0KICAgICJDcmFzaCBpbnZvbHZlZCBzcGVlZGluZyBjYXIiLA0KICAgICJDcmFzaCBpbnZvbHZlZCBhZ2dyZXNzaXZlIGRyaXZpbmciLA0KICAgICJDcmFzaCBpbnZvbHZlZCBhdCBsZWFzdCBvbmUgZHJpdmVyIGFnZWQgMTbigJMxNyIsDQogICAgIkNyYXNoIGludm9sdmVkIGF0IGxlYXN0IG9uZSBkcml2ZXIgYWdlZCA2NSsiDQogICksDQogIE5vX0FsY29ob2xfTiA9IE5BLA0KICBOb19BbGNvaG9sX1BlcmNlbnQgPSBOQSwNCiAgQWxjb2hvbF9OID0gTkEsDQogIEFsY29ob2xfUGVyY2VudCA9IE5BLA0KICBUb3RhbF9OID0gTkEsDQogIENoaTJfU3RhdCA9IE5BLA0KICBERiA9IE5BLA0KICBQX1ZhbHVlID0gTkENCikNCg0KIyBMb29wIHRocm91Z2ggdmFyaWFibGVzIGFuZCBwb3B1bGF0ZSByZXN1bHQgdGFibGUNCmZvciAoaSBpbiBzZXFfYWxvbmcoYmluYXJ5X3ZhcnMpKSB7DQogIHZhciA8LSBiaW5hcnlfdmFyc1tpXQ0KICByZXN1bHQgPC0gZXh0cmFjdF9jaGkyX3Jlc3VsdHMoY3Jhc2hlcyREUklOS0lOR19ELCBjcmFzaGVzW1t2YXJdXSkNCiAgDQogIGFsbF9yZXN1bHRzJE5vX0FsY29ob2xfTltpXSA8LSByZXN1bHQkbm9fYWxjb2hvbF8xX2NvdW50DQogIGFsbF9yZXN1bHRzJE5vX0FsY29ob2xfUGVyY2VudFtpXSA8LSByb3VuZChyZXN1bHQkcGVyY2VudF9ub19hbGNvaG9sLCAxKQ0KICBhbGxfcmVzdWx0cyRBbGNvaG9sX05baV0gPC0gcmVzdWx0JGFsY29ob2xfMV9jb3VudA0KICBhbGxfcmVzdWx0cyRBbGNvaG9sX1BlcmNlbnRbaV0gPC0gcm91bmQocmVzdWx0JHBlcmNlbnRfYWxjb2hvbCwgMSkNCiAgYWxsX3Jlc3VsdHMkVG90YWxfTltpXSA8LSByZXN1bHQkdG90YWxfbg0KICBhbGxfcmVzdWx0cyRDaGkyX1N0YXRbaV0gPC0gcm91bmQocmVzdWx0JGNoaTJfc3RhdCwgMikNCiAgYWxsX3Jlc3VsdHMkREZbaV0gPC0gcmVzdWx0JGRmDQogIGFsbF9yZXN1bHRzJFBfVmFsdWVbaV0gPC0gZm9ybWF0LnB2YWwocmVzdWx0JHBfdmFsdWUsIGRpZ2l0cyA9IDMsIGVwcyA9IDAuMDUpDQp9DQoNCmBgYA0KDQpgYGB7cn0NCiMjIHByaW50DQoNCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KGthYmxlRXh0cmEpDQoNCmthYmxlKGFsbF9yZXN1bHRzWywgYygiVmFyaWFibGUiLCAiRGVzY3JpcHRpb24iLCANCiAgICAgICAgICAgICAgICAgICAgICAiTm9fQWxjb2hvbF9OIiwgIk5vX0FsY29ob2xfUGVyY2VudCIsIA0KICAgICAgICAgICAgICAgICAgICAgICJBbGNvaG9sX04iLCAiQWxjb2hvbF9QZXJjZW50IiwgDQogICAgICAgICAgICAgICAgICAgICAgIlRvdGFsX04iLCAiQ2hpMl9TdGF0IiwgIkRGIiwgIlBfVmFsdWUiKV0sIA0KICAgICAgZm9ybWF0ID0gImh0bWwiLCANCiAgICAgIGNvbC5uYW1lcyA9IGMoIlZhcmlhYmxlIiwgIkRlc2NyaXB0aW9uIiwgDQogICAgICAgICAgICAgICAgICAgICJOIiwgIiUiLCAiTiIsICIlIiwgIk4iLCANCiAgICAgICAgICAgICAgICAgICAgIkNoaTIgU3RhdCIsICJERiIsICLPh8KyIHAtdmFsdWUiKSwNCiAgICAgIGNhcHRpb24gPSAiQ3Jvc3MtVGFidWxhdGlvbiBhbmQgQ2hpLVNxdWFyZSBUZXN0IFJlc3VsdHMiKSAlPiUNCiAga2FibGVfc3R5bGluZyhib290c3RyYXBfb3B0aW9ucyA9IGMoInN0cmlwZWQiLCAiaG92ZXIiLCAiY29uZGVuc2VkIiksIA0KICAgICAgICAgICAgICAgIGZ1bGxfd2lkdGggPSBGLCANCiAgICAgICAgICAgICAgICBwb3NpdGlvbiA9ICJjZW50ZXIiKSAlPiUNCiAgY29sdW1uX3NwZWMoMSwgYm9sZCA9IFRSVUUsIHdpZHRoID0gIjEwZW0iKSAlPiUNCiAgY29sdW1uX3NwZWMoMiwgYm9sZCA9IEZBTFNFLCB3aWR0aCA9ICI0MGVtIikgJT4lDQogIGNvbHVtbl9zcGVjKDM6Nywgd2lkdGggPSAiN2VtIikgJT4lDQogIGNvbHVtbl9zcGVjKDg6MTAsIHdpZHRoID0gIjhlbSIpICU+JQ0KICBhZGRfaGVhZGVyX2Fib3ZlKGMoIiAiID0gMiwgDQogICAgICAgICAgICAgICAgICAgICAiTm8gQWxjb2hvbCBJbnZvbHZlZCAoRFJJTktJTkdfRCA9IDApIiA9IDIsDQogICAgICAgICAgICAgICAgICAgICAiQWxjb2hvbCBJbnZvbHZlZCAoRFJJTktJTkdfRCA9IDEpIiA9IDIsDQogICAgICAgICAgICAgICAgICAgICAiVG90YWwiID0gMSwNCiAgICAgICAgICAgICAgICAgICAgICJDaGktU3F1YXJlIFRlc3QgUmVzdWx0cyIgPSAzKSkgDQoNCmBgYA0KDQpXZSB1c2UgdGhlICoqQ2hpLVNxdWFyZSB0ZXN0KiosIHdoaWNoIGlzIGEgc3RhdGlzdGljYWwgbWV0aG9kIHVzZWQgdG8gZXZhbHVhdGUgd2hldGhlciB0aGVyZSBpcyBhIHNpZ25pZmljYW50IGFzc29jaWF0aW9uIGJldHdlZW4gdHdvIGNhdGVnb3JpY2FsIHZhcmlhYmxlcy4gVGhpcyB0ZXN0IGNvbXBhcmVzIHRoZSBvYnNlcnZlZCBmcmVxdWVuY2llcyBpbiBlYWNoIGNhdGVnb3J5IHdpdGggdGhlIGV4cGVjdGVkIGZyZXF1ZW5jaWVzIHVuZGVyIHRoZSBhc3N1bXB0aW9uIHRoYXQgdGhlIHZhcmlhYmxlcyBhcmUgaW5kZXBlbmRlbnQuIEFzIHVzdWFsLCBhIGhpZ2ggdmFsdWUgb2YgdGhlICRcY2hpXjIkIHN0YXRpc3RpYywgYW5kIGEgcC12YWx1ZSBsb3dlciB0aGFuIDAuMDUsIHN1Z2dlc3QgdGhhdCB0aGVyZSBpcyBldmlkZW5jZSB0byByZWplY3QgdGhlIG51bGwgaHlwb3RoZXNpcyBpbiBmYXZvciBvZiB0aGUgYWx0ZXJuYXRpdmUsIGluZGljYXRpbmcgYW4gYXNzb2NpYXRpb24gYmV0d2VlbiBkcnVuayBkcml2aW5nIGFuZCBjcmFzaCBvdXRjb21lcy4NCg0KSGVyZSwgd2UgYXBwbHkgdGhlIENoaS1TcXVhcmUgdGVzdCB0byBleHBsb3JlIHRoZSBhc3NvY2lhdGlvbiBiZXR3ZWVuIGRyaW5raW5nIGRyaXZlciBpbmRpY2F0b3JzIGluIGNyYXNoZXMgYERSSU5LSU5HX0RgIGFuZCB2YXJpb3VzIGJpbmFyeSBjcmFzaC1yZWxhdGVkIGNoYXJhY3RlcmlzdGljcy4gVGhlIGh5cG90aGVzZXMgYW5kIHJlc3VsdHMgYXJlIHN1bW1hcml6ZWQgYmVsb3c6DQoNCioqQ3Jhc2ggcmVzdWx0ZWQgaW4gZmF0YWxpdHkgb3IgbWFqb3IgaW5qdXJ5KiogYEZBVEFMX09SX01gDQoNCi0gKipOdWxsIEh5cG90aGVzaXMgKEgwKToqKiBUaGUgcHJvcG9ydGlvbnMgb2YgY3Jhc2hlcyByZXN1bHRpbmcgaW4gZmF0YWxpdHkgb3IgbWFqb3IgaW5qdXJ5IGFyZSB0aGUgc2FtZSBmb3IgZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQotICoqQWx0ZXJuYXRpdmUgSHlwb3RoZXNpcyAoSGEpOioqIFRoZSBwcm9wb3J0aW9ucyBvZiBjcmFzaGVzIHJlc3VsdGluZyBpbiBmYXRhbGl0eSBvciBtYWpvciBpbmp1cnkgZGlmZmVyIGJldHdlZW4gZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQpBbW9uZyBjcmFzaGVzIGludm9sdmluZyBkcmlua2luZyBkcml2ZXJzLCA3LjYlIHJlc3VsdGVkIGluIGZhdGFsaXR5IG9yIG1ham9yIGluanVyeSwgY29tcGFyZWQgdG8gb25seSAyLjklIG9mIGNyYXNoZXMgaW52b2x2aW5nIG5vbi1kcmlua2luZyBkcml2ZXJzLiBUaGUgUC12YWx1ZSBvZiBDaGktU3F1YXJlIHN0YXRpc3RpYyBpcyBsZXNzIHRoYW4gMC4wNSwgaW5kaWNhdGluZyBhIHNpZ25pZmljYW50IGFzc29jaWF0aW9uIGJldHdlZW4gZHJpbmtpbmcgZHJpdmVycyBhbmQgY3Jhc2ggc2V2ZXJpdHkuIFRoZXJlZm9yZSwgd2UgcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMgaW4gZmF2b3Igb2YgdGhlIGFsdGVybmF0aXZlIGh5cG90aGVzaXMuDQoNCioqQ3Jhc2ggaW52b2x2ZWQgYW4gb3ZlcnR1cm5lZCB2ZWhpY2xlKiogYE9WRVJUVVJORURgDQoNCi0gKipOdWxsIEh5cG90aGVzaXMgKEgwKToqKiBUaGUgcHJvcG9ydGlvbnMgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgb3ZlcnR1cm5lZCB2ZWhpY2xlcyBhcmUgdGhlIHNhbWUgZm9yIGRyaW5raW5nIGFuZCBub24tZHJpbmtpbmcgZHJpdmVycy4NCg0KLSAqKkFsdGVybmF0aXZlIEh5cG90aGVzaXMgKEhhKToqKiBUaGUgcHJvcG9ydGlvbnMgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgb3ZlcnR1cm5lZCB2ZWhpY2xlcyBkaWZmZXIgYmV0d2VlbiBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCkFtb25nIGNyYXNoZXMgaW52b2x2aW5nIGRyaW5raW5nIGRyaXZlcnMsIDQuNCUgaW52b2x2ZWQgYW4gb3ZlcnR1cm5lZCB2ZWhpY2xlLCBjb21wYXJlZCB0byBvbmx5IDEuNSUgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgbm9uLWRyaW5raW5nIGRyaXZlcnMuIFRoZSBQLXZhbHVlIG9mIENoaS1TcXVhcmUgc3RhdGlzdGljIGlzIGxlc3MgdGhhbiAwLjA1LCwgaW5kaWNhdGluZyBhIHNpZ25pZmljYW50IGFzc29jaWF0aW9uIGJldHdlZW4gZHJpbmtpbmcgZHJpdmVycyBhbmQgb3ZlcnR1cm5lZCBjcmFzaGVzLiBUaGVyZWZvcmUsIHdlIHJlamVjdCB0aGUgbnVsbCBoeXBvdGhlc2lzIGluIGZhdm9yIG9mIHRoZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzLg0KDQoqKkRyaXZlciB3YXMgdXNpbmcgY2VsbCBwaG9uZSoqIGBDRUxMX1BIT05FYA0KDQotICoqTnVsbCBIeXBvdGhlc2lzIChIMCk6KiogVGhlIHByb3BvcnRpb25zIG9mIGNyYXNoZXMgaW52b2x2aW5nIGNlbGwgcGhvbmUgdXNlIGFyZSB0aGUgc2FtZSBmb3IgZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQotICoqQWx0ZXJuYXRpdmUgSHlwb3RoZXNpcyAoSGEpOioqIFRoZSBwcm9wb3J0aW9ucyBvZiBjcmFzaGVzIGludm9sdmluZyBjZWxsIHBob25lIHVzZSBkaWZmZXIgYmV0d2VlbiBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCkFtb25nIGNyYXNoZXMgaW52b2x2aW5nIGRyaW5raW5nIGRyaXZlcnMsIDEuMCUgaW52b2x2ZWQgY2VsbCBwaG9uZSB1c2UsIGNvbXBhcmVkIHRvIDEuMSUgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgbm9uLWRyaW5raW5nIGRyaXZlcnMuIFRoZSBQLXZhbHVlIG9mIENoaS1TcXVhcmUgc3RhdGlzdGljIGlzIG1vcmUgdGhhbiAwLjA1LCwgc3VnZ2VzdGluZyBubyBzaWduaWZpY2FudCBhc3NvY2lhdGlvbiB3aXRoIGRyaW5raW5nIGRyaXZlciBpbmRpY2F0b3JzLiBUaGVyZWZvcmUsIHdlIGZhaWwgdG8gcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMuDQoNCioqQ3Jhc2ggaW52b2x2ZWQgc3BlZWRpbmcgY2FyKiogYFNQRUVESU5HYA0KDQotICoqTnVsbCBIeXBvdGhlc2lzIChIMCk6KiogVGhlIHByb3BvcnRpb25zIG9mIGNyYXNoZXMgaW52b2x2aW5nIHNwZWVkaW5nIGNhcnMgYXJlIHRoZSBzYW1lIGZvciBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCi0gKipBbHRlcm5hdGl2ZSBIeXBvdGhlc2lzIChIYSk6KiogVGhlIHByb3BvcnRpb25zIG9mIGNyYXNoZXMgaW52b2x2aW5nIHNwZWVkaW5nIGNhcnMgZGlmZmVyIGJldHdlZW4gZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQpBbW9uZyBjcmFzaGVzIGludm9sdmluZyBkcmlua2luZyBkcml2ZXJzLCAxMC41JSBpbnZvbHZlZCBzcGVlZGluZywgY29tcGFyZWQgdG8gb25seSAzLjElIG9mIGNyYXNoZXMgaW52b2x2aW5nIG5vbi1kcmlua2luZyBkcml2ZXJzLiBUaGUgUC12YWx1ZSBvZiBDaGktU3F1YXJlIHN0YXRpc3RpYyBpcyBsZXNzIHRoYW4gMC4wNSwsIGluZGljYXRpbmcgYSBzdHJvbmcgbGluayBiZXR3ZWVuIGRyaW5raW5nIGRyaXZlcnMgYW5kIHNwZWVkaW5nLiBUaGVyZWZvcmUsIHdlIHJlamVjdCB0aGUgbnVsbCBoeXBvdGhlc2lzIGluIGZhdm9yIG9mIHRoZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzLg0KDQoqKkNyYXNoIGludm9sdmVkIGFnZ3Jlc3NpdmUgZHJpdmluZyoqIGBBR0dSRVNTSVZFYA0KDQotICoqTnVsbCBIeXBvdGhlc2lzIChIMCk6KiogVGhlIHByb3BvcnRpb25zIG9mIGNyYXNoZXMgaW52b2x2aW5nIGFnZ3Jlc3NpdmUgZHJpdmluZyBhcmUgdGhlIHNhbWUgZm9yIGRyaW5raW5nIGFuZCBub24tZHJpbmtpbmcgZHJpdmVycy4NCg0KLSAqKkFsdGVybmF0aXZlIEh5cG90aGVzaXMgKEhhKToqKiBUaGUgcHJvcG9ydGlvbnMgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgYWdncmVzc2l2ZSBkcml2aW5nIGRpZmZlciBiZXR3ZWVuIGRyaW5raW5nIGFuZCBub24tZHJpbmtpbmcgZHJpdmVycy4NCg0KQW1vbmcgY3Jhc2hlcyBpbnZvbHZpbmcgZHJpbmtpbmcgZHJpdmVycywgNjMuMSUgaW52b2x2ZWQgYWdncmVzc2l2ZSBkcml2aW5nLCBjb21wYXJlZCB0byA1NC43JSBvZiBjcmFzaGVzIGludm9sdmluZyBub24tZHJpbmtpbmcgZHJpdmVycy4gVGhlIFAtdmFsdWUgb2YgQ2hpLVNxdWFyZSBzdGF0aXN0aWMgaXMgbGVzcyB0aGFuIDAuMDUsaW5kaWNhdGluZyBoZSBhc3NvY2lhdGlvbiBpcyBzdGF0aXN0aWNhbGx5IHNpZ25pZmljYW50LiBUaGVyZWZvcmUsIHdlIHJlamVjdCB0aGUgbnVsbCBoeXBvdGhlc2lzIGluIGZhdm9yIG9mIHRoZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzLg0KDQoqKkNyYXNoIGludm9sdmVkIGF0IGxlYXN0IG9uZSBkcml2ZXIgYWdlZCAxNuKAkzE3KiogYERSSVZFUjE2MTdgDQoNCi0gKipOdWxsIEh5cG90aGVzaXMgKEgwKToqKiBUaGUgcHJvcG9ydGlvbnMgb2YgY3Jhc2hlcyBpbnZvbHZpbmcgYXQgbGVhc3Qgb25lIGRyaXZlciBhZ2VkIDE2LTE3IGFyZSB0aGUgc2FtZSBmb3IgZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQotICoqQWx0ZXJuYXRpdmUgSHlwb3RoZXNpcyAoSGEpOioqIFRoZSBwcm9wb3J0aW9ucyBvZiBjcmFzaGVzIGludm9sdmluZyBhdCBsZWFzdCBvbmUgZHJpdmVyIGFnZWQgMTYtMTcgZGlmZmVyIGJldHdlZW4gZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQpBbW9uZyBjcmFzaGVzIGludm9sdmluZyBkcmlua2luZyBkcml2ZXJzLCAwLjUlIGludm9sdmVkIGF0IGxlYXN0IG9uZSB0ZWVuYWdlIGRyaXZlciAoMTbigJMxNyB5ZWFycyBvbGQpLCBjb21wYXJlZCB0byAxLjYlIG9mIGNyYXNoZXMgaW52b2x2aW5nIG5vbi1kcmlua2luZyBkcml2ZXJzLiBUaGUgQ2hpLVNxdWFyZSBzdGF0aXN0aWMgaXMgKioxOS43MSoqIChwIDwgMC4wMDEpLCBpbmRpY2F0aW5nIGEgc2lnbmlmaWNhbnQgYXNzb2NpYXRpb24uIFRoZXJlZm9yZSwgd2UgcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMgaW4gZmF2b3Igb2YgdGhlIGFsdGVybmF0aXZlIGh5cG90aGVzaXMuDQoNCioqQ3Jhc2ggaW52b2x2ZWQgYXQgbGVhc3Qgb25lIGRyaXZlciBhZ2VkIDY1IG9yIG9sZGVyKiogYERSSVZFUjY1UExVU2ANCg0KLSAqKk51bGwgSHlwb3RoZXNpcyAoSDApOioqIFRoZSBwcm9wb3J0aW9ucyBvZiBjcmFzaGVzIGludm9sdmluZyBhdCBsZWFzdCBvbmUgZHJpdmVyIGFnZWQgNjUgb3Igb2xkZXIgYXJlIHRoZSBzYW1lIGZvciBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCi0gKipBbHRlcm5hdGl2ZSBIeXBvdGhlc2lzIChIYSk6KiogVGhlIHByb3BvcnRpb25zIG9mIGNyYXNoZXMgaW52b2x2aW5nIGF0IGxlYXN0IG9uZSBkcml2ZXIgYWdlZCA2NSBvciBvbGRlciBkaWZmZXIgYmV0d2VlbiBkcmlua2luZyBhbmQgbm9uLWRyaW5raW5nIGRyaXZlcnMuDQoNCkFtb25nIGNyYXNoZXMgaW52b2x2aW5nIGRyaW5raW5nIGRyaXZlcnMsIDUuMiUgaW52b2x2ZWQgYXQgbGVhc3Qgb25lIGRyaXZlciBhZ2VkIDY1IG9yIG9sZGVyLCBjb21wYXJlZCB0byAxMC40JSBvZiBjcmFzaGVzIGludm9sdmluZyBub24tZHJpbmtpbmcgZHJpdmVycy4gVGhlIENoaS1TcXVhcmUgc3RhdGlzdGljIGlzICoqNzkuOTkqKiAocCA8IDAuMDAxKSwgaW5kaWNhdGluZyBhIHN0YXRpc3RpY2FsbHkgc2lnbmlmaWNhbnQgcmVsYXRpb25zaGlwIGJldHdlZW4gYWxjb2hvbCBpbnZvbHZlbWVudCBhbmQgb2xkZXIgZHJpdmVycy4uIFRoZXJlZm9yZSwgd2UgcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMgaW4gZmF2b3Igb2YgdGhlIGFsdGVybmF0aXZlIGh5cG90aGVzaXMuDQoNClRoZSBDaGktU3F1YXJlIHRlc3QgcmVzdWx0cyBpbmRpY2F0ZSAqKnNpZ25pZmljYW50IGFzc29jaWF0aW9ucyoqIGJldHdlZW4gZHJpbmtpbmcgZHJpdmVyIGluZGljYXRvcnMgYW5kIG1vc3QgY3Jhc2gtcmVsYXRlZCB2YXJpYWJsZXMsIHdpdGggdGhlIGV4Y2VwdGlvbiBvZiBjZWxsIHBob25lIHVzZSwgd2hlcmUgbm8gc2lnbmlmaWNhbnQgcmVsYXRpb25zaGlwIHdhcyBmb3VuZC4gRm9yIGFsbCBvdGhlciB2YXJpYWJsZXMsIHdlIHJlamVjdCB0aGUgbnVsbCBoeXBvdGhlc2lzIGluIGZhdm9yIG9mIHRoZSBhbHRlcm5hdGl2ZSBoeXBvdGhlc2lzLCBjb25maXJtaW5nIHRoZSBwcmVzZW5jZSBvZiBzaWduaWZpY2FudCBhc3NvY2lhdGlvbnMuDQoNCiMjIyBJbmRlcGVuZGVudCBWYXJpYWJsZXMgLSBDb250aW51b3VzDQoNClRoZW4sIHdlIGV4YW1pbmUgdGhlIHJlbGF0aW9uc2hpcCBiZXR3ZWVuIG91ciBiaW5hcnkgZGVwZW5kZW50IHZhcmlhYmxlIGBEUklOS0lOR19EYCBhbmQgY29udGludW91cyBwcmVkaWN0b3JzIGBQQ1RCQUNITU9SYCBhbmQgYE1FREhISU5DYC4NCg0KYGBge3J9DQoNCmNvbnRpbnVvdXNfdmFycyA8LSBjKCJQQ1RCQUNITU9SIiwgIk1FREhISU5DIikNCg0KcmVzdWx0c19saXN0IDwtIGxpc3QoKQ0KDQpmb3IgKHZhciBpbiBjb250aW51b3VzX3ZhcnMpIHsNCiAgbWVhbnMgPC0gdGFwcGx5KGNyYXNoZXNbW3Zhcl1dLCBjcmFzaGVzJERSSU5LSU5HX0QsIG1lYW4sIG5hLnJtID0gVFJVRSkNCiAgc2RzICAgPC0gdGFwcGx5KGNyYXNoZXNbW3Zhcl1dLCBjcmFzaGVzJERSSU5LSU5HX0QsIHNkLCBuYS5ybSA9IFRSVUUpDQogIHRfdGVzdF9yZXN1bHQgPC0gdC50ZXN0KGNyYXNoZXNbW3Zhcl1dIH4gY3Jhc2hlcyREUklOS0lOR19EKQ0KDQogIGRlc2NyaXB0aW9uIDwtIGlmZWxzZSh2YXIgPT0gIlBDVEJBQ0hNT1IiLCAiUGVyY2VudGFnZSBvZiBwb3B1bGF0aW9uIHdpdGggYmFjaGVsb3IncyBkZWdyZWUgb3IgbW9yZSIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgaWZlbHNlKHZhciA9PSAiTUVESEhJTkMiLCAiTWVkaWFuIGhvdXNlaG9sZCBpbmNvbWUiLCBOQSkpDQogIA0KICByZXN1bHRzX2xpc3RbW3Zhcl1dIDwtIGRhdGEuZnJhbWUoDQogICAgVmFyaWFibGUgICAgICAgICA9IHZhciwNCiAgICBEZXNjcmlwdGlvbiAgICAgID0gZGVzY3JpcHRpb24sDQogICAgTWVhbl9Ob19BbGNvaG9sICA9IG1lYW5zWyIwIl0sDQogICAgU0RfTm9fQWxjb2hvbCAgICA9IHNkc1siMCJdLA0KICAgIE1lYW5fQWxjb2hvbCAgICAgPSBtZWFuc1siMSJdLA0KICAgIFNEX0FsY29ob2wgICAgICAgPSBzZHNbIjEiXSwNCiAgICBUX1N0YXRpc3RpYyAgICAgID0gdF90ZXN0X3Jlc3VsdCRzdGF0aXN0aWMsDQogICAgREYgICAgICAgICAgICAgICA9IHRfdGVzdF9yZXN1bHQkcGFyYW1ldGVyLA0KICAgIFBfVmFsdWUgICAgICAgICAgPSB0X3Rlc3RfcmVzdWx0JHAudmFsdWUNCiAgKQ0KfQ0KDQpjb250aW51b3VzX3N1bW1hcnkgPC0gZG8uY2FsbChyYmluZCwgcmVzdWx0c19saXN0KQ0Kcm93Lm5hbWVzKGNvbnRpbnVvdXNfc3VtbWFyeSkgPC0gTlVMTA0KDQojIHByaW50DQprYWJsZShjb250aW51b3VzX3N1bW1hcnlbLCBjKCJWYXJpYWJsZSIsICJEZXNjcmlwdGlvbiIsICJNZWFuX05vX0FsY29ob2wiLCAiU0RfTm9fQWxjb2hvbCIsIA0KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiTWVhbl9BbGNvaG9sIiwgIlNEX0FsY29ob2wiLCANCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIlRfU3RhdGlzdGljIiwgIkRGIiwgIlBfVmFsdWUiKV0sIA0KICAgICAgZm9ybWF0ID0gImh0bWwiLCANCiAgICAgIGNvbC5uYW1lcyA9IGMoIlZhcmlhYmxlIiwgIkRlc2NyaXB0aW9uIiwgDQogICAgICAgICAgICAgICAgICAgICJNZWFuIiwgIlNEIiwgDQogICAgICAgICAgICAgICAgICAgICJNZWFuIiwgIlNEIiwgDQogICAgICAgICAgICAgICAgICAgICJ0IFN0YXQiLCAiREYiLCAicC12YWx1ZSIpLA0KICAgICAgY2FwdGlvbiA9ICJTdW1tYXJ5IG9mIENvbnRpbnVvdXMgVmFyaWFibGVzIikgJT4lDQogIGthYmxlX3N0eWxpbmcoYm9vdHN0cmFwX29wdGlvbnMgPSBjKCJzdHJpcGVkIiwgImhvdmVyIiwgImNvbmRlbnNlZCIpLCANCiAgICAgICAgICAgICAgICBmdWxsX3dpZHRoID0gRiwgDQogICAgICAgICAgICAgICAgcG9zaXRpb24gPSAiY2VudGVyIikgJT4lDQogIGNvbHVtbl9zcGVjKDEsIGJvbGQgPSBUUlVFLCB3aWR0aCA9ICIxMGVtIikgJT4lDQogIGNvbHVtbl9zcGVjKDIsIGJvbGQgPSBGQUxTRSwgd2lkdGggPSAiNDBlbSIpICU+JQ0KICBjb2x1bW5fc3BlYygzOjQsIHdpZHRoID0gIjdlbSIpICU+JQ0KICBjb2x1bW5fc3BlYyg1OjYsIHdpZHRoID0gIjdlbSIpICU+JQ0KICBjb2x1bW5fc3BlYyg3OjksIHdpZHRoID0gIjhlbSIpICU+JQ0KICBhZGRfaGVhZGVyX2Fib3ZlKGMoIiAiID0gMiwgDQogICAgICAgICAgICAgICAgICAgICAiTm8gQWxjb2hvbCBJbnZvbHZlZCAoRFJJTktJTkdfRCA9IDApIiA9IDIsDQogICAgICAgICAgICAgICAgICAgICAiQWxjb2hvbCBJbnZvbHZlZCAoRFJJTktJTkdfRCA9IDEpIiA9IDIsDQogICAgICAgICAgICAgICAgICAgICAiVC1UZXN0IFJlc3VsdHMiID0gMykpDQoNCmBgYA0KDQpXZSBmaXJzdCBsb29rIGF0IHRoZSAqKm1lYW5zKiogYW5kICoqc3RhbmRhcmQgZGV2aWF0aW9ucyAgKFNEKSAqKiBvZiB0aGVzZSB2YXJpYWJsZXMgZm9yIGNyYXNoZXMgdGhhdCBpbnZvbHZlIGFsY29ob2wgYW5kIHRob3NlIHRoYXQgZG8gbm90LiBUaGVuLCB3ZSB1c2UgdGhlIGluZGVwZW5kZW50IHNhbXBsZXMgdC10ZXN0IHRvIGFzc2VzcyB3aGV0aGVyIHRoZXJlIGlzIGEgc2lnbmlmaWNhbnQgYXNzb2NpYXRpb24gYmV0d2VlbiB0aGUgZGVwZW5kZW50IHZhcmlhYmxlIGFuZCBlYWNoIG9mIHRoZSBjb250aW51b3VzIHByZWRpY3RvcnMuIFRoZSB0LXRlc3QgcmVzdWx0cyBpbmNsdWRlIHRoZSB0LXN0YXRpc3RpYywgZGVncmVlcyBvZiBmcmVlZG9tLCBhbmQgcC12YWx1ZS4NCg0KKipQZXJjZW50YWdlIG9mIFBvcHVsYXRpb24gd2l0aCBCYWNoZWxvcidzIERlZ3JlZSBvciBNb3JlKiogYFBDVEJBQ0hNT1JgDQoNCi0gKipOdWxsIEh5cG90aGVzaXMgKEgwKToqKiBUaGUgYXZlcmFnZSB2YWx1ZXMgb2YgdGhlIHZhcmlhYmxlIFBDVEJBQ0hNT1IgYXJlIHRoZSBzYW1lIGZvciBjcmFzaGVzIHRoYXQgaW52b2x2ZSBkcnVuayBkcml2ZXJzIGFuZCBjcmFzaGVzIHRoYXQgZG9uJ3QuDQoNCi0gKipBbHRlcm5hdGl2ZSBIeXBvdGhlc2lzIChIYSk6KiogVGhlIGF2ZXJhZ2UgdmFsdWVzIG9mIHRoZSB2YXJpYWJsZSBQQ1RCQUNITU9SIGFyZSBkaWZmZXJlbnQgZm9yIGNyYXNoZXMgdGhhdCBpbnZvbHZlIGRydW5rIGRyaXZlcnMgYW5kIGNyYXNoZXMgdGhhdCBkb24ndC4NCg0KU2luY2UgdGhlIHAtdmFsdWUgaXMgKiptdWNoIGdyZWF0ZXIgdGhhbiB0aGUgMC4wNSoqIHNpZ25pZmljYW5jZSB0aHJlc2hvbGQgKHAgPSAwLjkxNCksIHdlIGZhaWwgdG8gcmVqZWN0IHRoZSBudWxsIGh5cG90aGVzaXMuIFRoaXMgc3VnZ2VzdHMgdGhlcmUgaXMgbm8gc2lnbmlmaWNhbnQgZGlmZmVyZW5jZSBpbiB0aGUgbWVhbiBwZXJjZW50YWdlIG9mIHRoZSBwb3B1bGF0aW9uIHdpdGggYSBiYWNoZWxvcidzIGRlZ3JlZSBvciBtb3JlIGJldHdlZW4gY3Jhc2hlcyBpbnZvbHZpbmcgZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQoqKk1lZGlhbiBIb3VzZWhvbGQgSW5jb21lKiogYE1FREhISU5DYA0KDQotICoqTnVsbCBIeXBvdGhlc2lzIChIMCk6KiogVGhlIGF2ZXJhZ2UgdmFsdWVzIG9mIHRoZSB2YXJpYWJsZSBNRURISElOQyBhcmUgdGhlIHNhbWUgZm9yIGNyYXNoZXMgdGhhdCBpbnZvbHZlIGRydW5rIGRyaXZlcnMgYW5kIGNyYXNoZXMgdGhhdCBkb24ndC4uDQoNCi0gKipBbHRlcm5hdGl2ZSBIeXBvdGhlc2lzIChIYSk6KiogVGhlIGF2ZXJhZ2UgdmFsdWVzIG9mIHRoZSB2YXJpYWJsZSBNRURISElOQyBhcmUgZGlmZmVyZW50IGZvciBjcmFzaGVzIHRoYXQgaW52b2x2ZSBkcnVuayBkcml2ZXJzIGFuZCBjcmFzaGVzIHRoYXQgZG9uJ3QuDQoNClNpbmNlIHRoZSBwLXZhbHVlIGlzIGdyZWF0ZXIgdGhhbiAwLjA1IChwID0gMC4xNjApLCB3ZSBmYWlsIHRvIHJlamVjdCB0aGUgbnVsbCBoeXBvdGhlc2lzLiBUaGVyZSBpcyBubyBzaWduaWZpY2FudCBkaWZmZXJlbmNlIGluIG1lZGlhbiBob3VzZWhvbGQgaW5jb21lIGJldHdlZW4gY3Jhc2hlcyBpbnZvbHZpbmcgZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzLg0KDQpGb3IgYm90aCBjb250aW51b3VzIHByZWRpY3RvcnMsIGBQQ1RCQUNITU9SYCBhbmQgYE1FREhISU5DYCwgdGhlIHAtdmFsdWVzIGZyb20gdGhlIHQtdGVzdHMgYXJlIGFib3ZlIHRoZSAwLjA1IHNpZ25pZmljYW5jZSB0aHJlc2hvbGQsIGluZGljYXRpbmcgdGhhdCB0aGVyZSBpcyBubyBzdGF0aXN0aWNhbGx5IHNpZ25pZmljYW50IGRpZmZlcmVuY2UgYmV0d2VlbiB0aGUgdHdvIGdyb3VwcyAoZHJpbmtpbmcgYW5kIG5vbi1kcmlua2luZyBkcml2ZXJzKSBmb3IgdGhlc2UgY29udGludW91cyB2YXJpYWJsZXMuIFRoZXJlZm9yZSwgd2UgZmFpbCB0byByZWplY3QgdGhlIG51bGwgaHlwb3RoZXNpcyBpbiBib3RoIGNhc2VzLCBtZWFuaW5nIHRoZXJlIGlzIG5vIHNpZ25pZmljYW50IGFzc29jaWF0aW9uIGJldHdlZW4gYWxjb2hvbCBpbnZvbHZlbWVudCBpbiBjcmFzaGVzIGFuZCB0aGVzZSBjb250aW51b3VzIHByZWRpY3RvcnMuDQoNCiMjIGxvZ2lzdGljIHJlZ3Jlc3Npb24gYXNzdW1wdGlvbnMNCg0KIyMgbG9naXN0aWMgcmVncmVzc2lvbiByZXN1bHRzDQoNCiMgRGlzY3Vzc2lvbg0K</div>
 
 
 </div>

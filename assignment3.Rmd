@@ -28,6 +28,15 @@ library(gmodels)
 library(ggcorrplot)
 library(ROCR)
 library(plotROC)
+
+library(aod)
+library(ggplot2)
+library(rms)
+library(gmodels)
+library(nnet)
+library(DAAG)
+library(ROCR)
+library(xtable)
 ```
 
 ```{r, include=FALSE}
@@ -72,7 +81,324 @@ All those violations of the OLS regression assumptions affect the validity of th
 
 ## Exploratory Analysis
 
+Before running logistic regression, we need to conduct exploratory analyses to better understand the relationship between the dependent variable (which is the drinking driver indicator `DRINKING_D` in the report) and potential predictors. These analyses help identify statistically significant associations and guide the selection of appropriate variables for the regression model. 
+
+For binary predictors, we examine the distribution across groups using **cross-tabulations** and assess significance using the **Chi-Square test**. For continuous predictors, we compare group **means and standard deviations** and use the **independent samples t-test** to determine whether the differences are statistically meaningful. 
+
+### Binary Predictors
+
+We first examine the relationship between the dependent variable and binary predictors through cross-tabulations. **Cross-tabulations allow us to explore the distribution of observations across the different dependent variables.** 
+
+To formally test whether a statistically significant association exists between the dependent variable and each binary predictor, we use the **Chi-Square test**. The Chi-Square statistic is derived from the sum of squared differences between observed and expected frequencies, normalized by the expected frequencies. The degrees of freedom (df) for the test can be calculated as \((R-1)(C-1)\), where \(R\) is the number of rows and \(C\) is the number of columns in the cross-tabulation table, representing the number of categories in each of the two variables being analyzed. The hypotheses are as follows: 
+
+- **Null Hypothesis (H0):**  The proportions of different category of predictos are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of different category of predictos differ between drinking and non-drinking drivers.
+
+If the p-value is below 0.05, we reject the null hypothesis and conclude that there is a statistically significant association between the two categorical variables.
+
+### Continuous Predictors
+
+For continuous predictors, we first examine the continuous predictors by comparing their **means and standard deviations** for the two groups of the dependent variable  (in this report, those with and without drinking drivers in crashes). This allows us to compare the distributions of the predictor across groups.
+
+Then, we use the **independent samples t-test** to assess whether the observed differences in means are statistically significant. The hypotheses for the t-test are:
+
+- **Null Hypothesis (H0):** The average values of the continuous predictor are the same for crashes that involve drinking drivers and those that do not.
+
+- **Alternative Hypothesis (Ha):** The average values of the continuous predictor are different for crashes that involve drinking drivers and those that do not.
+
+If the p-value of t-test is below 0.05, we reject the null hypothesis in favor of the alternative, indicating that the mean of the continuous predictor significantly differs between the two groups.
+
+By performing these exploratory analyses, we can identify which predictors exhibit significant associations with the dependent variable and should be considered in the logistic regression model.
 
 # Results
+
+## Exploratory Analyses
+
+### Dependent Variable
+
+In the report, the dependent variable is `DRINKING_D`, indicating whether a crash involved a drinking driver. Of the 53,260 recorded crashes in Philadelphia from 2008 to 2012, we excluded 9,896 crashes that occurred in non-residential block groups, where median household income and vacancy rates are 0. This leaves 43,364 crashes that took place in Philadelphia’s residential block groups.
+
+```{r}
+DRINKING_D.tab <- table(crashes$DRINKING_D)
+prop.table(DRINKING_D.tab)
+DRINKING_D.tab
+```
+
+We see that there are 2,485 (5.73%) crashes that involved a drunk driver, and 40,879 (94.27%) crashes that did not involve a drunk driver. That is, the probability of a crash involving drinking drivers can be calculated using the formula:
+
+$$
+\text{Probability(Drinking Drivers)} = \frac{\text{Number of Crashes Involving Drinking Driver}}{\text{Total Number of Crashes}} = \frac{2485}{43364} \approx 0.0573
+$$
+
+The odds of a crash involving drinking drivers can be calculated using the formula:
+
+$$
+\text{Odds(Drinking Drivers)} = \frac{\text{Number of Crashes Involving Drinking Driver}}{\text{Number of Crashes Not Involving Drinking Drivers}} = \frac{2485}{40879} \approx 0.0608
+$$
+
+This suggests that while the overall probability of a crash being alcohol-related is relatively low, the odds still warrant attention, especially given the serious consequences often associated with such incidents.
+
+
+### Independent Variables - Binary
+
+Then, let's take a look at binary independent variables `FATAL_OR_M`,` OVERTURNED`, `CELL_PHONE`, `SPEEDING`, `AGGRESSIVE`, `DRIVER1617`, and `DRIVER65PLUS`.
+
+```{r}
+# Load required library
+library(gmodels)
+
+# Ensure binary variables are factors
+crashes$DRINKING_D <- as.factor(crashes$DRINKING_D)
+binary_vars <- c("FATAL_OR_M", "OVERTURNED", "CELL_PHONE", "SPEEDING", 
+                 "AGGRESSIVE", "DRIVER1617", "DRIVER65PLUS")
+crashes[binary_vars] <- lapply(crashes[binary_vars], as.factor)
+
+# Define function to extract Chi-Square test results and percentages
+extract_chi2_results <- function(dep_var, pred_var) {
+  crosstab <- table(dep_var, pred_var)
+  
+  # Total counts per group
+  total_no_alcohol <- sum(crosstab[1, ])
+  total_alcohol <- sum(crosstab[2, ])
+  
+  # Count of "1"s
+  no_alcohol_1_count <- crosstab[1, "1"]
+  alcohol_1_count <- crosstab[2, "1"]
+  
+  # Percentages
+  percent_no_alcohol <- 100 * crosstab[1, "1"] / total_no_alcohol
+  percent_alcohol <- 100 * crosstab[2, "1"] / total_alcohol
+  
+  # Chi-square test without Yates correction
+  chi2_test <- suppressWarnings(chisq.test(crosstab, correct = FALSE))
+  
+  # Output list
+  return(list(
+    crosstab = crosstab,
+    no_alcohol_1_count = no_alcohol_1_count,
+    alcohol_1_count = alcohol_1_count,
+    percent_no_alcohol = percent_no_alcohol,
+    percent_alcohol = percent_alcohol,
+    total_n = sum(crosstab[, "1"]),
+    chi2_stat = chi2_test$statistic,
+    df = chi2_test$parameter,
+    p_value = chi2_test$p.value
+  ))
+}
+
+# Initialize results table
+all_results <- data.frame(
+  Variable = binary_vars,
+  Description = c(
+    "Crash resulted in fatality or major injury",
+    "Crash involved an overturned vehicle",
+    "Driver was using cell phone",
+    "Crash involved speeding car",
+    "Crash involved aggressive driving",
+    "Crash involved at least one driver aged 16–17",
+    "Crash involved at least one driver aged 65+"
+  ),
+  No_Alcohol_N = NA,
+  No_Alcohol_Percent = NA,
+  Alcohol_N = NA,
+  Alcohol_Percent = NA,
+  Total_N = NA,
+  Chi2_Stat = NA,
+  DF = NA,
+  P_Value = NA
+)
+
+# Loop through variables and populate result table
+for (i in seq_along(binary_vars)) {
+  var <- binary_vars[i]
+  result <- extract_chi2_results(crashes$DRINKING_D, crashes[[var]])
+  
+  all_results$No_Alcohol_N[i] <- result$no_alcohol_1_count
+  all_results$No_Alcohol_Percent[i] <- round(result$percent_no_alcohol, 1)
+  all_results$Alcohol_N[i] <- result$alcohol_1_count
+  all_results$Alcohol_Percent[i] <- round(result$percent_alcohol, 1)
+  all_results$Total_N[i] <- result$total_n
+  all_results$Chi2_Stat[i] <- round(result$chi2_stat, 2)
+  all_results$DF[i] <- result$df
+  all_results$P_Value[i] <- format.pval(result$p_value, digits = 3, eps = 0.05)
+}
+
+```
+
+```{r}
+## print
+
+library(knitr)
+library(kableExtra)
+
+kable(all_results[, c("Variable", "Description", 
+                      "No_Alcohol_N", "No_Alcohol_Percent", 
+                      "Alcohol_N", "Alcohol_Percent", 
+                      "Total_N", "Chi2_Stat", "DF", "P_Value")], 
+      format = "html", 
+      col.names = c("Variable", "Description", 
+                    "N", "%", "N", "%", "N", 
+                    "Chi2 Stat", "DF", "χ² p-value"),
+      caption = "Cross-Tabulation and Chi-Square Test Results") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = F, 
+                position = "center") %>%
+  column_spec(1, bold = TRUE, width = "10em") %>%
+  column_spec(2, bold = FALSE, width = "40em") %>%
+  column_spec(3:7, width = "7em") %>%
+  column_spec(8:10, width = "8em") %>%
+  add_header_above(c(" " = 2, 
+                     "No Alcohol Involved (DRINKING_D = 0)" = 2,
+                     "Alcohol Involved (DRINKING_D = 1)" = 2,
+                     "Total" = 1,
+                     "Chi-Square Test Results" = 3)) 
+
+```
+
+We use the **Chi-Square test**, which is a statistical method used to evaluate whether there is a significant association between two categorical variables. This test compares the observed frequencies in each category with the expected frequencies under the assumption that the variables are independent. As usual, a high value of the $\chi^2$ statistic, and a p-value lower than 0.05, suggest that there is evidence to reject the null hypothesis in favor of the alternative, indicating an association between drunk driving and crash outcomes.
+
+Here, we apply the Chi-Square test to explore the association between drinking driver indicators in crashes `DRINKING_D` and various binary crash-related characteristics. The hypotheses and results are summarized below:
+
+**Crash resulted in fatality or major injury** `FATAL_OR_M`
+
+- **Null Hypothesis (H0):** The proportions of crashes resulting in fatality or major injury are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes resulting in fatality or major injury differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 7.6% resulted in fatality or major injury, compared to only 2.9% of crashes involving non-drinking drivers. The P-value of Chi-Square statistic is less than 0.05, indicating a significant association between drinking drivers and crash severity. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+**Crash involved an overturned vehicle** `OVERTURNED`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving overturned vehicles are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving overturned vehicles differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 4.4% involved an overturned vehicle, compared to only 1.5% of crashes involving non-drinking drivers. The P-value of Chi-Square statistic is less than 0.05,, indicating a significant association between drinking drivers and overturned crashes. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+**Driver was using cell phone** `CELL_PHONE`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving cell phone use are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving cell phone use differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 1.0% involved cell phone use, compared to 1.1% of crashes involving non-drinking drivers. The P-value of Chi-Square statistic is more than 0.05,, suggesting no significant association with drinking driver indicators. Therefore, we fail to reject the null hypothesis.
+
+**Crash involved speeding car** `SPEEDING`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving speeding cars are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving speeding cars differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 10.5% involved speeding, compared to only 3.1% of crashes involving non-drinking drivers. The P-value of Chi-Square statistic is less than 0.05,, indicating a strong link between drinking drivers and speeding. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+**Crash involved aggressive driving** `AGGRESSIVE`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving aggressive driving are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving aggressive driving differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 63.1% involved aggressive driving, compared to 54.7% of crashes involving non-drinking drivers. The P-value of Chi-Square statistic is less than 0.05,indicating he association is statistically significant. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+**Crash involved at least one driver aged 16–17** `DRIVER1617`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving at least one driver aged 16-17 are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving at least one driver aged 16-17 differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 0.5% involved at least one teenage driver (16–17 years old), compared to 1.6% of crashes involving non-drinking drivers. The Chi-Square statistic is **19.71** (p < 0.001), indicating a significant association. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+**Crash involved at least one driver aged 65 or older** `DRIVER65PLUS`
+
+- **Null Hypothesis (H0):** The proportions of crashes involving at least one driver aged 65 or older are the same for drinking and non-drinking drivers.
+
+- **Alternative Hypothesis (Ha):** The proportions of crashes involving at least one driver aged 65 or older differ between drinking and non-drinking drivers.
+
+Among crashes involving drinking drivers, 5.2% involved at least one driver aged 65 or older, compared to 10.4% of crashes involving non-drinking drivers. The Chi-Square statistic is **79.99** (p < 0.001), indicating a statistically significant relationship between alcohol involvement and older drivers.. Therefore, we reject the null hypothesis in favor of the alternative hypothesis.
+
+The Chi-Square test results indicate **significant associations** between drinking driver indicators and most crash-related variables, with the exception of cell phone use, where no significant relationship was found. For all other variables, we reject the null hypothesis in favor of the alternative hypothesis, confirming the presence of significant associations.
+
+### Independent Variables - Continuous
+
+Then, we examine the relationship between our binary dependent variable `DRINKING_D` and continuous predictors `PCTBACHMOR` and `MEDHHINC`.
+
+```{r}
+
+continuous_vars <- c("PCTBACHMOR", "MEDHHINC")
+
+results_list <- list()
+
+for (var in continuous_vars) {
+  means <- tapply(crashes[[var]], crashes$DRINKING_D, mean, na.rm = TRUE)
+  sds   <- tapply(crashes[[var]], crashes$DRINKING_D, sd, na.rm = TRUE)
+  t_test_result <- t.test(crashes[[var]] ~ crashes$DRINKING_D)
+
+  description <- ifelse(var == "PCTBACHMOR", "Percentage of population with bachelor's degree or more", 
+                        ifelse(var == "MEDHHINC", "Median household income", NA))
+  
+  results_list[[var]] <- data.frame(
+    Variable         = var,
+    Description      = description,
+    Mean_No_Alcohol  = means["0"],
+    SD_No_Alcohol    = sds["0"],
+    Mean_Alcohol     = means["1"],
+    SD_Alcohol       = sds["1"],
+    T_Statistic      = t_test_result$statistic,
+    DF               = t_test_result$parameter,
+    P_Value          = t_test_result$p.value
+  )
+}
+
+continuous_summary <- do.call(rbind, results_list)
+row.names(continuous_summary) <- NULL
+
+# print
+kable(continuous_summary[, c("Variable", "Description", "Mean_No_Alcohol", "SD_No_Alcohol", 
+                             "Mean_Alcohol", "SD_Alcohol", 
+                             "T_Statistic", "DF", "P_Value")], 
+      format = "html", 
+      col.names = c("Variable", "Description", 
+                    "Mean", "SD", 
+                    "Mean", "SD", 
+                    "t Stat", "DF", "p-value"),
+      caption = "Summary of Continuous Variables") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
+                full_width = F, 
+                position = "center") %>%
+  column_spec(1, bold = TRUE, width = "10em") %>%
+  column_spec(2, bold = FALSE, width = "40em") %>%
+  column_spec(3:4, width = "7em") %>%
+  column_spec(5:6, width = "7em") %>%
+  column_spec(7:9, width = "8em") %>%
+  add_header_above(c(" " = 2, 
+                     "No Alcohol Involved (DRINKING_D = 0)" = 2,
+                     "Alcohol Involved (DRINKING_D = 1)" = 2,
+                     "T-Test Results" = 3))
+
+```
+
+We first look at the **means** and **standard deviations  (SD) ** of these variables for crashes that involve alcohol and those that do not. Then, we use the independent samples t-test to assess whether there is a significant association between the dependent variable and each of the continuous predictors. The t-test results include the t-statistic, degrees of freedom, and p-value.
+
+**Percentage of Population with Bachelor's Degree or More** `PCTBACHMOR`
+
+- **Null Hypothesis (H0):** The average values of the variable PCTBACHMOR are the same for crashes that involve drunk drivers and crashes that don't.
+
+- **Alternative Hypothesis (Ha):** The average values of the variable PCTBACHMOR are different for crashes that involve drunk drivers and crashes that don't.
+
+Since the p-value is **much greater than the 0.05** significance threshold (p = 0.914), we fail to reject the null hypothesis. This suggests there is no significant difference in the mean percentage of the population with a bachelor's degree or more between crashes involving drinking and non-drinking drivers.
+
+**Median Household Income** `MEDHHINC`
+
+- **Null Hypothesis (H0):** The average values of the variable MEDHHINC are the same for crashes that involve drunk drivers and crashes that don't..
+
+- **Alternative Hypothesis (Ha):** The average values of the variable MEDHHINC are different for crashes that involve drunk drivers and crashes that don't.
+
+Since the p-value is greater than 0.05 (p = 0.160), we fail to reject the null hypothesis. There is no significant difference in median household income between crashes involving drinking and non-drinking drivers.
+
+For both continuous predictors, `PCTBACHMOR` and `MEDHHINC`, the p-values from the t-tests are above the 0.05 significance threshold, indicating that there is no statistically significant difference between the two groups (drinking and non-drinking drivers) for these continuous variables. Therefore, we fail to reject the null hypothesis in both cases, meaning there is no significant association between alcohol involvement in crashes and these continuous predictors.
+
+## logistic regression assumptions
+
+## logistic regression results
 
 # Discussion
