@@ -87,15 +87,15 @@ All those violations of the OLS regression assumptions affect the validity of th
 
 ## Exploratory Analysis
 
-Before running logistic regression, we need to conduct exploratory analyses to better understand the relationship between the dependent variable (which is the drinking driver indicator `DRINKING_D` in the report) and potential predictors. These analyses help identify statistically significant associations and guide the selection of appropriate variables for the regression model. 
+Before running logistic regression, we need to conduct exploratory analyses to better understand the relationship between the dependent variable (which is the drinking driver indicator `DRINKING_D` in the report) and potential predictors. These analyses help identify statistically significant associations and guide the selection of appropriate variables for the regression model.
 
-For binary predictors, we examine the distribution across groups using **cross-tabulations** and assess significance using the **Chi-Square test**. For continuous predictors, we compare group **means and standard deviations** and use the **independent samples t-test** to determine whether the differences are statistically meaningful. 
+For binary predictors, we examine the distribution across groups using **cross-tabulations** and assess significance using the **Chi-Square test**. For continuous predictors, we compare group **means and standard deviations** and use the **independent samples t-test** to determine whether the differences are statistically meaningful.
 
 ### Binary Predictors
 
-We first examine the relationship between the dependent variable and binary predictors through cross-tabulations. **Cross-tabulations allow us to explore the distribution of observations across the different dependent variables.** 
+We first examine the relationship between the dependent variable and binary predictors through cross-tabulations. **Cross-tabulations allow us to explore the distribution of observations across the different dependent variables.**
 
-To formally test whether a statistically significant association exists between the dependent variable and each binary predictor, we use the **Chi-Square test**. The Chi-Square statistic is derived from the sum of squared differences between observed and expected frequencies, normalized by the expected frequencies. The degrees of freedom (df) for the test can be calculated as \((R-1)(C-1)\), where \(R\) is the number of rows and \(C\) is the number of columns in the cross-tabulation table, representing the number of categories in each of the two variables being analyzed. The hypotheses are as follows: 
+To formally test whether a statistically significant association exists between the dependent variable and each binary predictor, we use the **Chi-Square test**. The Chi-Square statistic is derived from the sum of squared differences between observed and expected frequencies, normalized by the expected frequencies. The degrees of freedom (df) for the test can be calculated as \((R-1)(C-1)\), where \(R\) is the number of rows and \(C\) is the number of columns in the cross-tabulation table, representing the number of categories in each of the two variables being analyzed. The hypotheses are as follows:
 
 - **Null Hypothesis (H0):**  The proportions of different category of predictos are the same for drinking and non-drinking drivers.
 
@@ -156,29 +156,29 @@ library(gmodels)
 
 # Ensure binary variables are factors
 crashes$DRINKING_D <- as.factor(crashes$DRINKING_D)
-binary_vars <- c("FATAL_OR_M", "OVERTURNED", "CELL_PHONE", "SPEEDING", 
+binary_vars <- c("FATAL_OR_M", "OVERTURNED", "CELL_PHONE", "SPEEDING",
                  "AGGRESSIVE", "DRIVER1617", "DRIVER65PLUS")
 crashes[binary_vars] <- lapply(crashes[binary_vars], as.factor)
 
 # Define function to extract Chi-Square test results and percentages
 extract_chi2_results <- function(dep_var, pred_var) {
   crosstab <- table(dep_var, pred_var)
-  
+
   # Total counts per group
   total_no_alcohol <- sum(crosstab[1, ])
   total_alcohol <- sum(crosstab[2, ])
-  
+
   # Count of "1"s
   no_alcohol_1_count <- crosstab[1, "1"]
   alcohol_1_count <- crosstab[2, "1"]
-  
+
   # Percentages
   percent_no_alcohol <- 100 * crosstab[1, "1"] / total_no_alcohol
   percent_alcohol <- 100 * crosstab[2, "1"] / total_alcohol
-  
+
   # Chi-square test without Yates correction
   chi2_test <- suppressWarnings(chisq.test(crosstab, correct = FALSE))
-  
+
   # Output list
   return(list(
     crosstab = crosstab,
@@ -219,7 +219,7 @@ all_results <- data.frame(
 for (i in seq_along(binary_vars)) {
   var <- binary_vars[i]
   result <- extract_chi2_results(crashes$DRINKING_D, crashes[[var]])
-  
+
   all_results$No_Alcohol_N[i] <- result$no_alcohol_1_count
   all_results$No_Alcohol_Percent[i] <- round(result$percent_no_alcohol, 1)
   all_results$Alcohol_N[i] <- result$alcohol_1_count
@@ -238,27 +238,27 @@ for (i in seq_along(binary_vars)) {
 library(knitr)
 library(kableExtra)
 
-kable(all_results[, c("Variable", "Description", 
-                      "No_Alcohol_N", "No_Alcohol_Percent", 
-                      "Alcohol_N", "Alcohol_Percent", 
-                      "Total_N", "Chi2_Stat", "DF", "P_Value")], 
-      format = "html", 
-      col.names = c("Variable", "Description", 
-                    "N", "%", "N", "%", "N", 
+kable(all_results[, c("Variable", "Description",
+                      "No_Alcohol_N", "No_Alcohol_Percent",
+                      "Alcohol_N", "Alcohol_Percent",
+                      "Total_N", "Chi2_Stat", "DF", "P_Value")],
+      format = "html",
+      col.names = c("Variable", "Description",
+                    "N", "%", "N", "%", "N",
                     "Chi2 Stat", "DF", "χ² p-value"),
       caption = "Cross-Tabulation and Chi-Square Test Results") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
-                full_width = F, 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = F,
                 position = "center") %>%
   column_spec(1, bold = TRUE, width = "10em") %>%
   column_spec(2, bold = FALSE, width = "40em") %>%
   column_spec(3:7, width = "7em") %>%
   column_spec(8:10, width = "8em") %>%
-  add_header_above(c(" " = 2, 
+  add_header_above(c(" " = 2,
                      "No Alcohol Involved (DRINKING_D = 0)" = 2,
                      "Alcohol Involved (DRINKING_D = 1)" = 2,
                      "Total" = 1,
-                     "Chi-Square Test Results" = 3)) 
+                     "Chi-Square Test Results" = 3))
 
 ```
 
@@ -339,9 +339,9 @@ for (var in continuous_vars) {
   sds   <- tapply(crashes[[var]], crashes$DRINKING_D, sd, na.rm = TRUE)
   t_test_result <- t.test(crashes[[var]] ~ crashes$DRINKING_D)
 
-  description <- ifelse(var == "PCTBACHMOR", "Percentage of population with bachelor's degree or more", 
+  description <- ifelse(var == "PCTBACHMOR", "Percentage of population with bachelor's degree or more",
                         ifelse(var == "MEDHHINC", "Median household income", NA))
-  
+
   results_list[[var]] <- data.frame(
     Variable         = var,
     Description      = description,
@@ -359,24 +359,24 @@ continuous_summary <- do.call(rbind, results_list)
 row.names(continuous_summary) <- NULL
 
 # print
-kable(continuous_summary[, c("Variable", "Description", "Mean_No_Alcohol", "SD_No_Alcohol", 
-                             "Mean_Alcohol", "SD_Alcohol", 
-                             "T_Statistic", "DF", "P_Value")], 
-      format = "html", 
-      col.names = c("Variable", "Description", 
-                    "Mean", "SD", 
-                    "Mean", "SD", 
+kable(continuous_summary[, c("Variable", "Description", "Mean_No_Alcohol", "SD_No_Alcohol",
+                             "Mean_Alcohol", "SD_Alcohol",
+                             "T_Statistic", "DF", "P_Value")],
+      format = "html",
+      col.names = c("Variable", "Description",
+                    "Mean", "SD",
+                    "Mean", "SD",
                     "t Stat", "DF", "p-value"),
       caption = "Summary of Continuous Variables") %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), 
-                full_width = F, 
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"),
+                full_width = F,
                 position = "center") %>%
   column_spec(1, bold = TRUE, width = "10em") %>%
   column_spec(2, bold = FALSE, width = "40em") %>%
   column_spec(3:4, width = "7em") %>%
   column_spec(5:6, width = "7em") %>%
   column_spec(7:9, width = "8em") %>%
-  add_header_above(c(" " = 2, 
+  add_header_above(c(" " = 2,
                      "No Alcohol Involved (DRINKING_D = 0)" = 2,
                      "Alcohol Involved (DRINKING_D = 1)" = 2,
                      "T-Test Results" = 3))
