@@ -83,6 +83,124 @@ All those violations of the OLS regression assumptions affect the validity of th
 
 ## Logistic Regression Model Assessment
 
+## Residuals in Logistic Regression
+
+To assess the quality of model fit in logistic regression, we consider several statistical metrics and tools.
+
+## R-squared
+
+An **R-squared** value can be computed for logistic regression, but it differs from the R-squared used in ordinary least squares (OLS) regression. In OLS, R-squared represents the proportion of variance in the outcome explained by the model, and a higher R-squared generally indicates better model fit. However, this interpretation **does not apply** to logistic regression. This is because logistic regression models a binary outcome and uses **maximum likelihood estimation (MLE)** rather than minimizing the sum of squared residuals. In another word, there is no direct concept of variance in the dependent variable to be explained in the same way. Therefore, R-squared values in logistic regression are not directly comparable to OLS R² and are **rarely used as primary indicators of model fit**. Notably, the `glm()` function in **R** does **not report an R-squared value by default**, which reflects its limited interpretability. If an R-squared value is desired, one option is to use the `rms` package in R, which provides a version of **Nagelkerke R²**. While this adjusted R-squared can offer some insight into model fit, it should be interpreted with caution, and the only safe conclusion is **higher values are better**.
+
+### Akaike Information Criterion (AIC)
+
+The **Akaike Information Criterion (AIC)** is commonly used for model comparison in logistic regression. According to [Wikipedia](https://en.wikipedia.org/wiki/Akaike_information_criterion), AIC is an estimator of prediction error and the **relative quality of statistical models** for a given dataset. It provides a principled approach to comparing candidate models by balancing **goodness of fit** with **model complexity**, penalizing models with more parameters to reduce the risk of overfitting. AIC is defined as:
+
+$$
+\text{AIC} = 2k - 2\ln(L)
+$$
+
+where:  
+- *k* is the number of estimated parameters in the model  
+- *L* is the maximum value of the likelihood function for the model
+
+A **lower AIC** value suggests a **better model**, one that balances accuracy with simplicity.
+
+### Specificity & Sensitivity
+
+In logistic regression, residuals are defined as the difference between the observed and predicted values, similar to linear regression. However, in logistic regression, the predicted values are probabilities, not direct values of the dependent variable. Specifically, the predicted value \( \hat{y}_i \) is the estimated probability that \( Y = 1 \) for the \( i \)-th observation.
+
+The residuals in logistic regression are defined as:
+
+$$
+\epsilon_i = y_i - \hat{y}_i
+$$
+
+Where:
+
+- \( y_i \) is the actual observed value (either 0 or 1).
+
+- \( \hat{y}_i \) is the predicted probability that \( Y = 1 \) for the \( i \)-th observation.
+
+The predicted probabilities \( \hat{y}_i \) are calculated using the logistic function:
+
+$$
+\hat{y}_i = \frac{e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}{1 + e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}
+$$
+
+Where:
+
+- \( \hat{y}_i \) is the estimated probability that \( Y = 1 \) for the \( i \)-th observation.
+
+- \( \hat{\beta}_0, \hat{\beta}_1, \dots, \hat{\beta}_p \) are the estimated coefficients obtained from the logistic regression model.
+
+- \( x_{1i}, x_{2i}, \dots, x_{pi} \) are the values of the predictor variables for observation \( i \).
+
+To assess predictive performance, we use metrics such as **sensitivity**, **specificity** and **misclassification rate**. These metrics are derived from the predicted values of \( \hat{y} \), which in logistic regression represent the estimated probability that \( Y = 1 \).
+
+- **Sensitivity** (also called recall or the true positive rate) measures the proportion of actual positives correctly predicted and is complementary to the false negative rate.:
+
+$$
+\text{Sensitivity} = \frac{TP}{TP + FN}
+$$
+
+- Higher sensitivity is better, especially when failing to detect true positives is costly.
+
+- **Specificity** (the true negative rate) measures the proportion of actual negatives correctly predicted and is complementary to the false positive rate:
+
+$$
+\text{Specificity} = \frac{TN}{TN + FP}
+$$
+
+- Higher specificity is better when false positives are particularly problematic.
+
+- The **correct classification rate** is the proportion of all predictions that are correct:
+
+$$
+\text{Correct Classification Rate} = \frac{TP + TN}{\text{Total}}
+$$
+
+- A higher correct classification rate indicates better model performance.
+
+- The **misclassification rate** is the proportion of all predictions that are incorrect:
+
+$$
+\text{Misclassification Rate} = 1 - \text{Correct Classification Rate} 
+$$
+
+- Lower values of the misclassification rate indicate better performance.
+
+These values depend on the cut-off threshold used to convert predicted probabilities into binary classifications. While 0.5 is a common default, different cut-offs may yield better trade-offs between sensitivity and specificity, particularly in imbalanced datasets. Trying multiple thresholds helps identify the best balance for a given context.
+
+
+#### **Receiver Operating Characteristic (ROC) Curve**
+
+One way to plot sensitivity (true positive rate) against \( 1 - \) specificity (false positive rate) is through the Receiver Operating Characteristic (ROC) curve. The ROC curve is a graphical representation that helps assess the predictive quality of the model by comparing sensitivity and specificity across various thresholds. ROC Curves will be to the left of the 45 degree line.
+
+A best cut-off value may be determined by optimizing the balance between sensitivity and specificity. There are a couple of ways to identify the **optimal probability cut-off** based on the ROC curve:
+
+- **Youden Index**: The cut-off where \( \text{Sensitivity} + \text{Specificity} - 1 \) is maximized.
+
+- **Minimum Distance**: A cut-off where the ROC curve has the minimum distance from the upper-left corner of the graph, where both specificity and sensitivity are equal to 1.  In this case, we are minimizing the distance from the upper left corner, where \(y = \text{Sensitivity} = \text{True Positive Rate} = \text{tpr} = 1\) and \(x = 1 - \text{Specificity} = \text{False Positive Rate} = \text{fpr} = 0\). The formula used to calculate the distance is:
+
+$$
+d = (x - 0)^2 + (y - 1)^2
+$$
+
+For this report, we will be using the **minimum distance** approach to determine the optimal cut-off value.
+
+
+#### **Area Under the ROC Curve (AUC)**
+
+Area Under the ROC Curve (AUC) is a measure of the prediction accuracy of the model, which means how well the model predicts \( Y = 1 \) responses as 1’s and \( Y = 0 \) responses as 0’s. Higher AUC values indicate that we can find a cut-off value for which both sensitivity and specificity are relatively high. The possible values for AUC range between **0.5** (Area under the 45-degree line, means no discrimination between classes, equivalent to random guessing) and **1** (Area of the entire box means perfect prediction). The AUC value may be interpreted as the probability that the \( \hat{y} \) for observation 1 (where \( y = 1 \)) will be higher than the \( \hat{y} \) for observation 2 (where \( y = 0 \)). A rough guide for classifying the accuracy based on AUC is:
+
+- **AUC = 0.90–1.00**: Excellent
+- **AUC = 0.80–0.89**: Good
+- **AUC = 0.70–0.79**: Fair
+- **AUC = 0.60–0.69**: Poor
+- **AUC < 0.60**: Failing
+
+We can generally consider an AUC value **greater than 0.7 as acceptable**.
+
 ## Logistic Regression Assumptions
 
 ## Exploratory Analysis
