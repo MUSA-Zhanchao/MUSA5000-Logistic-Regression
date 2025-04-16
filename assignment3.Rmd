@@ -47,7 +47,7 @@ crashes <- read.csv("data/Logistic_Regression_Data.csv")
 
 Motor vehicle crashes remain one of the leading causes of injury and death in urban environments across the United States. Among these incidents, crashes involving alcohol-impaired drivers are particularly concerning because they account for a disproportionately high number of fatalities and severe injuries. According to national statistics, nearly one-third of all traffic-related deaths involve a driver under the influence of alcohol, underscoring the continued public health risks associated with impaired driving. In Philadelphia, where traffic density, roadway design, and neighborhood characteristics vary widely, it is especially important to understand the factors that contribute to alcohol-related crashes. By identifying these factors, city officials and public health professionals can design more targeted interventions to reduce the prevalence and severity of such incidents. This analysis uses crash data from Philadelphia covering the years 2008 to 2012 to investigate how various characteristics of crashes and neighborhoods are associated with the presence of a drinking driver.
 
-This study explores the factors associated with DUI in traffic crashes in Philadelphia by examining a set of binary and continuous predictors. These include indicators of crash severity (Crashes resulted in fatality or major injury), risky driving behaviors (Crashes involved an overturned vehicle, speeding car and aggressive driving or Driver was using cell phone), driver demographics (Crashes involved at least one driver who was 16 or 17 years old and Crashes involved at least one driver who was at least 65 years old), and neighborhood-level socioeconomic characteristics (percentage with bachelor’s degree or more, Median household income). Among them, crashes resulting in fatalities or major injuries are more likely to involve alcohol, as intoxicated drivers have slower reaction times and poorer judgment. Behaviors such as speeding, aggressive driving, and overturning are more common in high-risk situations often associated with alcohol impairment. Distractions like cellphone use may not be directly linked to alcohol use, but they reflect a broader disregard for road safety that might overlap with impaired driving tendencies. Age also plays a role as younger drivers (ages 16–17) are less experienced and may be more prone to risk-taking, while older drivers (65+) typically show lower alcohol involvement because of health concerns or lifestyle differences. Beyond driver behavior, neighborhood-level characteristics such as education and income may also influence the likelihood of alcohol-involved crashes. Areas with higher percentages of college-educated residents may have greater awareness of drunk driving risks. Wealthier neighborhoods might also exhibit lower rates of alcohol-related crashes as they have access to greater availability of resources and support systems. 
+This study explores the factors associated with DUI in traffic crashes in Philadelphia by examining a set of binary and continuous predictors. These include indicators of crash severity (Crashes resulted in fatality or major injury), risky driving behaviors (Crashes involved an overturned vehicle, speeding car and aggressive driving or Driver was using cell phone), driver demographics (Crashes involved at least one driver who was 16 or 17 years old and Crashes involved at least one driver who was at least 65 years old), and neighborhood-level socioeconomic characteristics (percentage with bachelor’s degree or more, Median household income). Among them, crashes resulting in fatalities or major injuries are more likely to involve alcohol, as intoxicated drivers have slower reaction times and poorer judgment. Behaviors such as speeding, aggressive driving, and overturning are more common in high-risk situations often associated with alcohol impairment. Distractions like cellphone use may not be directly linked to alcohol use, but they reflect a broader disregard for road safety that might overlap with impaired driving tendencies. Age also plays a role as younger drivers (ages 16–17) are less experienced and may be more prone to risk-taking, while older drivers (65+) typically show lower alcohol involvement because of health concerns or lifestyle differences. Beyond driver behavior, neighborhood-level characteristics such as education and income may also influence the likelihood of alcohol-involved crashes. Areas with higher percentages of college-educated residents may have greater awareness of drunk driving risks. Wealthier neighborhoods might also exhibit lower rates of alcohol-related crashes as they have access to greater availability of resources and support systems.
 
 In this report, we use R to perform logistic regression analysis, examining the statistical relationships between the selected predictors and the likelihood that a crash involved a drinking driver across Philadelphia.
 
@@ -94,7 +94,7 @@ This mean the vent is 1.5 times more likely to happen than not happening. In log
 $$
 \log \left( \frac{p}{1 - p} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
 $$
-In our specific case, it can be written as: 
+In our specific case, it can be written as:
 $$
 \log \left( \frac{P(\text{DRINKING_D} = 1)}{1 - P(\text{DRINKING_D} = 1)} \right) = \beta_0 + \beta_1 \cdot \text{FATAL_OR_M} + \beta_2 \cdot \text{OVERTURNED} + \dots + \beta_9 \cdot \text{MEDHHINC}
 $$
@@ -159,8 +159,8 @@ $$
 \text{AIC} = 2k - 2\ln(L)
 $$
 
-where:  
-- *k* is the number of estimated parameters in the model  
+where:
+- *k* is the number of estimated parameters in the model
 - *L* is the maximum value of the likelihood function for the model
 
 A **lower AIC** value suggests a **better model**, one that balances accuracy with simplicity.
@@ -224,7 +224,7 @@ $$
 - The **misclassification rate** is the proportion of all predictions that are incorrect:
 
 $$
-\text{Misclassification Rate} = 1 - \text{Correct Classification Rate} 
+\text{Misclassification Rate} = 1 - \text{Correct Classification Rate}
 $$
 
 - Lower values of the misclassification rate indicate better performance.
