@@ -141,7 +141,7 @@ Overall, the logistic function is the type of translator function we are ;ooking
 
 ## Logistic Regression Hypothesis
 
-For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable. 
+For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable.
 
 The **Null Hypothesis (\( H_0 \)), which states that the predictor has no effect on the outcome variable**. In other words, the coefficient of the predictor is equal to zero (\( \beta_i = 0 \)), writtern as:
 
