@@ -47,7 +47,7 @@ crashes <- read.csv("data/Logistic_Regression_Data.csv")
 
 Motor vehicle crashes remain one of the leading causes of injury and death in urban environments across the United States. Among these incidents, crashes involving alcohol-impaired drivers are particularly concerning because they account for a disproportionately high number of fatalities and severe injuries. According to national statistics, nearly one-third of all traffic-related deaths involve a driver under the influence of alcohol, underscoring the continued public health risks associated with impaired driving. In Philadelphia, where traffic density, roadway design, and neighborhood characteristics vary widely, it is especially important to understand the factors that contribute to alcohol-related crashes. By identifying these factors, city officials and public health professionals can design more targeted interventions to reduce the prevalence and severity of such incidents. This analysis uses crash data from Philadelphia covering the years 2008 to 2012 to investigate how various characteristics of crashes and neighborhoods are associated with the presence of a drinking driver.
 
-This study explores the factors associated with drinking drivers in traffic crashes in Philadelphia by examining a set of binary and continuous predictors. These include indicators of crash severity (Crash resulted in fatality or major injury), risky driving behaviors (Crash involved an overturned vehicle, Driver was using cell phone, Crash involved speeding car, Crash involved aggressive driving), driver demographics (Crash involved at least one driver who was 16 or 17 years old, Crash involved at least one driver who was at least 65 years old), and neighborhood-level socioeconomic characteristics (percentage with bachelor’s degree or more, Median household income). Among them, crashes resulting in fatalities or major injuries are more likely to involve alcohol, as intoxicated drivers have slower reaction times and poorer judgment, increasing crash severity. Behaviors such as speeding, aggressive driving, and overturning are more common in high-risk situations often associated with alcohol impairment. Distractions like cellphone use may not be directly linked to alcohol use, but they reflect a broader disregard for road safety that might overlap with impaired driving tendencies. Age also plays a role: younger drivers (ages 16–17) are less experienced and may be more prone to risk-taking, while older drivers (65+) typically show lower alcohol involvement due to health concerns or lifestyle differences. Beyond driver behavior, neighborhood-level characteristics such as education and income may also influence the likelihood of alcohol-involved crashes. Areas with higher percentages of college-educated residents may have greater awareness of drunk driving risks and access to safer alternatives like ridesharing. Wealthier neighborhoods might exhibit lower rates of alcohol-related crashes due to greater availability of resources and support systems. Together, these factors provide a multifaceted lens for understanding the determinants of alcohol-related traffic incidents.
+This study explores the factors associated with DUI in traffic crashes in Philadelphia by examining a set of binary and continuous predictors. These include indicators of crash severity (Crashes resulted in fatality or major injury), risky driving behaviors (Crashes involved an overturned vehicle, speeding car and aggressive driving or Driver was using cell phone), driver demographics (Crashes involved at least one driver who was 16 or 17 years old and Crashes involved at least one driver who was at least 65 years old), and neighborhood-level socioeconomic characteristics (percentage with bachelor’s degree or more, Median household income). Among them, crashes resulting in fatalities or major injuries are more likely to involve alcohol, as intoxicated drivers have slower reaction times and poorer judgment. Behaviors such as speeding, aggressive driving, and overturning are more common in high-risk situations often associated with alcohol impairment. Distractions like cellphone use may not be directly linked to alcohol use, but they reflect a broader disregard for road safety that might overlap with impaired driving tendencies. Age also plays a role as younger drivers (ages 16–17) are less experienced and may be more prone to risk-taking, while older drivers (65+) typically show lower alcohol involvement because of health concerns or lifestyle differences. Beyond driver behavior, neighborhood-level characteristics such as education and income may also influence the likelihood of alcohol-involved crashes. Areas with higher percentages of college-educated residents may have greater awareness of drunk driving risks. Wealthier neighborhoods might also exhibit lower rates of alcohol-related crashes as they have access to greater availability of resources and support systems. 
 
 In this report, we use R to perform logistic regression analysis, examining the statistical relationships between the selected predictors and the likelihood that a crash involved a drinking driver across Philadelphia.
 
@@ -70,7 +70,7 @@ where:
 
 Using OLS regression to model binary outcomes can lead to several issues:
 
-- First, In the OLS regression, \(\beta_1\) is interpreted as the amount of the dependent variable \(y\) changes when \(x_1\) increases by one unit, holding all other variables constant. However, when the dependent variable is binary, a one unit increase in \(x_1\) results in \(\beta_1\) increase in \(y\) no longer makes sense, as \(y\) can change only from 0 to 1 or from 1 to 0. This leads to some interpretation issues.
+- First, in the OLS regression, \(\beta_1\) is interpreted as the amount of the dependent variable \(y\) changes when \(x_1\) increases by one unit, holding all other variables constant. However, when the dependent variable is binary, a one unit increase in \(x_1\) results in \(\beta_1\) increase in \(y\) no longer makes sense, as \(y\) can change only from 0 to 1 or from 1 to 0. This leads to some interpretation issues.
 - Second, OLS regression assumes a linear relationship between the predictors and the dependent variable. With a binary dependent variable, this assumption no longer holds, as binary outcomes are inherently no linear.
 - Third, OLS also assumes normally distributed residuals. However, with binary outcome, the residuals are not normally distributed. Instead, they follow a binomial distribution.
 - Finally, OLS regression has another assumption of heteroscedasticity, which means that the variance of the residuals is constant across all levels of the independent variables. However, with binary outcomes, this assumption is violated, as the variance of the residuals is not constant. It varies with the predicted probability, leading to heteroscedasticity.
@@ -78,6 +78,66 @@ Using OLS regression to model binary outcomes can lead to several issues:
 All those violations of the OLS regression assumptions affect the validity of the model and the interpretation of the coefficients. In this way, we need to use a different approach to model binary outcomes.
 
 ## Logistic Regression Concepts
+
+Logistic regression provide a way for us to get around above-mentioned issues. Instead of predicting the the dependent variable \(y\) directly, logistic regression predicts the probability of the dependent variable \(y\) being equal to 1. This can be explained through the concept of odds. The **odds** of an event is a ratio that compares the likelihood of the event happening to the likelihood of it not happening. The odds of an event can be expressed as:
+
+$$
+\text{Odds} = \frac{\text{Probability of Event Happening}}{\text{Probability of Event Not Happening}} = \frac{p}{1 - p}
+$$
+Where \(p\) is the probability of the event happening. The odds can take any value from 0 to infinity, where 0 means the event will never happen and infinity means the event will always happen. For example, if there is a 60% of an event happening (probability\(p\)=0.6), the odds of the event would be:
+
+$$
+\text{Odds} = \frac{0.6}{1 - 0.6} = \frac{0.6}{0.4} = 1.5
+$$
+This mean the vent is 1.5 times more likely to happen than not happening. In logistic regression, instead of predicting the probability of the event directly, we predict the **log odds** (also known as **logit**) of the outcome. The logit model with multiple predictors is expressed as:
+
+$$
+\log \left( \frac{p}{1 - p} \right) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_k x_k
+$$
+In our specific case, it can be written as: 
+$$
+\log \left( \frac{P(\text{DRINKING_D} = 1)}{1 - P(\text{DRINKING_D} = 1)} \right) = \beta_0 + \beta_1 \cdot \text{FATAL_OR_M} + \beta_2 \cdot \text{OVERTURNED} + \dots + \beta_9 \cdot \text{MEDHHINC}
+$$
+
+Where:
+
+- \(P(\text{DRINKING_D} = 1)\) is the probability of a crash involving a drinking driver.
+-  \( \log \left( \frac{P(\text{DRINKING_D} = 1)}{1 - P(\text{DRINKING_D} = 1)} \right) \) is the log-odds of drinking involvement.
+- \( \beta_0 \) is the intercept of the model, representing the log-odds of drinking and drive involved when all predictors are zero
+- \( \beta_1, \beta_2, \dots, \beta_k \) are the coefficients of each predictor variable, indicating the change in log-odds for a one unit increase in each predictors, holdings other constant.
+
+The predictor variable in the model is defined as follows:
+
+- `FATAL_OR_M`: whether the crash involved a fatality
+- `OVERTURNED`: whether the crash involved an overturned vehicle
+- `CELL_PHONE`: whether the driver was using a cell phone
+- `SPEEDING`: whether the crash involved speeding
+- `AGGRESSIVE`: whether the crash involved aggressive driving
+- `DRIVER1617`: whether the crash involved at least one driver aged 16 or 17
+- `DRIVER65PLUS`: whether the crash involved at least one driver aged 65 or older
+- `PCTBACHMOR`: percentage of the population with a bachelor's degree or more
+- `MEDHHINC`: median household income in the area
+
+Logistic Function: The logistic function is the **inverse of the logit function**, as shown in following graph. It takes the linear predictor (log-odds) and transforms it into a probability value between 0 and 1 [0,1]. This transformation is ideal for modeling binary outcomes as it transforms the linear combination of predictors into a probability value.
+```{r}
+knitr::include_graphics("logisticvslogit.png")
+```
+The logistic function is defined as:
+
+$$
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1  + \beta_2 x_2 +  \dots + \beta_k x_k)}}
+$$
+In this specific case, it can be written as:
+
+$$
+P(\text{DRINKING_D} = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 \cdot \text{FATAL_OR_M} + \dots + \beta_9 \cdot \text{MEDHHINC})}}
+$$
+As shown in the graph above, the logistic function has an **S-shaped curve** with the following properties:
+
+- **Outcome between 0 and 1 [0,1]**: As the linear predictor approaches negative infinity, the probability approaches 0. As the linear predictor approaches positive infinity, the probability approaches 1. This means that the predicted probabilities will always be between 0 and 1, making it suitable for binary outcomes.
+- **Symmetric around 0.5**: The logistic function is symmetric around the point where the linear predictor equals 0.5. This means that when the linear predictor is equal to 0, the predicted probability is 0.5, indicating an equal chance of the event occurring or not occurring. This midpoint is useful in binary classification as it helps interpret probabilities around 50%.
+
+Overall, the logistic function is the type of translator function we are ;ooking for. It works well for binary dependent variable because it restricts the predicted probabilities to the range of 0 and 1, which is essential for binary outcomes. Each coefficient \(\beta_i\) in the logistic regression model represents the effect of a predictor on the log-odds of the outcome, which can be transformed to interpret effects on probability.
 
 ## Logistic Regression Hypothesis
 
@@ -87,7 +147,7 @@ All those violations of the OLS regression assumptions affect the validity of th
 
 To assess the quality of model fit in logistic regression, we consider several statistical metrics and tools.
 
-## R-squared
+### R-squared
 
 An **R-squared** value can be computed for logistic regression, but it differs from the R-squared used in ordinary least squares (OLS) regression. In OLS, R-squared represents the proportion of variance in the outcome explained by the model, and a higher R-squared generally indicates better model fit. However, this interpretation **does not apply** to logistic regression. This is because logistic regression models a binary outcome and uses **maximum likelihood estimation (MLE)** rather than minimizing the sum of squared residuals. In another word, there is no direct concept of variance in the dependent variable to be explained in the same way. Therefore, R-squared values in logistic regression are not directly comparable to OLS R² and are **rarely used as primary indicators of model fit**. Notably, the `glm()` function in **R** does **not report an R-squared value by default**, which reflects its limited interpretability. If an R-squared value is desired, one option is to use the `rms` package in R, which provides a version of **Nagelkerke R²**. While this adjusted R-squared can offer some insight into model fit, it should be interpreted with caution, and the only safe conclusion is **higher values are better**.
 
