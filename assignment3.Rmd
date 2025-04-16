@@ -141,6 +141,37 @@ Overall, the logistic function is the type of translator function we are ;ooking
 
 ## Logistic Regression Hypothesis
 
+For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable.
+
+The **Null Hypothesis (\( H_0 \)), which states that the predictor has no effect on the outcome variable**. In other words, the coefficient of the predictor is equal to zero (\( \beta_i = 0 \)), writtern as:
+
+$$
+H_0 : \beta_i = 0
+$$
+The **Alternative Hypothesis (\( H_a \)), which states that the predictor has an effect on the outcome variable**. In other words, the coefficient of the predictor is not equal to zero (\( \beta_i \neq 0 \)), writtern as:
+
+$$
+H_0 : \beta_i = 0
+$$
+
+To test these hypotheses, we use the **Wald test**, which is a statistical test used to assess the significance of individual coefficients(\( \beta_i \)) in a regression model. The Wald test statistic is calculated as:
+
+$$
+W_i = \frac{\hat{\beta}_i}{\sigma(\hat{\beta}_i)}
+$$
+
+Where:
+
+- \( \hat{\beta}_i \) is the estimated coefficient for predictor \( i \)
+- \( \sigma(\hat{\beta}_i) \) is the standard error of the estimated coefficient
+
+Under the null hypothesis, the Wald test statistic follows a standard normal distribution \( N(0, 1) \). Large values of the Wald test statistic indicate that \( \beta_i \) is significantly different from zero, suggesting that the predictor has a significant effect on the outcome variable. We can safely reject the null hypothesis.
+
+However, rather than looking at the estimated beta coefficients (\( \beta \)), most statisticans still prefer to looks at **odds Ratios**, which is calculated by exponentiating the estimated coefficients (\( \beta \)). For example, if the odds ratio for a predictor is 1.6, it means that the odds of the outcome are 1.6 times higher for a one-unit increase in the predictor, holding all other predictors constant. This makes it easier to interpret the effect of each predictor on the outcome variable.
+
+In addition, an odds ratio greater than1 indicates that the predictor is associated with an increase likelihood of the outcome, while an odds ratio less than 1 indicates that the predictor is associated with a decrease likelihood of the outcome. An odds ratio equal to 1 indicates no effect.
+
+
 ## Logistic Regression Model Assessment
 
 ## Residuals in Logistic Regression
