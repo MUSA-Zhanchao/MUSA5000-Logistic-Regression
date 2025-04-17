@@ -141,7 +141,7 @@ Overall, the logistic function is the type of translator function we are ;ooking
 
 ## Logistic Regression Hypothesis
 
-For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable. 
+For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable.
 
 The **Null Hypothesis (\( H_0 \)), which states that the predictor has no effect on the outcome variable**. In other words, the coefficient of the predictor is equal to zero (\( \beta_i = 0 \)), writtern as:
 
@@ -193,9 +193,9 @@ where:
 
 A **lower AIC** value suggests a **better fit**, as they balance the trade-off between model complexity and goodness of fit.
 
-### Specificity & Sensitivity
+### Specificity, Sensitivity and Misclassification Rate
 
-In logistic regression, residuals are defined as the difference between the observed and predicted values, similar to linear regression. However, in logistic regression, the predicted values are probabilities, not direct values of the dependent variable. Specifically, the predicted value \( \hat{y}_i \) is the estimated probability that \( Y = 1 \) for the \( i \)-th observation.
+In logistic regression, residuals (Errors) are defined as the difference between the observed and predicted values, similar to linear regression. However, in logistic regression, the predicted values are probabilities, not direct values of the dependent variable. Specifically, the predicted value \( \hat{y}_i \) is the estimated probability that \( Y = 1 \) for the \( i \)-th observation.
 
 The residuals in logistic regression are defined as:
 
@@ -209,10 +209,10 @@ Where:
 
 - \( \hat{y}_i \) is the predicted probability that \( Y = 1 \) for the \( i \)-th observation.
 
-The predicted probabilities \( \hat{y}_i \) are calculated using the logistic function:
+The predicted probabilities $\text{P(y=1)}$ =\( \hat{y}_i \) are calculated using the logistic function:
 
 $$
-\hat{y}_i = \frac{e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}{1 + e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}
+\text{P(y=1)}=\hat{y}_i = \frac{e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}{1 + e^{(\hat{\beta}_0 + \hat{\beta}_1 x_{1i} + \hat{\beta}_2 x_{2i} + \cdots + \hat{\beta}_p x_{pi})}}= \frac{1}{1 + \exp(-\hat{\beta}_0 - \hat{\beta}_1x_1 - \dots - \hat{\beta}_kx_k)}
 $$
 
 Where:
@@ -223,9 +223,11 @@ Where:
 
 - \( x_{1i}, x_{2i}, \dots, x_{pi} \) are the values of the predictor variables for observation \( i \).
 
-To assess predictive performance, we use metrics such as **sensitivity**, **specificity** and **misclassification rate**. These metrics are derived from the predicted values of \( \hat{y} \), which in logistic regression represent the estimated probability that \( Y = 1 \).
+After obtaining the predicted probabilities, we apply a threshold (cut-off) value to classify predictions into binary outcomes (e.g. \( \hat{y}\)>0.5 as y= 1, and \( \hat{y}\)<0.5 as y=0). The choice of cut-off value can significantly impact the model's performance. The default cut-off value is 0.5, but it can be adjusted based on the specific context and goals of the analysis.
 
-- **Sensitivity** (also called recall or the true positive rate) measures the proportion of actual positives correctly predicted and is complementary to the false negative rate.:
+To assess predictive performance and different cut-off values, we use metrics such as **sensitivity**, **specificity** and **misclassification rate**. These metrics are derived from the predicted values of \( \hat{y} \), which in logistic regression represent the estimated probability that \( Y = 1 \).
+
+- **Sensitivity** (also called recall or the true positive rate) measures the proportion of actual positives correctly predicted and is complementary to the false negative rate:
 
 $$
 \text{Sensitivity} = \frac{TP}{TP + FN}
@@ -255,20 +257,24 @@ $$
 \text{Misclassification Rate} = 1 - \text{Correct Classification Rate}
 $$
 
-- Lower values of the misclassification rate indicate better performance.
+- Lower values of the misclassification rate indicate better performance, as it reflects the lower proportion of incorrect predictions.
 
-These values depend on the cut-off threshold used to convert predicted probabilities into binary classifications. While 0.5 is a common default, different cut-offs may yield better trade-offs between sensitivity and specificity, particularly in imbalanced datasets. Trying multiple thresholds helps identify the best balance for a given context.
+Using different cut-off values allows for a trade-off between sensitivity and specificity. For example, a lower cut-off value may increase sensitivity but decrease specificity, while a higher cut-off value may increase specificity but decrease sensitivity. For example, if the cutoff value = 0.7, the model will classify a crash as involving a drinking driver only if the predicted probability is greater than 0.7. This may lead to fewer false positives (higher specificity) but more false negatives (lower sensitivity). Conversely, if the cut-off value = 0.3, the model will classify a crash as involving a drinking driver if the predicted probability is greater than 0.3, leading to more false positives (lower specificity) but fewer false negatives (higher sensitivity). The choice of cut-off value should be based on the specific context and goals of the analysis, considering the consequences of false positives and false negatives.
 
+### **Receiver Operating Characteristic (ROC) Curve**
 
-#### **Receiver Operating Characteristic (ROC) Curve**
-
-One way to plot sensitivity (true positive rate) against \( 1 - \) specificity (false positive rate) is through the Receiver Operating Characteristic (ROC) curve. The ROC curve is a graphical representation that helps assess the predictive quality of the model by comparing sensitivity and specificity across various thresholds. ROC Curves will be to the left of the 45 degree line.
+One way to plot sensitivity (true positive rate) against \( 1 - \) specificity (false positive rate) is through the **Receiver Operating Characteristic (ROC) curve**. The ROC curve is a graphical representation that helps assess the predictive quality of the model by comparing sensitivity and specificity across various thresholds. ROC Curves will be to the left of the 45 degree line.
 
 A best cut-off value may be determined by optimizing the balance between sensitivity and specificity. There are a couple of ways to identify the **optimal probability cut-off** based on the ROC curve:
 
-- **Youden Index**: The cut-off where \( \text{Sensitivity} + \text{Specificity} - 1 \) is maximized.
+- We can calculate the **Youden Index**, which defined as:
 
-- **Minimum Distance**: A cut-off where the ROC curve has the minimum distance from the upper-left corner of the graph, where both specificity and sensitivity are equal to 1.  In this case, we are minimizing the distance from the upper left corner, where \(y = \text{Sensitivity} = \text{True Positive Rate} = \text{tpr} = 1\) and \(x = 1 - \text{Specificity} = \text{False Positive Rate} = \text{fpr} = 0\). The formula used to calculate the distance is:
+$$
+J = \text{Sensitivity} + \text{Specificity} - 1
+$$
+The best cut-off can be found  where the Youden Index is maximized.
+
+- The second approaches involve calculate the **Minimum Distance**. A cut-off where the ROC curve has the minimum distance from the upper-left corner of the graph, where both specificity and sensitivity are equal to 1.  In this case, we are minimizing the distance from the upper left corner, where \(y = \text{Sensitivity} = \text{True Positive Rate} = \text{tpr} = 1\) and \(x = 1 - \text{Specificity} = \text{False Positive Rate} = \text{fpr} = 0\). The formula used to calculate the distance is:
 
 $$
 d = (x - 0)^2 + (y - 1)^2
@@ -277,9 +283,9 @@ $$
 For this report, we will be using the **minimum distance** approach to determine the optimal cut-off value.
 
 
-#### **Area Under the ROC Curve (AUC)**
+### **Area Under the ROC Curve (AUC)**
 
-Area Under the ROC Curve (AUC) is a measure of the prediction accuracy of the model, which means how well the model predicts \( Y = 1 \) responses as 1’s and \( Y = 0 \) responses as 0’s. Higher AUC values indicate that we can find a cut-off value for which both sensitivity and specificity are relatively high. The possible values for AUC range between **0.5** (Area under the 45-degree line, means no discrimination between classes, equivalent to random guessing) and **1** (Area of the entire box means perfect prediction). The AUC value may be interpreted as the probability that the \( \hat{y} \) for observation 1 (where \( y = 1 \)) will be higher than the \( \hat{y} \) for observation 2 (where \( y = 0 \)). A rough guide for classifying the accuracy based on AUC is:
+Based on the ROC curve, we can calculate the **Area Under Curve (AUC)** to quantify the model's performance. Area Under the ROC Curve (AUC)  means how well the model predicts \( Y = 1 \) responses as 1’s and \( Y = 0 \) responses as 0’s. Higher AUC values indicate that we can find a cut-off value for which both sensitivity and specificity are relatively high. The possible values for AUC range between **0.5** (Area under the 45-degree line, means no discrimination between classes, equivalent to random guessing) and **1** (Area of the entire box means perfect prediction). The AUC value may be interpreted as the probability that the \( \hat{y} \) for observation 1 (where \( y = 1 \)) will be higher than the \( \hat{y} \) for observation 2 (where \( y = 0 \)). A rough guide for classifying the accuracy based on AUC is:
 
 - **AUC = 0.90–1.00**: Excellent
 - **AUC = 0.80–0.89**: Good
