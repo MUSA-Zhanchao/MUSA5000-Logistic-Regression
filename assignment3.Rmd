@@ -141,7 +141,7 @@ Overall, the logistic function is the type of translator function we are ;ooking
 
 ## Logistic Regression Hypothesis
 
-For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable.
+For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable. 
 
 The **Null Hypothesis (\( H_0 \)), which states that the predictor has no effect on the outcome variable**. In other words, the coefficient of the predictor is equal to zero (\( \beta_i = 0 \)), writtern as:
 
@@ -174,27 +174,24 @@ In addition, an odds ratio greater than1 indicates that the predictor is associa
 
 ## Logistic Regression Model Assessment
 
-## Residuals in Logistic Regression
-
-To assess the quality of model fit in logistic regression, we consider several statistical metrics and tools.
-
 ### R-squared
 
-An **R-squared** value can be computed for logistic regression, but it differs from the R-squared used in ordinary least squares (OLS) regression. In OLS, R-squared represents the proportion of variance in the outcome explained by the model, and a higher R-squared generally indicates better model fit. However, this interpretation **does not apply** to logistic regression. This is because logistic regression models a binary outcome and uses **maximum likelihood estimation (MLE)** rather than minimizing the sum of squared residuals. In another word, there is no direct concept of variance in the dependent variable to be explained in the same way. Therefore, R-squared values in logistic regression are not directly comparable to OLS R² and are **rarely used as primary indicators of model fit**. Notably, the `glm()` function in **R** does **not report an R-squared value by default**, which reflects its limited interpretability. If an R-squared value is desired, one option is to use the `rms` package in R, which provides a version of **Nagelkerke R²**. While this adjusted R-squared can offer some insight into model fit, it should be interpreted with caution, and the only safe conclusion is **higher values are better**.
+In logistic regression, there are several ways to access the quality of the model fit. An **R-squared** value can be computed for logistic regression, but it differs from the R-squared used in ordinary least squares (OLS) regression. In OLS, R-squared represents the proportion of variance in the outcome explained by the model, and a higher R-squared generally indicates better model fit. However, this interpretation **does not apply** to logistic regression. This is because logistic regression models a binary outcome and uses **maximum likelihood estimation (MLE)** rather than minimizing the sum of squared residuals. In another word, there is no direct concept of variance in the dependent variable to be explained in the same way. Therefore, R-squared values in logistic regression are not directly comparable to OLS R² and are **rarely used as primary indicators of model fit**. Notably, the `glm()` function in **R** does **not report an R-squared value by default**, which reflects its limited interpretability. If an R-squared value is desired, one option is to use the `rms` package in R, which provides a version of **Nagelkerke R²**. While this adjusted R-squared can offer some insight into model fit, it should be interpreted with caution, and the only safe conclusion is **higher values are better**.
 
 ### Akaike Information Criterion (AIC)
 
-The **Akaike Information Criterion (AIC)** is commonly used for model comparison in logistic regression. According to [Wikipedia](https://en.wikipedia.org/wiki/Akaike_information_criterion), AIC is an estimator of prediction error and the **relative quality of statistical models** for a given dataset. It provides a principled approach to comparing candidate models by balancing **goodness of fit** with **model complexity**, penalizing models with more parameters to reduce the risk of overfitting. AIC is defined as:
+The **Akaike Information Criterion (AIC)** is commonly used for model comparison in logistic regression as an alternative of R-squared. AIC is an estimator of prediction error and the **relative quality of statistical models** for a given dataset. It provides a principled approach to comparing candidate models by balancing **goodness of fit** with **model complexity**, penalizing models with more parameters to reduce the risk of overfitting. AIC is defined as:
 
 $$
-\text{AIC} = 2k - 2\ln(L)
+\text{AIC} = 2k - 2\ln(\hat{L})
 $$
 
 where:
-- *k* is the number of estimated parameters in the model
-- *L* is the maximum value of the likelihood function for the model
 
-A **lower AIC** value suggests a **better model**, one that balances accuracy with simplicity.
+- *\( k \)* is the number of estimated parameters in the model
+- *\( \hat{L} \) * is the maximum value of the likelihood function for the model
+
+A **lower AIC** value suggests a **better fit**, as they balance the trade-off between model complexity and goodness of fit.
 
 ### Specificity & Sensitivity
 
