@@ -141,7 +141,7 @@ Overall, the logistic function is the type of translator function we are ;ooking
 
 ## Logistic Regression Hypothesis
 
-For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable.
+For each predictors in our logistic regression model, we test whether the predictor has a statistically significant effect on the outcome variable. 
 
 The **Null Hypothesis (\( H_0 \)), which states that the predictor has no effect on the outcome variable**. In other words, the coefficient of the predictor is equal to zero (\( \beta_i = 0 \)), writtern as:
 
@@ -296,6 +296,17 @@ Based on the ROC curve, we can calculate the **Area Under Curve (AUC)** to quant
 We can generally consider an AUC value **greater than 0.7 as acceptable**.
 
 ## Logistic Regression Assumptions
+
+Logistic regression shares some assumptions with OLS regression, but it also has unique assumptions that accommodate the binary nature of the dependent variable. The key assumptions of logistic regression include:
+
+- First, just like OLS regression, logistic regression assumes that **observations are independent** of each other. This means that each data point should not influence another, without spatial and time autocorrelation.
+- Second, similar to OLS regression, logistic regression assumes that there is **no severe multicollinearity** among the independent variables. Multicollinearity occurs when two or more independent variables are highly correlated, making it difficult to determine the individual effect of each variable on the dependent variable and instability in the coefficient estimates.
+- Third, unless the OLS regression, logistic regression **does not** assumes **homoscedasticity**. In OLS regression, the residuals should have constant variance across all levels of the independent variables (homoscedasticity). However, in logistic regression, this assumption is not required because the model uses a different error structure (binomial distribution). 
+- Forth, in OLS, we assume that the residuals are **normally distributed**. In logistic regression, however, **the errors do not need to follow a normal distribution** because the model uses a binomial distribution instead of normal distribution. This is one of the key differences between OLS and logistic regression.
+-  Lastly, logistic regression **does not** assume a **linear relationship** between the independent variables and the dependent variable. 
+- Instead, dependent variable for logistic regression must be **binary** (0 or 1). Logistic regression assumes that the log odds of the dependent variable being 1 is linearly related to the each independent variable. **This is a unique assumptions of logistic regression that does not apply to OLS regression**.
+- In addition, logistic regression requires a sample size of at least 50, as logistic regression uses Maximum Likelihood Estimation (MLE) to estimate the coefficients. 
+
 
 ## Exploratory Analysis
 
