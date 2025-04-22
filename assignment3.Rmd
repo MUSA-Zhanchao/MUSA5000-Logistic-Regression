@@ -352,7 +352,7 @@ In the report, the dependent variable is `DRINKING_D`, indicating whether a cras
 depetab <- prop.table(table(crashes$DRINKING_D))
 deptab <- as.data.frame(depetab)
 colnames(deptab) <- c("DRINKING_D", "Proportion")
-deptab %>% 
+deptab %>%
   kable("html", escape = FALSE, align = "cc") %>%
   kable_styling(full_width = FALSE, position = "center", fixed_thead = TRUE)
 ```
@@ -629,7 +629,7 @@ Since the p-value is greater than 0.05 (p = 0.160), we fail to reject the null h
 For both continuous predictors, `PCTBACHMOR` and `MEDHHINC`, the p-values from the t-tests are above the 0.05 significance threshold, indicating that there is no statistically significant difference between the two groups (drinking and non-drinking drivers) for these continuous variables. Therefore, we fail to reject the null hypothesis in both cases, meaning there is no significant association between alcohol involvement in crashes and these continuous predictors.
 
 ## logistic regression assumptions
-Based on the correlation matrix and exploitative analysis result, most logistic regression assumptions are met. First, The binary dependent variable , DRINKING_D, fulfills the requirement for a binary variable (0 and 1). Second, the independence of observation is satisfied, as each crash is considered an independent event. Third, the assumption of no perfect multicollinearity is also met, as the correlation matrix shows low pairwise pearson correlations between predictors, with only the highest correlation being 0.48 between **percent with bachelor's degree and median household income**. These correlation coefficients are all below 0.5, indicating that there is no perfect multicollinearity among the predictors. These correlation are not high enough to cause instability in the model. Additionally, the large sample size of over 43,300 observations ensure the model meet the assumption for sufficient sample size. 
+Based on the correlation matrix and exploitative analysis result, most logistic regression assumptions are met. First, The binary dependent variable , DRINKING_D, fulfills the requirement for a binary variable (0 and 1). Second, the independence of observation is satisfied, as each crash is considered an independent event. Third, the assumption of no perfect multicollinearity is also met, as the correlation matrix shows low pairwise pearson correlations between predictors, with only the highest correlation being 0.48 between **percent with bachelor's degree and median household income**. These correlation coefficients are all below 0.5, indicating that there is no perfect multicollinearity among the predictors. These correlation are not high enough to cause instability in the model. Additionally, the large sample size of over 43,300 observations ensure the model meet the assumption for sufficient sample size.
 
 However, there is a potential violation in the assumption of linearity of log odds for continuous predictors, as high p-values in t-test suggest weal or non-linear relationships between **percent with bachelor's degree and median household income** and the dependent variable.
 
@@ -663,16 +663,16 @@ custom_label <- c(
 rownames(cor_matrix) <- names(custom_label)
 colnames(cor_matrix) <- names(custom_label)
 
-ggcorrplot(cor_matrix, 
-           type = "lower", 
-           lab = TRUE, 
-           lab_size = 3, 
+ggcorrplot(cor_matrix,
+           type = "lower",
+           lab = TRUE,
+           lab_size = 3,
            colors = c("#001219", "white", "#9b2226")) +
   labs(title = "Correlation Matrix for all Predictor Variables") +
   theme(plot.subtitle = element_text(size = 9, face = "italic"),
-        plot.title = element_text(size = 12, face = "bold"), 
+        plot.title = element_text(size = 12, face = "bold"),
         axis.text.x = element_text(size = 7),
-        axis.text.y = element_text(size = 7), 
+        axis.text.y = element_text(size = 7),
         axis.title = element_text(size = 8))
 
 ```
@@ -689,7 +689,7 @@ logitcoeff <- logitoutput$coefficients
 or_ci <- exp(cbind(OR = coef(logit), confint(logit)))
 logitcoeff[, "Pr(>|z|)"] <- round(logitcoeff[, "Pr(>|z|)"], 4)
 final_output <- cbind(logitcoeff, or_ci)
-final_output %>% 
+final_output %>%
 kable("html", escape = FALSE, align = "cccccc") %>%
 kable_styling(
     bootstrap_options = c("striped", "hover", "condensed"),
@@ -751,7 +751,7 @@ results %>%
 
 ```{r roc measures, message=FALSE, warning=FALSE, include=FALSE}
 
-fit <- logit$fitted   
+fit <- logit$fitted
 a <- cbind(crashes$DRINKING_D, fit)
 colnames(a) <- c("labels", "predictions")
 roc <- as.data.frame(a)
@@ -766,10 +766,10 @@ ggplot(roc, aes(d = labels, m = predictions)) +
   geom_abline(slope = 1, intercept = 0, size = 1, color = "#c44536") +
   theme(
     plot.subtitle = element_text(size = 9, face = "italic"),
-    plot.title = element_text(size = 12, face = "bold"), 
+    plot.title = element_text(size = 12, face = "bold"),
     axis.text.x = element_text(size = 8),
-    axis.text.y = element_text(size = 8), 
-    axis.title = element_text(size = 9), 
+    axis.text.y = element_text(size = 8),
+    axis.title = element_text(size = 9),
     panel.background = element_blank(),
     panel.border = element_rect(colour = "grey", fill = NA, linewidth = 0.8)
   )
@@ -785,7 +785,7 @@ opt.cut <- function(perf, pred) {
     ind <- which(d == min(d))
     c(sensitivity = y[[ind]], specificity = 1 - x[[ind]], cutoff = p[[ind]])
   }, perf@x.values, perf@y.values, pred@cutoffs)
-  
+
   cut.df <- data.frame(
     sensitivity = cut.ind[1, ],
     specificity = cut.ind[2, ],
@@ -796,7 +796,7 @@ opt.cut <- function(perf, pred) {
 }
 
 optimal_cutoffs_df <- opt.cut(roc.perf, pred)
-optimal_cutoffs_df %>% 
+optimal_cutoffs_df %>%
   kable("html", escape = FALSE, align = "ccc") %>%
   kable_styling(
     bootstrap_options = c("striped", "hover", "condensed"),
@@ -822,7 +822,7 @@ logitcoeff2 <- logitoutput2$coefficients
 or_ci2 <- exp(cbind(OR = coef(logit2), confint(logit2)))
 logitcoeff2[, "Pr(>|z|)"] <- round(logitcoeff2[, "Pr(>|z|)"], 4)
 final_output2 <- cbind(logitcoeff2, or_ci2)
-final_output2 %>% 
+final_output2 %>%
   kable("html", escape = FALSE, align = "cccccc") %>%
   kable_styling(
     bootstrap_options = c("striped", "hover", "condensed"),
@@ -834,7 +834,7 @@ final_output2 %>%
 aic_table <- AIC(logit, logit2)
 colnames(aic_table) <- c("Degree of Freedom", "AIC")
 rownames(aic_table) <- c("Model 1: All Predictors", "Model 2: Binary Predictors Only")
-aic_table %>% 
+aic_table %>%
   kable("html", escape = FALSE, align = "cc") %>%
   kable_styling(
     bootstrap_options = c("striped", "hover", "condensed"),

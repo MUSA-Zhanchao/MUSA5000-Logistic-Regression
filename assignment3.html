@@ -1664,34 +1664,34 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ef2929; } 
-code span.an { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.at { color: #204a87; } 
-code span.bn { color: #0000cf; } 
-code span.cf { color: #204a87; font-weight: bold; } 
-code span.ch { color: #4e9a06; } 
-code span.cn { color: #8f5902; } 
-code span.co { color: #8f5902; font-style: italic; } 
-code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.do { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.dt { color: #204a87; } 
-code span.dv { color: #0000cf; } 
-code span.er { color: #a40000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #0000cf; } 
-code span.fu { color: #204a87; font-weight: bold; } 
-code span.im { } 
-code span.in { color: #8f5902; font-weight: bold; font-style: italic; } 
-code span.kw { color: #204a87; font-weight: bold; } 
-code span.op { color: #ce5c00; font-weight: bold; } 
-code span.ot { color: #8f5902; } 
-code span.pp { color: #8f5902; font-style: italic; } 
-code span.sc { color: #ce5c00; font-weight: bold; } 
-code span.ss { color: #4e9a06; } 
-code span.st { color: #4e9a06; } 
-code span.va { color: #000000; } 
-code span.vs { color: #4e9a06; } 
-code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } 
+code span.al { color: #ef2929; }
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; }
+code span.at { color: #204a87; }
+code span.bn { color: #0000cf; }
+code span.cf { color: #204a87; font-weight: bold; }
+code span.ch { color: #4e9a06; }
+code span.cn { color: #8f5902; }
+code span.co { color: #8f5902; font-style: italic; }
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; }
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; }
+code span.dt { color: #204a87; }
+code span.dv { color: #0000cf; }
+code span.er { color: #a40000; font-weight: bold; }
+code span.ex { }
+code span.fl { color: #0000cf; }
+code span.fu { color: #204a87; font-weight: bold; }
+code span.im { }
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; }
+code span.kw { color: #204a87; font-weight: bold; }
+code span.op { color: #ce5c00; font-weight: bold; }
+code span.ot { color: #8f5902; }
+code span.pp { color: #8f5902; font-style: italic; }
+code span.sc { color: #ce5c00; font-weight: bold; }
+code span.ss { color: #4e9a06; }
+code span.st { color: #4e9a06; }
+code span.va { color: #000000; }
+code span.vs { color: #4e9a06; }
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; }
 .sourceCode .row {
 width: 100%;
 }
@@ -3394,33 +3394,33 @@ absence of any problematic multicollinearity in this analysis.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>logit <span class="ot">&lt;-</span> <span class="fu">glm</span>(DRINKING_D <span class="sc">~</span> FATAL_OR_M <span class="sc">+</span> OVERTURNED <span class="sc">+</span> CELL_PHONE <span class="sc">+</span> SPEEDING <span class="sc">+</span> AGGRESSIVE <span class="sc">+</span> DRIVER1617 <span class="sc">+</span> DRIVER65PLUS <span class="sc">+</span> PCTBACHMOR <span class="sc">+</span> MEDHHINC, <span class="at">data =</span> crashes, <span class="at">family =</span> binomial)</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">summary</span>(logit)</span></code></pre></div>
-<pre><code>## 
+<pre><code>##
 ## Call:
-## glm(formula = DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + 
-##     SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS + PCTBACHMOR + 
+## glm(formula = DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE +
+##     SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS + PCTBACHMOR +
 ##     MEDHHINC, family = binomial, data = crashes)
-## 
+##
 ## Coefficients:
-##                 Estimate  Std. Error z value             Pr(&gt;|z|)    
+##                 Estimate  Std. Error z value             Pr(&gt;|z|)
 ## (Intercept)  -2.73250662  0.04587566  -59.56 &lt; 0.0000000000000002 ***
 ## FATAL_OR_M    0.81401380  0.08380692    9.71 &lt; 0.0000000000000002 ***
 ## OVERTURNED    0.92892138  0.10916632    8.51 &lt; 0.0000000000000002 ***
-## CELL_PHONE    0.02955008  0.19777782    0.15                0.881    
+## CELL_PHONE    0.02955008  0.19777782    0.15                0.881
 ## SPEEDING      1.53897567  0.08054589   19.11 &lt; 0.0000000000000002 ***
 ## AGGRESSIVE   -0.59691595  0.04777924  -12.49 &lt; 0.0000000000000002 ***
 ## DRIVER1617   -1.28029596  0.29314717   -4.37  0.00001257244712793 ***
 ## DRIVER65PLUS -0.77466464  0.09585832   -8.08  0.00000000000000064 ***
-## PCTBACHMOR   -0.00037063  0.00129639   -0.29                0.775    
-## MEDHHINC      0.00000280  0.00000134    2.09                0.036 *  
+## PCTBACHMOR   -0.00037063  0.00129639   -0.29                0.775
+## MEDHHINC      0.00000280  0.00000134    2.09                0.036 *
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
+##
 ## (Dispersion parameter for binomial family taken to be 1)
-## 
+##
 ##     Null deviance: 19036  on 43363  degrees of freedom
 ## Residual deviance: 18340  on 43354  degrees of freedom
 ## AIC: 18360
-## 
+##
 ## Number of Fisher Scoring iterations: 6</code></pre>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>logitoutput <span class="ot">&lt;-</span> <span class="fu">summary</span>(logit)</span>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>logitcoeff <span class="ot">&lt;-</span> logitoutput<span class="sc">$</span>coefficients</span>
@@ -4009,31 +4009,31 @@ cutoff
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(DRINKING_D <span class="sc">~</span> FATAL_OR_M <span class="sc">+</span> OVERTURNED <span class="sc">+</span> CELL_PHONE <span class="sc">+</span> SPEEDING <span class="sc">+</span> AGGRESSIVE <span class="sc">+</span> DRIVER1617 <span class="sc">+</span> DRIVER65PLUS, <span class="at">data =</span> crashes, <span class="at">family =</span> binomial)</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">summary</span>(logit2)</span></code></pre></div>
-<pre><code>## 
+<pre><code>##
 ## Call:
-## glm(formula = DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + 
-##     SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS, family = binomial, 
+## glm(formula = DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE +
+##     SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS, family = binomial,
 ##     data = crashes)
-## 
+##
 ## Coefficients:
-##              Estimate Std. Error z value             Pr(&gt;|z|)    
+##              Estimate Std. Error z value             Pr(&gt;|z|)
 ## (Intercept)   -2.6519     0.0275  -96.32 &lt; 0.0000000000000002 ***
 ## FATAL_OR_M     0.8093     0.0838    9.66 &lt; 0.0000000000000002 ***
 ## OVERTURNED     0.9398     0.1090    8.62 &lt; 0.0000000000000002 ***
-## CELL_PHONE     0.0311     0.1978    0.16                 0.88    
+## CELL_PHONE     0.0311     0.1978    0.16                 0.88
 ## SPEEDING       1.5403     0.0805   19.13 &lt; 0.0000000000000002 ***
 ## AGGRESSIVE    -0.5936     0.0477  -12.43 &lt; 0.0000000000000002 ***
 ## DRIVER1617    -1.2716     0.2931   -4.34   0.0000143637414327 ***
 ## DRIVER65PLUS  -0.7665     0.0958   -8.00   0.0000000000000012 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
+##
 ## (Dispersion parameter for binomial family taken to be 1)
-## 
+##
 ##     Null deviance: 19036  on 43363  degrees of freedom
 ## Residual deviance: 18344  on 43356  degrees of freedom
 ## AIC: 18360
-## 
+##
 ## Number of Fisher Scoring iterations: 6</code></pre>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>logitoutput2 <span class="ot">&lt;-</span> <span class="fu">summary</span>(logit2)</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>logitcoeff2 <span class="ot">&lt;-</span> logitoutput2<span class="sc">$</span>coefficients</span>
