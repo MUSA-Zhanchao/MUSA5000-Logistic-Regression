@@ -320,9 +320,9 @@ We first examine the relationship between the dependent variable and binary pred
 
 To formally test whether a statistically significant association exists between the dependent variable and each binary predictor, we use the **Chi-Square test**. The Chi-Square statistic is derived from the sum of squared differences between observed and expected frequencies, normalized by the expected frequencies. The degrees of freedom (df) for the test can be calculated as \((R-1)(C-1)\), where \(R\) is the number of rows and \(C\) is the number of columns in the cross-tabulation table, representing the number of categories in each of the two variables being analyzed. The hypotheses are as follows:
 
-- **Null Hypothesis (H0):**  The proportions of different category of predictos are the same for drinking and non-drinking drivers.
+- **Null Hypothesis (H0):**  The proportions of different category of predictors are the same for drinking and non-drinking drivers. There is no association between the binary predictor and the dependent variable (DRINKING_D)
 
-- **Alternative Hypothesis (Ha):** The proportions of different category of predictos differ between drinking and non-drinking drivers.
+- **Alternative Hypothesis (Ha):** The proportions of different category of predictos differ between drinking and non-drinking drivers. There is an association between the binary predictor and the dependent variable (DRINKING_D)
 
 If the p-value is below 0.05, we reject the null hypothesis and conclude that there is a statistically significant association between the two categorical variables.
 
@@ -332,9 +332,9 @@ For continuous predictors, we first examine the continuous predictors by compari
 
 Then, we use the **independent samples t-test** to assess whether the observed differences in means are statistically significant. The hypotheses for the t-test are:
 
-- **Null Hypothesis (H0):** The average values of the continuous predictor are the same for crashes that involve drinking drivers and those that do not.
+- **Null Hypothesis (H0):** The average values of the continuous predictor are the same for crashes that involve drinking drivers and those that do not. There is no significant difference in the means of the continuous predictor for crashes that involved alcohol and those that did not.
 
-- **Alternative Hypothesis (Ha):** The average values of the continuous predictor are different for crashes that involve drinking drivers and those that do not.
+- **Alternative Hypothesis (Ha):** The average values of the continuous predictor are different for crashes that involve drinking drivers and those that do not. There is a significant difference in the means of the continuous predictor for crashes that involved alcohol and those that did not.
 
 If the p-value of t-test is below 0.05, we reject the null hypothesis in favor of the alternative, indicating that the mean of the continuous predictor significantly differs between the two groups.
 
@@ -349,9 +349,12 @@ By performing these exploratory analyses, we can identify which predictors exhib
 In the report, the dependent variable is `DRINKING_D`, indicating whether a crash involved a drinking driver. Of the 53,260 recorded crashes in Philadelphia from 2008 to 2012, we excluded 9,896 crashes that occurred in non-residential block groups, where median household income and vacancy rates are 0. This leaves 43,364 crashes that took place in Philadelphia’s residential block groups.
 
 ```{r}
-DRINKING_D.tab <- table(crashes$DRINKING_D)
-prop.table(DRINKING_D.tab)
-DRINKING_D.tab
+depetab <- prop.table(table(crashes$DRINKING_D))
+deptab <- as.data.frame(depetab)
+colnames(deptab) <- c("DRINKING_D", "Proportion")
+deptab %>% 
+  kable("html", escape = FALSE, align = "cc") %>%
+  kable_styling(full_width = FALSE, position = "center", fixed_thead = TRUE)
 ```
 
 We see that there are 2,485 (5.73%) crashes that involved a drunk driver, and 40,879 (94.27%) crashes that did not involve a drunk driver. That is, the probability of a crash involving drinking drivers can be calculated using the formula:
@@ -484,8 +487,7 @@ kable(all_results[, c("Variable", "Description",
                      "Chi-Square Test Results" = 3))
 
 ```
-
-We use the **Chi-Square test**, which is a statistical method used to evaluate whether there is a significant association between two categorical variables. This test compares the observed frequencies in each category with the expected frequencies under the assumption that the variables are independent. As usual, a high value of the $\chi^2$ statistic, and a p-value lower than 0.05, suggest that there is evidence to reject the null hypothesis in favor of the alternative, indicating an association between drunk driving and crash outcomes.
+The table above provides a cross-tabulation of the dependent variable with each of the binary predictors. We use the **Chi-Square test**, which is a statistical method used to evaluate whether there is a significant association between two categorical variables. This test compares the observed frequencies in each category with the expected frequencies under the assumption that the variables are independent. As usual, a high value of the $\chi^2$ statistic, and a p-value lower than 0.05, suggest that there is evidence to reject the null hypothesis in favor of the alternative, indicating an association between drunk driving and crash outcomes.
 
 Here, we apply the Chi-Square test to explore the association between drinking driver indicators in crashes `DRINKING_D` and various binary crash-related characteristics. The hypotheses and results are summarized below:
 
@@ -628,6 +630,210 @@ For both continuous predictors, `PCTBACHMOR` and `MEDHHINC`, the p-values from t
 
 ## logistic regression assumptions
 
+```{r, fig.width=8, fig.height=6}
+
+crashes <- crashes %>%
+  mutate(across(c(FATAL_OR_M, OVERTURNED, CELL_PHONE, SPEEDING,
+                  AGGRESSIVE, DRIVER1617, DRIVER65PLUS),
+                ~ as.numeric(as.character(.))))
+
+cor_matrix <- cor(crashes %>% dplyr::select(-c(CRN, DRINKING_D, AREAKEY, COLLISION_)), use = "pairwise.complete.obs", method = "pearson")
+
+
+custom_label <- c(
+  "Crash resulted in fatality or major injury" = "FATAL_OR_M",
+  "Crash involved an overturned vehicle" = "OVERTURNED",
+  "Driver was using cell phone" = "CELL_PHONE",
+  "Crash involved speeding car" = "SPEEDING",
+  "Crash involved aggressive driving" = "AGGRESSIVE",
+  "Crash involved at least one driver 16 or 17 years old" = "DRIVER1617",
+  "Crash involved at least one driver over 65 years old" = "DRIVER65PLUS",
+  "% with bachelor’s degree" = "PCTBACHMOR",
+  "Median household income" = "MEDHHINC"
+)
+
+
+rownames(cor_matrix) <- names(custom_label)
+colnames(cor_matrix) <- names(custom_label)
+
+ggcorrplot(cor_matrix, 
+           type = "lower", 
+           lab = TRUE, 
+           lab_size = 3, 
+           colors = c("#001219", "white", "#9b2226")) +
+  labs(title = "Correlation Matrix for all Predictor Variables") +
+  theme(plot.subtitle = element_text(size = 9, face = "italic"),
+        plot.title = element_text(size = 12, face = "bold"), 
+        axis.text.x = element_text(size = 7),
+        axis.text.y = element_text(size = 7), 
+        axis.title = element_text(size = 8))
+
+```
+
 ## logistic regression results
+```{r}
+logit <- glm(DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS + PCTBACHMOR + MEDHHINC, data = crashes, family = binomial)
+
+summary(logit)
+```
+```{r, message=FALSE, warning=FALSE}
+logitoutput <- summary(logit)
+logitcoeff <- logitoutput$coefficients
+or_ci <- exp(cbind(OR = coef(logit), confint(logit)))
+logitcoeff[, "Pr(>|z|)"] <- round(logitcoeff[, "Pr(>|z|)"], 4)
+final_output <- cbind(logitcoeff, or_ci)
+final_output %>% 
+kable("html", escape = FALSE, align = "cccccc") %>%
+kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width        = FALSE,
+    position          = "center"
+  )
+```
+
+
+
+
+```{r}
+cutoffs <- c(0.02, 0.03, 0.05, 0.07, 0.08, 0.09, 0.10, 0.15, 0.20, 0.50)
+results <- data.frame(
+  Cutoff = cutoffs,
+  Sensitivity = NA_real_,
+  Specificity = NA_real_,
+  MisclassificationRate = NA_real_
+)
+
+#–– 3. Pull out true labels and predicted probabilities
+labels      <- crashes$DRINKING_D
+predictions <- fitted(logit)   # or logit$fitted.values
+
+#–– 4. Metric‐calculation function
+calculate_metrics <- function(cutoff, labels, preds) {
+  preds_bin <- ifelse(preds >= cutoff, 1, 0)
+  tp  <- sum(preds_bin == 1 & labels == 1)
+  tn  <- sum(preds_bin == 0 & labels == 0)
+  fp  <- sum(preds_bin == 1 & labels == 0)
+  fn  <- sum(preds_bin == 0 & labels == 1)
+  sens <- tp / (tp + fn)
+  spec <- tn / (tn + fp)
+  mis  <- (fp + fn) / length(labels)
+  c(Sensitivity = sens,
+    Specificity = spec,
+    MisclassificationRate = mis)
+}
+
+#–– 5. Populate results table
+for (i in seq_along(cutoffs)) {
+  results[i, 2:4] <- calculate_metrics(cutoffs[i], labels, predictions)
+}
+
+#–– 6. Render as a styled kable
+results %>%
+  kable(
+    caption = "Model Performance Metrics Across Probability Cutoffs",
+    digits  = 3,
+    align   = c("c","c","c","c")
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width        = FALSE,
+    position          = "center"
+  )
+```
+
+
+```{r roc measures, message=FALSE, warning=FALSE, include=FALSE}
+
+fit <- logit$fitted   
+a <- cbind(crashes$DRINKING_D, fit)
+colnames(a) <- c("labels", "predictions")
+roc <- as.data.frame(a)
+```
+
+
+```{r, message=FALSE, warning=FALSE}
+ggplot(roc, aes(d = labels, m = predictions)) +
+  geom_roc(n.cuts = 50, labels = FALSE, colour = "#283d3b") +
+  labs(title = "ROC Curve") +
+  style_roc(theme = theme_grey) +
+  geom_abline(slope = 1, intercept = 0, size = 1, color = "#c44536") +
+  theme(
+    plot.subtitle = element_text(size = 9, face = "italic"),
+    plot.title = element_text(size = 12, face = "bold"), 
+    axis.text.x = element_text(size = 8),
+    axis.text.y = element_text(size = 8), 
+    axis.title = element_text(size = 9), 
+    panel.background = element_blank(),
+    panel.border = element_rect(colour = "grey", fill = NA, linewidth = 0.8)
+  )
+```
+
+```{r}
+pred <- prediction(roc$predictions, roc$labels)
+roc.perf <- performance(pred, measure = "tpr", x.measure = "fpr")
+
+opt.cut <- function(perf, pred) {
+  cut.ind <- mapply(FUN = function(x, y, p) {
+    d <- (x - 0)^2 + (y - 1)^2
+    ind <- which(d == min(d))
+    c(sensitivity = y[[ind]], specificity = 1 - x[[ind]], cutoff = p[[ind]])
+  }, perf@x.values, perf@y.values, pred@cutoffs)
+  
+  cut.df <- data.frame(
+    sensitivity = cut.ind[1, ],
+    specificity = cut.ind[2, ],
+    cutoff = cut.ind[3, ]
+  )
+  rownames(cut.df) <- NULL
+  return(cut.df)
+}
+
+optimal_cutoffs_df <- opt.cut(roc.perf, pred)
+optimal_cutoffs_df %>% 
+  kable("html", escape = FALSE, align = "ccc") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width        = FALSE,
+    position          = "center"
+  )
+```
+
+
+```{r}
+auc.perf <-  performance(pred, measure ="auc")
+auc.value <- auc.perf@y.values
+cat(sprintf("AUC: %.3f\n", auc.value))
+```
+```{r}
+logit2 <- glm(DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS, data = crashes, family = binomial)
+
+summary(logit2)
+```
+```{r, message=FALSE, warning=FALSE}
+logitoutput2 <- summary(logit2)
+logitcoeff2 <- logitoutput2$coefficients
+or_ci2 <- exp(cbind(OR = coef(logit2), confint(logit2)))
+logitcoeff2[, "Pr(>|z|)"] <- round(logitcoeff2[, "Pr(>|z|)"], 4)
+final_output2 <- cbind(logitcoeff2, or_ci2)
+final_output2 %>% 
+  kable("html", escape = FALSE, align = "cccccc") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width        = FALSE,
+    position          = "center"
+  )
+```
+```{r}
+aic_table <- AIC(logit, logit2)
+colnames(aic_table) <- c("Degree of Freedom", "AIC")
+rownames(aic_table) <- c("Model 1: All Predictors", "Model 2: Binary Predictors Only")
+aic_table %>% 
+  kable("html", escape = FALSE, align = "cc") %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed"),
+    full_width        = FALSE,
+    position          = "center"
+  )
+```
 
 # Discussion
