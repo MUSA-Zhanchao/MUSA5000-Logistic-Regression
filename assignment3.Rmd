@@ -628,7 +628,7 @@ Since the p-value is greater than 0.05 (p = 0.160), we fail to reject the null h
 
 For both continuous predictors, `PCTBACHMOR` and `MEDHHINC`, the p-values from the t-tests are above the 0.05 significance threshold, indicating that there is no statistically significant difference between the two groups (drinking and non-drinking drivers) for these continuous variables. Therefore, we fail to reject the null hypothesis in both cases, meaning there is no significant association between alcohol involvement in crashes and these continuous predictors.
 
-## logistic regression assumptions
+## Logistic Regression Assumptions
 Based on the correlation matrix and exploitative analysis result, most logistic regression assumptions are met. First, The binary dependent variable , DRINKING_D, fulfills the requirement for a binary variable (0 and 1). Second, the independence of observation is satisfied, as each crash is considered an independent event. Third, the assumption of no perfect multicollinearity is also met, as the correlation matrix shows low pairwise pearson correlations between predictors, with only the highest correlation being 0.48 between **percent with bachelor's degree and median household income**. These correlation coefficients are all below 0.5, indicating that there is no perfect multicollinearity among the predictors. These correlation are not high enough to cause instability in the model. Additionally, the large sample size of over 43,300 observations ensure the model meet the assumption for sufficient sample size.
 
 However, there is a potential violation in the assumption of linearity of log odds for continuous predictors, as high p-values in t-test suggest weal or non-linear relationships between **percent with bachelor's degree and median household income** and the dependent variable.
@@ -678,12 +678,23 @@ ggcorrplot(cor_matrix,
 ```
 
 ## logistic regression results
+
+Our first logistic regression model includes all the predictors and presented the results of it below:
+
+- **FATAL_OR_M**: The presence of a fatality or major injury significant increases the odds of a drinking related crash, with an odds ratio of 2.257 (95% confident interval: 1.91 to 2.65) and a highly significant p-value (p < 0.001). This suggests that these types of crashes are more than double the odds of being associated with drinking drivers.
+- **OVERTURNED**: Overturned vehicles significantly increase the likelihood of it being a drinking related crash with and odd ratio of 2.532 (95% confident interval: 2.04 to 3.12) and a highly significant p-value (p < 0.001). This result implies that overturned vehicles are strongly associated with a drinking-driver incurred crashes.
+- **CELL_PHONE**: The use of celphone during a crash shows no statistically significent effect on the odds of a drinking-related crash, as the **p-value is greater than 0.05 (P=0.881)**. The odd ratio close to 1 (OR=1.03, 95% confident interval: 0.68 to 1.49) indicates that use of cellphone no significantly meaning affect the odds of a drinking-related crash.
+- **SPEEDING**: Speeding is a highly significant predictor, with an odd ratio of 4.66 (95% confident interval: 3.97 to 5.45) and a p-value less than 0.001. This indicates that crashes involving speeding are more than four times as likely to involve alcohol.
+- **AGGRESSIVE**: Aggressive driving is associated with lower odds of drinking-related crashes, with an odds ratio of 0.551 (95% confident interval: 0.50 to 0.60) and a highly significant p-value (p < 0.001). This suggests that aggressive driving is less likely to be associated with drinking drivers.
+- **DRIVER1617**: Incidents involving drivers aged 16-17 are significantly less likely to associate with drinking-related crashes, with an odds ratio of 0.278 (95% confident interval: 0.148 to 0.471) and a highly significant p-value (p < 0.001). This probably caused by the fact that the drinking age in the US is 21, and drivers aged 16-17 are not legally allowed to drink alcohol.
+- **DRIVER65PLUS**: Incidents involving drivers aged 65 or older are also show significantly lower odds of drinking-related, with an odds ratio of 0.461 (95% confident interval: 0.38 to 0.55) and a highly significant p-value (p < 0.001). This suggests that older drivers are less likely to be involved in drinking-related crashes.
+- **PCTBACHMOR**: The percentage of the population with a bachelor's degree or more shows no significant effect on the odds of a drinking-related crash, with an odds ratio of 1.000 (95% confident interval: 0.99 to 1.00) and a p-value greater than 0.05 (p = 0.775). This suggests that the educational attainment of the population does not significantly affect the likelihood of drinking-related crashes.
+- **MEDHHINC**: The median household income shows has a very slight statistically significant effect on the likelihood of drinking-related crash, with p-value <0.05 (p= 0.036) and an odds ratio of 1.000 (95% confident interval: 1.00 to 1.00). This suggests that higher median household income is associated with a very slight negligible effect in the odds of drinking-related crashes.
+
+In summary, `FATAL_OR_M`, `OVERTURNED`, `SPEEDING`, `AGGRESSIVE`, `DRIVER1617`, and `DRIVER65PLUS` are the most significant predictors of drinking-related crashes (P<0.001), while `CELL_PHONE` and `PCTBACHMOR` show no significant effect. Among those, `FATAL_OR_M`, `OVERTURNED`, and `SPEEDING` are the most significant predictors associated with drinking-related crashes, with odds ratios greater than 2.5. The predictor `MEDHHINC` is marginally significant and has minimal effect on the odds of drinking-related crashes.
 ```{r}
 logit <- glm(DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS + PCTBACHMOR + MEDHHINC, data = crashes, family = binomial)
 
-summary(logit)
-```
-```{r, message=FALSE, warning=FALSE}
 logitoutput <- summary(logit)
 logitcoeff <- logitoutput$coefficients
 or_ci <- exp(cbind(OR = coef(logit), confint(logit)))
@@ -698,8 +709,11 @@ kable_styling(
   )
 ```
 
+Then, we test different cutoff threshold to see the model overall performance through the specificity, sensitivity, and misclassficiantion rate. The table below presents the specificity, sensitivity, and misclassification rates for various probability cut-offs in predicting the likelihood of a drinking-related crash.
 
+The probability cut-off value of 0.50 yields the lowest misclassfication rate of 0.057. At this threshold, specificity is maximized at 1, but sensitivity is relative low at 0.02. This indicate the model capture relatively few true positive cases of drinking-related crashes, but it is very good at identifying non-drinking related crashes. 
 
+The highest misclassfication rate occurs at the cut-off of 0.02 with a rate of 0.889. At this threshold, sensitivity is high at 0.899, capturing a high proportion of true positive cases, but specificity is very low at 0.058. This indicates that the model misclassifies a large number of non-drinking related crashes as drinking-related crashes.
 
 ```{r}
 cutoffs <- c(0.02, 0.03, 0.05, 0.07, 0.08, 0.09, 0.10, 0.15, 0.20, 0.50)
