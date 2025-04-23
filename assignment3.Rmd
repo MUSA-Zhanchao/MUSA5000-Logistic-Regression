@@ -711,7 +711,7 @@ kable_styling(
 
 Then, we test different cutoff threshold to see the model overall performance through the specificity, sensitivity, and misclassficiantion rate. The table below presents the specificity, sensitivity, and misclassification rates for various probability cut-offs in predicting the likelihood of a drinking-related crash.
 
-The probability cut-off value of 0.50 yields the lowest misclassfication rate of 0.057. At this threshold, specificity is maximized at 1, but sensitivity is relative low at 0.02. This indicate the model capture relatively few true positive cases of drinking-related crashes, but it is very good at identifying non-drinking related crashes. 
+The probability cut-off value of 0.50 yields the lowest misclassfication rate of 0.057. At this threshold, specificity is maximized at 1, but sensitivity is relative low at 0.02. This indicate the model capture relatively few true positive cases of drinking-related crashes, but it is very good at identifying non-drinking related crashes.
 
 The highest misclassfication rate occurs at the cut-off of 0.02 with a rate of 0.889. At this threshold, sensitivity is high at 0.899, capturing a high proportion of true positive cases, but specificity is very low at 0.058. This indicates that the model misclassifies a large number of non-drinking related crashes as drinking-related crashes.
 
@@ -762,7 +762,7 @@ results %>%
   )
 ```
 
-
+The ROC curve below show the trade of between sensitivity and specificity across various cut-offs threshold for the logistic regression model. An ideal model would reach the top-left corner of the ROC space, where sensitivity and specificity all equal to one, which would mean perfect classifications. Our ROC curve lies beneath the ideal point, indicating trade-offs between sensitivity and specificity at each cut-off.
 ```{r roc measures, message=FALSE, warning=FALSE, include=FALSE}
 
 fit <- logit$fitted
@@ -789,6 +789,7 @@ ggplot(roc, aes(d = labels, m = predictions)) +
   )
 ```
 
+We calculated the optimal cut-off by minimizing the Euclidean distance from the ROC curve to the top-left corner of the ROC space, which represents the ideal point where both sensitivity and specificity are equal to 1. This cut-off of 0.064 provides a balance approaches between specificity and sensitivity, with a sensitivity of 0.661 and specificity of 0.545.
 ```{r}
 pred <- prediction(roc$predictions, roc$labels)
 roc.perf <- performance(pred, measure = "tpr", x.measure = "fpr")
@@ -819,18 +820,20 @@ optimal_cutoffs_df %>%
   )
 ```
 
+In the above section, the optimal cut-off based on the minimum misclassification rate was 0.50, which yielded a misclassfication rate of 0.057. This threshold focused more on prioritizing specificity (1.00), but resulting in low sensitivity (0.02). In contrast, the optimal cut-off based on the ROC curve was 0.064, which provided a balance between sensitivity (0.661) and specificity (0.545). This cut-off is more suitable for practical applications where both false positives and false negatives are important to consider.
+
+The AREA Under the ROC Curve (AUC) for our model is 0.640 suggests that the model has poor discrimination based on the metrix provided in the method section. The AUC value mean that if we randomly select one positive case and negative case, the model has a 64% chance of correctly ranking the positive case higher than the negative case. In practical, this indicates that while the model is able to distinguish between crashes with and without alcohol involvement to some extent, its performance is limited and may misclassify a substantial number of observations.
 
 ```{r}
 auc.perf <-  performance(pred, measure ="auc")
 auc.value <- auc.perf@y.values
 cat(sprintf("AUC: %.3f\n", auc.value))
 ```
+
+The second logistic model we ran only includes the binary predictors. PCTBACHMOR and MEDHHINC were not included as they were not statistically significant predictors in the first model. However, in the second model, the exclusion of these two predictors did not lead to any predictors becoming significant or any previous significant predictors becoming non-significant. The odds ratios (OR) for the binary predictors in both models are very similar, suggesting that removing PCTBACHMOR and MEDHHINC had little impact on the estimated effects of the other variables.
 ```{r}
 logit2 <- glm(DRINKING_D ~ FATAL_OR_M + OVERTURNED + CELL_PHONE + SPEEDING + AGGRESSIVE + DRIVER1617 + DRIVER65PLUS, data = crashes, family = binomial)
 
-summary(logit2)
-```
-```{r, message=FALSE, warning=FALSE}
 logitoutput2 <- summary(logit2)
 logitcoeff2 <- logitoutput2$coefficients
 or_ci2 <- exp(cbind(OR = coef(logit2), confint(logit2)))
@@ -844,6 +847,8 @@ final_output2 %>%
     position          = "center"
   )
 ```
+The Akaike Information Criterion (AIC) for both models is 18360. AIC is a measure of model quality that balances goodness of fit with model complexity. Since the AIC is the same for both models, it suggests that the second model (with only binary predictors) is just as good as the first model (with all predictors) in terms of explaining the data. This indicates that the additional complexity of including PCTBACHMOR and MEDHHINC in the first model does not provide a significant improvement in model fit, and thus, the simpler model with only binary predictors is preferred.
+
 ```{r}
 aic_table <- AIC(logit, logit2)
 colnames(aic_table) <- c("Degree of Freedom", "AIC")
