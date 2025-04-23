@@ -711,7 +711,7 @@ kable_styling(
 
 Then, we test different cutoff threshold to see the model overall performance through the specificity, sensitivity, and misclassficiantion rate. The table below presents the specificity, sensitivity, and misclassification rates for various probability cut-offs in predicting the likelihood of a drinking-related crash.
 
-The probability cut-off value of 0.50 yields the lowest misclassfication rate of 0.057. At this threshold, specificity is maximized at 1, but sensitivity is relative low at 0.02. This indicate the model capture relatively few true positive cases of drinking-related crashes, but it is very good at identifying non-drinking related crashes. 
+The probability cut-off value of 0.50 yields the lowest misclassfication rate of 0.057. At this threshold, specificity is maximized at 1, but sensitivity is relative low at 0.02. This indicate the model capture relatively few true positive cases of drinking-related crashes, but it is very good at identifying non-drinking related crashes.
 
 The highest misclassfication rate occurs at the cut-off of 0.02 with a rate of 0.889. At this threshold, sensitivity is high at 0.899, capturing a high proportion of true positive cases, but specificity is very low at 0.058. This indicates that the model misclassifies a large number of non-drinking related crashes as drinking-related crashes.
 
