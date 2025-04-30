@@ -2,7 +2,4 @@
 
 
 **Expected due date: 4/15/2025** </br>
-ETA: 4/30/2025
-
-
-See the issues section and pdf for instruction。
+ETA: 5/07/2025
