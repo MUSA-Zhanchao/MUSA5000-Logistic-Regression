@@ -16,7 +16,7 @@ output:
 Keywords: Logistic regression, Akaike Information Criterion (AIC), ROC curve, Area Under Curve (AUC), Sensitivity, Specificity, Misclassification Rate
 
 GitHub Repository: [MUSA5000-Logistic-Regression](https://github.com/zyang91/MUSA5000-Logistic-Regression) \|
-[Website](https://zyang91.github.io/MUSA5000-Logistic-Regression/)
+[Website](https://musa-zhanchao.github.io/MUSA5000-Logistic-Regression/)
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
