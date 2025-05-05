@@ -1,5 +1,8 @@
 # MUSA5000 Assignment 3: The Application of Logistic Regression to Examine the Predictors of Car Crashes Caused by Alcohol
 
+**Author: Zhanchao Yang. Haoyu Zhu, Kavana Raju**
+
+## Assignment Overview
 According to the US Department of Transportation, almost 30 people a day – or approximately one person every 51 minutes – die in motor vehicle crashes that involve an alcohol-impaired driver. Many more individuals are injured in these crashes.
 
 A recent study conducted by the National Highway Traffic Safety Administration has shown that the economic impact of alcohol-related crashes is estimated to be more than $59 billion annually.
